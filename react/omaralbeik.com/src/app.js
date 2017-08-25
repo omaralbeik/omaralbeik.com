@@ -8,6 +8,8 @@ import {connect} from 'react-redux';
 import APIHelper from './utils/api-helper';
 import * as actions from './actions';
 
+import './app.scss';
+
 class App extends Component {
   constructor(props) {
     super(props);
