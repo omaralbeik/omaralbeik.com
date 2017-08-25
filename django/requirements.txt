@@ -1,0 +1,5 @@
+django==1.11.4
+djangorestframework==3.6.3
+django-cors-headers==2.1.0
+django-markdownx==2.0.21
+markdown2==2.3.4
