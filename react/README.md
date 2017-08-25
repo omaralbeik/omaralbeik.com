@@ -10,10 +10,10 @@ Source code for my own website :)
 
 2. Move to project directory and install required npm packages
 ``` bash
-npm install
+npm i
 ```
 
 3. Run React server
 ```bash
-yarn start
+npm run start
 ```
