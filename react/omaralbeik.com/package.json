@@ -1,7 +1,27 @@
 {
   "name": "omaralbeik.com",
+  "description": "omaralbeik.com client",
   "version": "0.1.0",
-  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/omaralbeik/omaralbeik.com.git"
+  },
+  "keywords": [
+    "React",
+    "React Router",
+    "Redux",
+    "ES6",
+    "Javascript",
+    "HTML5",
+    "Sass"
+  ],
+  "private": false,
+  "author": "Omar Albeik",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/omaralbeik/omaralbeik.com/issues"
+  },
+  "homepage": "https://omaralbeik.com",
   "dependencies": {
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
