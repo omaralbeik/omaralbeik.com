@@ -1,7 +1,14 @@
 import React, {Component} from 'react';
 
 import {Switch, Route, withRouter} from 'react-router-dom';
+
+import NavigationBar from './components/navigation-bar';
+
 import HomePage from './pages/home';
+import PortfolioPage from './pages/portfolio';
+import BlogPage from './pages/blog';
+import AboutPage from './pages/about';
+import ContactPage from './pages/contact';
 
 import {connect} from 'react-redux';
 
@@ -58,9 +65,16 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Switch>
-          <Route exact path='/' component={HomePage}/>
-        </Switch>
+        <NavigationBar/>
+        <div className='container'>
+          <Switch>
+            <Route exact path='/' component={HomePage}/>
+            <Route exact path='/portfolio' component={PortfolioPage}/>
+            <Route exact path='/blog' component={BlogPage}/>
+            <Route exact path='/about' component={AboutPage}/>
+            <Route exact path='/contact' component={ContactPage}/>
+          </Switch>
+        </div>
       </div>
     );
   }
