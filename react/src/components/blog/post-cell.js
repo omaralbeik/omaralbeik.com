@@ -14,8 +14,6 @@ class PostCell extends Component {
         const tag = tags[id];
         if (tag) {
           return (<li key={id}><a href="/">#{tag.name}</a></li>);
-        } else {
-          return {};
         }
       });
     }
