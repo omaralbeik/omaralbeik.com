@@ -19,6 +19,10 @@ class APIHelper {
     return `${this.API_URL}projects/`;
   }
 
+  static get LATEST_PROJECTS_URL() {
+    return `${this.PROJECTS_URL}latest/`;
+  }
+
   static get TAGS_URL() {
     return `${this.API_URL}tags/`;
   }
@@ -32,6 +36,10 @@ class APIHelper {
     return `${this.API_URL}blog/posts/`;
   }
 
+  static get LATEST_BLOG_POSTS_URL() {
+    return `${this.BLOG_POSTS_URL}latest/`;
+  }
+
 
   static get LEARNING_URL() {
     return `${this.API_URL}learning/`;
@@ -43,6 +51,10 @@ class APIHelper {
 
   static get COURSES_URL() {
     return `${this.LEARNING_URL}courses/`;
+  }
+
+  static get LATEST_COURSES_URL() {
+    return `${this.COURSES_URL}latest/`;
   }
 
   static get QUOTES_URL() {
@@ -61,6 +73,10 @@ class APIHelper {
     return this._fetchObject(this.PROJECTS_URL);
   }
 
+  static fetchLatestProjects() {
+    return this._fetchObject(this.LATEST_PROJECTS_URL);
+  }
+
   static fetchProject(project_id) {
     return this._fetchObject(this.PROJECTS_URL, project_id);
   }
@@ -73,6 +89,10 @@ class APIHelper {
 
   static fetchBlogPosts() {
     return this._fetchObject(this.BLOG_POSTS_URL);
+  }
+
+  static fetchLatestBlogPosts() {
+    return this._fetchObject(this.LATEST_BLOG_POSTS_URL);
   }
 
   static fetchBlogPost(post_id) {
@@ -105,6 +125,10 @@ class APIHelper {
 
   static fetchCourses() {
     return this._fetchObject(this.COURSES_URL);
+  }
+
+  static fetchLatestCourses() {
+    return this._fetchObject(this.LATEST_COURSES_URL);
   }
 
   static fetchCourse(course_id) {
@@ -205,10 +229,13 @@ class APIHelper {
       headers.append('Authorization', `Token ${APIHelper.AUTH_TOKEN}`);
 
       var init = { method: 'GET', headers: headers};
-
       fetch(completeUrl, init).then((response) => {
         return response.json();
       }).then((data) => {
+        if (Array.isArray(data)) {
+          resolve(data);
+          return;
+        }
         const {results} = data;
         if (results) {
           resolve(results);

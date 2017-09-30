@@ -1,8 +1,9 @@
-import React, {Component} from "react";
-import logo from "../images/logo.svg";
-import {Navbar, Nav, NavItem} from "react-bootstrap";
-import {LinkContainer} from "react-router-bootstrap";
-import FontAwesome from "react-fontawesome";
+import React, {Component} from 'react';
+import logo from '../images/logo.svg';
+import {Navbar, Nav, NavItem} from 'react-bootstrap';
+import {LinkContainer} from 'react-router-bootstrap';
+import FontAwesome from 'react-fontawesome';
+import links from '../data/links';
 
 class NavigationBar extends Component {
   render() {
@@ -24,10 +25,10 @@ class NavigationBar extends Component {
             <Navbar.Collapse>
               <Nav id="navbar" pullRight>
                   <LinkContainer exact to="/"><NavItem>Home</NavItem></LinkContainer>
-                  <LinkContainer to="/blog"><NavItem>Blog</NavItem></LinkContainer>
-                  <LinkContainer to="/portfolio"><NavItem>Portfolio</NavItem></LinkContainer>
-                  <LinkContainer to="/about"><NavItem>About</NavItem></LinkContainer>
-                  <LinkContainer to="/contact"><NavItem>Contact</NavItem></LinkContainer>
+                  <LinkContainer to={links.blog}><NavItem>Blog</NavItem></LinkContainer>
+                  <LinkContainer to={links.projects}><NavItem>Portfolio</NavItem></LinkContainer>
+                  <LinkContainer to={links.about}><NavItem>About</NavItem></LinkContainer>
+                  <LinkContainer to={links.contact}><NavItem>Contact</NavItem></LinkContainer>
               </Nav>
             </Navbar.Collapse>
         </Navbar>

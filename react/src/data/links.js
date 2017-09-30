@@ -20,8 +20,28 @@ export default class Links {
     return 'https://medium.com/@omaralbeik';
   }
 
-  static get omaralbeik() {
+  static get repo() {
     return 'https://github.com/omaralbeik/omaralbeik.com';
+  }
+
+  static get blog() {
+    return '/blog';
+  }
+
+  static get projects() {
+    return '/projects';
+  }
+
+  static get courses() {
+    return '/courses';
+  }
+
+  static get about() {
+    return '/about';
+  }
+
+  static get contact() {
+    return '/contact';
   }
 
 }
