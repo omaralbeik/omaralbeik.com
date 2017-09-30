@@ -21,7 +21,7 @@ class Footer extends Component {
                     <li><Link to="/contact">Contact</Link></li>
                   </ul>
               </nav>
-                <p>This is a fully integrated open-source project that uses React, <br className="hidden-xs"/>Python and Django to build. Grab your copy from <a href={links.omaralbeik} target="_blank">GitHub</a>.</p>
+                <p>This is a fully integrated open-source project that uses React, <br className="hidden-xs"/>Python and Django to build. Grab your copy from <a href={links.repo} target="_blank">GitHub</a>.</p>
               </Col>
               <Col sm={6} className="social-wrap">
                 <SocialButtons/>
@@ -30,7 +30,7 @@ class Footer extends Component {
           </Grid>
         </div>
         <div className="footer-copy">
-          <p className="text-center">Copyright &copy; 2017 <a href="http://omaralbeik.com">Omar Albeik</a>. <br className="visible-xs-inline"/>All rights reserved.</p>
+          <p className="text-center">Copyright &copy; 2017 <a href="https://omaralbeik.com">Omar Albeik</a>. <br className="visible-xs-inline"/>All rights reserved.</p>
         </div>
       </footer>
     )

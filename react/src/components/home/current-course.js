@@ -1,13 +1,16 @@
 import React, {Component} from 'react';
+import {Link} from 'react-router-dom';
+import links from '../../data/links';
 
 class CurrentCourse extends Component {
+
   render() {
     return (
       <div className="container-wrap bg-lighter" id="course-sec-wrap">
         <section className="container" id="course-sec">
           <header className="sec-header">
             <h1>
-              <a href="course-listing.html">Current Course...</a>
+              <Link to={links.courses}>Current Course...</Link>
             </h1>
           </header>
           <div className="sec-body">
@@ -21,7 +24,7 @@ class CurrentCourse extends Component {
             </div>
           </div>
           <footer className="sec-footer">
-            <a href="course-listing.html">Previous Courses</a>
+            <Link to={links.courses}>Previous Courses</Link>
           </footer>
         </section>
       </div>

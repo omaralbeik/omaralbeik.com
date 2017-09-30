@@ -13,6 +13,9 @@ class HomePage extends Component {
   constructor(props) {
     super(props);
     this.fetchSliders();
+    this.fetchBlogPosts();
+    this.fetchProjects();
+    this.fetchLearningCourses();
   }
 
   fetchSliders() {
@@ -21,28 +24,48 @@ class HomePage extends Component {
     });
   }
 
-  render() {
-    const {sliders} = this.props;
+  fetchBlogPosts() {
+    APIHelper.fetchLatestBlogPosts().then(posts => {
+      this.props.loadBlogPosts({type: actions.LOAD_BLOG_POSTS, posts});
+    });
+  }
 
+  fetchProjects() {
+    APIHelper.fetchLatestProjects().then(projects => {
+      this.props.loadProjects({type: actions.LOAD_PROJECTS, projects})
+    })
+  }
+
+  fetchLearningCourses() {
+    APIHelper.fetchLatestCourses().then(courses => {
+      this.props.loadLearningCourses({type: actions.LOAD_LEARNING_COURSES, courses})
+    })
+  }
+
+  render() {
+    const {sliders, blogPosts, projects, learning} = this.props;
     return (
       <div>
         <Slider sliders={arrayFromObject(sliders)}/>
         <AboutMe/>
-        <LatestBlogPosts/>
-        <LatestProjects/>
+        <LatestBlogPosts posts={arrayFromObject(blogPosts)}/>
+        <LatestProjects projects={arrayFromObject(projects)}/>
         <CurrentCourse/>
       </div>
     )
   }
 }
 
-function mapStateToProps({sliders}) {
-  return {sliders}
+function mapStateToProps({sliders, blogPosts, projects, learning}) {
+  return {sliders, blogPosts, projects, learning}
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    loadSliders: sliders => dispatch(actions.loadSliders(sliders))
+    loadSliders: sliders => dispatch(actions.loadSliders(sliders)),
+    loadBlogPosts: posts => dispatch(actions.loadBlogPosts(posts)),
+    loadProjects: projects => dispatch(actions.loadProjects(projects)),
+    loadLearningCourses: courses => dispatch(actions.loadLearningCourses(courses))
   }
 }
 
