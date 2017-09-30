@@ -1,5 +1,5 @@
 from rest_framework import viewsets
-from rest_framework.decorators import detail_route
+from rest_framework.decorators import detail_route, list_route
 from rest_framework.response import Response
 from rest_framework import permissions
 
@@ -43,6 +43,13 @@ class CourseViewSet(viewsets.ModelViewSet):
         serializer = serializers.SchoolSerializer(school, many=False)
         return Response(serializer.data)
 
+    # list route to return latest course
+    # .../learning/courses/latest
+    @list_route(methods=['get'])
+    def latest(self, request):
+        latest_course = models.Course.objects.all()[:1]
+        serializer = serializers.CourseSerializer(latest_course, many=True)
+        return Response(serializer.data)
 
 class SchoolViewSet(viewsets.ModelViewSet):
     permission_classes = (permissions.IsAuthenticated,)

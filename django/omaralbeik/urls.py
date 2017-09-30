@@ -24,7 +24,7 @@ router.register(r'learning/schools', lv.SchoolViewSet)
 router.register(r'learning/books', lv.BookViewSet)
 router.register(r'learning/quotes', lv.QuoteViewSet)
 
-router.register(r'sliders', sv.SliderViewSet)
+router.register(r'sliders', sv.SlideViewSet)
 
 urlpatterns = [
     url(r'^markdownx/', include('markdownx.urls')),

@@ -1,6 +1,6 @@
 from django.db import models
 
-class Slider(models.Model):
+class Slide(models.Model):
     image = models.ImageField(upload_to='sliders', blank=True)
     title = models.CharField(max_length=24)
     subtitle = models.CharField(max_length=120, blank=True)
@@ -13,7 +13,7 @@ class Slider(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
-        ordering = ['created_at',]
+        ordering = ['-created_at',]
 
     def __str__(self):
         return self.title
