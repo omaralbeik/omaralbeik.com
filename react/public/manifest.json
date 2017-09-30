@@ -1,0 +1,17 @@
+{
+  "name": "Omar Albeik",
+  "short_name": "Omar Albeik",
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "/index.html",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "landscape",
+  "background_color": "#1f1d1e",
+  "theme_color": "#e9541d"
+}
