@@ -16,7 +16,7 @@ class Book(models.Model):
     tags = models.ManyToManyField('tags.Tag', blank=True)
 
     class Meta:
-        ordering = ['read_at', 'author', 'name' ]
+        ordering = ['-read_at', 'author', 'name' ]
 
         # assuming same title might be used for many books by many authors
         # the combination of both book name and book author should be unique
@@ -60,7 +60,7 @@ class Course(models.Model):
     tags = models.ManyToManyField('tags.Tag', blank=True)
 
     class Meta:
-        ordering = ['started_at', 'school', 'title', ]
+        ordering = ['-started_at', 'school', 'title', ]
 
     def __str__(self):
         return self.title
@@ -76,7 +76,7 @@ class Quote(models.Model):
     tags = models.ManyToManyField('tags.Tag', blank=True)
 
     class Meta:
-        ordering = ['created_at', 'author', ]
+        ordering = ['-created_at', 'author', ]
 
     def __str__(self):
         return self.quote

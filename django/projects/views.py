@@ -1,5 +1,5 @@
 from rest_framework import viewsets
-from rest_framework.decorators import detail_route
+from rest_framework.decorators import detail_route, list_route
 from rest_framework.response import Response
 from rest_framework import permissions
 
@@ -20,4 +20,13 @@ class ProjectViewSet(viewsets.ModelViewSet):
     def tags(self, request, pk=None):
         project = self.get_object()
         serializer = tags.serializers.TagSerializer(project.tags, many=True)
+        return Response(serializer.data)
+
+
+    # list route to return latest projects
+    # .../projects/latest
+    @list_route()
+    def latest(self, request):
+        latest_projects = models.Project.objects.filter(published=True)[:3]
+        serializer = self.get_serializer(latest_projects, many=True)
         return Response(serializer.data)

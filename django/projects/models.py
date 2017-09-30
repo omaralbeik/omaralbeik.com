@@ -25,7 +25,7 @@ class Project(models.Model):
     tags = models.ManyToManyField('tags.Tag', blank=True)
 
     class Meta:
-        ordering = ['released_at',]
+        ordering = ['-released_at',]
 
     def __str__(self):
         return self.name

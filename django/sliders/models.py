@@ -1,6 +1,6 @@
 from django.db import models
 
-class Slider(models.Model):
+class Slide(models.Model):
     image = models.ImageField(upload_to='sliders', blank=True)
     title = models.CharField(max_length=24)
     subtitle = models.CharField(max_length=120, blank=True)

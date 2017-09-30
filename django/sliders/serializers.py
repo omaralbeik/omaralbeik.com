@@ -3,7 +3,7 @@ from rest_framework import serializers
 from . import models
 
 
-class SliderSerializer(serializers.ModelSerializer):
+class SlideSerializer(serializers.ModelSerializer):
     image_url = serializers.SerializerMethodField()
 
     class Meta:
@@ -16,8 +16,8 @@ class SliderSerializer(serializers.ModelSerializer):
             'button_url',
             'order'
         )
-        model = models.Slider
+        model = models.Slide
 
-    # return slider's background image url if available
-    def get_image_url(self, slider):
-        return slider.image.url if slider.image else ''
+    # return slide's background image url if available
+    def get_image_url(self, slide):
+        return slide.image.url if slide.image else ''

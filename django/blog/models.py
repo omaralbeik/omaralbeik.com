@@ -10,7 +10,7 @@ class Post(models.Model):
 
     # markdown text, API will serve this as HTML!
     text = MarkdownxField()
-    
+
     # API will not serve the post unless published is set to True
     published = models.BooleanField(default=False)
     published_at = models.DateTimeField(blank=True)
@@ -22,4 +22,4 @@ class Post(models.Model):
         return self.title
 
     class Meta:
-        ordering = ['created_at', ]
+        ordering = ['-created_at', ]
