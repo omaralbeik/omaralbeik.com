@@ -21,7 +21,7 @@ class Footer extends Component {
                     <li><Link to="/contact">Contact</Link></li>
                   </ul>
               </nav>
-                <p>This is a fully integrated open-source project that uses React, <br className="hidden-xs"/>Python and Django to build. Grab your copy from <a href={links.repo} target="_blank">GitHub</a>.</p>
+                <p>This is a fully integrated open-source project that uses React, <br className="hidden-xs"/>Python and Django to build. Grab your copy from <a href={links.repo} target="_blank" rel="noopener">GitHub</a>.</p>
               </Col>
               <Col sm={6} className="social-wrap">
                 <SocialButtons/>

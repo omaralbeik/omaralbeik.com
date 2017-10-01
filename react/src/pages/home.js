@@ -42,15 +42,26 @@ class HomePage extends Component {
     })
   }
 
+  generateCurrentCourse(course) {
+    if (!course) {
+      return null
+    }
+    return (<CurrentCourse course={course}/>);
+  }
+
   render() {
     const {sliders, blogPosts, projects, learning} = this.props;
+    const {courses} = learning;
+    const course = arrayFromObject(courses)[0]
+    const latestPostsArray = arrayFromObject(blogPosts).slice(0, 2);
+    const latestProjectsArray = arrayFromObject(projects).slice(0,3);
     return (
       <div>
         <Slider sliders={arrayFromObject(sliders)}/>
         <AboutMe/>
-        <LatestBlogPosts posts={arrayFromObject(blogPosts)}/>
-        <LatestProjects projects={arrayFromObject(projects)}/>
-        <CurrentCourse/>
+        <LatestBlogPosts posts={latestPostsArray}/>
+        <LatestProjects projects={latestProjectsArray}/>
+        {this.generateCurrentCourse(course)}
       </div>
     )
   }

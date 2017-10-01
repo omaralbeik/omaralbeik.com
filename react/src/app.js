@@ -9,8 +9,11 @@ import APIHelper from './utils/api-helpers';
 import * as actions from './actions';
 import NavigationBar from './components/navigation-bar';
 import Footer from './components/footer';
+import links from './data/links';
 
 import HomePage from './pages/home';
+import BlogListing from './pages/blog-listing';
+import ProjectListing from './pages/project-listing';
 
 class App extends Component {
   constructor(props) {
@@ -30,6 +33,8 @@ class App extends Component {
         <NavigationBar/>
         <Switch>
           <Route exact path='/' component={HomePage}/>
+          <Route exact path={links.blog} component={BlogListing}/>
+          <Route exact path={links.projects} component={ProjectListing}/>
         </Switch>
         <Footer/>
       </div>

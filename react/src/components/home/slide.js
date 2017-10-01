@@ -19,7 +19,7 @@ class Slide extends Component {
           <div className="slide-text">
             <h2>{slider.title}</h2>
             <p>{slider.subtitle}</p>
-            <Button href={slider.button_url} target="is_blank" bsStyle="primary" className="btn-wide">{slider.button_title}</Button>
+            <Button href={slider.button_url} target="is_blank" rel="noopener" bsStyle="primary" className="btn-wide">{slider.button_title}</Button>
           </div>
         </Grid>
       </div>

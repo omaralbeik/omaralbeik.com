@@ -13,19 +13,19 @@ class SocialLinks extends Component {
     return (
       <ul className="list-unstyled inline-list">
         <li key={0}>
-          <a href={links.stackOverflow} target="_blank"><img src={stackOverflow} alt="Stack Overflow"/></a>
+          <a href={links.stackOverflow} target="_blank" rel="noopener"><img src={stackOverflow} alt="Stack Overflow"/></a>
         </li>
         <li key={1}>
-          <a href={links.github} target="_blank"><img src={github} alt="Github"/></a>
+          <a href={links.github} target="_blank" rel="noopener"><img src={github} alt="Github"/></a>
         </li>
         <li key={2}>
-          <a href={links.twitter} target="_blank"><img src={twitter} alt="Twitter"/></a>
+          <a href={links.twitter} target="_blank" rel="noopener"><img src={twitter} alt="Twitter"/></a>
         </li>
         <li key={3}>
-          <a href={links.linkedin} target="_blank"><img src={linkedin} alt="LinkedIn"/></a>
+          <a href={links.linkedin} target="_blank" rel="noopener"><img src={linkedin} alt="LinkedIn"/></a>
         </li>
         <li key={4}>
-          <a href={links.medium} target="_blank"><img src={medium} alt="Medium"/></a>
+          <a href={links.medium} target="_blank" rel="noopener"><img src={medium} alt="Medium"/></a>
         </li>
       </ul>
     );
