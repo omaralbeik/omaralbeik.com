@@ -26,7 +26,7 @@ class ProjectListing extends Component {
       <main className="container-wrap inside-content">
         <section className="container">
           <header className="inside-header row">
-            <h1 className="content-title col-sm-12">Blog</h1>
+            <h1 className="content-title col-sm-12">Portfolio</h1>
             <ol className="breadcrumb col-sm-12">
               <li><Link to="/">Home</Link></li>
               <li>Portfolio</li>

@@ -11,9 +11,10 @@ import NavigationBar from './components/navigation-bar';
 import Footer from './components/footer';
 import links from './data/links';
 
-import HomePage from './pages/home';
+import Home from './pages/home';
 import BlogListing from './pages/blog-listing';
 import ProjectListing from './pages/project-listing';
+import ProjectDetails from './pages/project-details';
 
 class App extends Component {
   constructor(props) {
@@ -32,9 +33,10 @@ class App extends Component {
       <div id="main" className="omaralbeik">
         <NavigationBar/>
         <Switch>
-          <Route exact path='/' component={HomePage}/>
+          <Route exact path='/' component={Home}/>
           <Route exact path={links.blog} component={BlogListing}/>
           <Route exact path={links.projects} component={ProjectListing}/>
+          <Route exact path={`${links.projects}/:project_id`} component={ProjectDetails}/>
         </Switch>
         <Footer/>
       </div>

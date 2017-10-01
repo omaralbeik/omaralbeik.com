@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
+import {Link} from 'react-router-dom';
 import {LinkContainer} from 'react-router-bootstrap';
 import {Button} from "react-bootstrap";
 import links from '../../data/links';
@@ -15,6 +16,7 @@ class ProjectCell extends Component {
     return (
       <li className="col-md-4 col-lg-4">
         <div className="thumbnail">
+          <Link to={projectLink} className="proj-blocklink"/>
           <div className="proj-thumb">
             <div className="proj-thumb-tint"></div>
           </div>

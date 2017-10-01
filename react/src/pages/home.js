@@ -9,7 +9,7 @@ import LatestBlogPosts from '../components/home/latest-blog-posts';
 import LatestProjects from '../components/home/latest-projects';
 import CurrentCourse from '../components/home/current-course';
 
-class HomePage extends Component {
+class Home extends Component {
   constructor(props) {
     super(props);
     this.fetchSliders();
@@ -80,4 +80,4 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(HomePage);
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

@@ -1017,7 +1017,7 @@ section.container, aside.container {
   max-width: 970px;
 }
 .topic .inside-body {
-  background-color: #eee;
+  background-color: #fff;
   overflow: hidden;
 }
 .topic-cover.edgy {
@@ -1164,6 +1164,9 @@ section.container, aside.container {
   border-color: #fff;
   border-bottom: 1px solid #fff;
   border-top: 2px solid #ddd;
+}
+.topic-free-code img {
+	max-width: 100%;
 }
 .topic-rating {
   margin: 3px 0;
