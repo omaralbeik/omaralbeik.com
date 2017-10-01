@@ -5,42 +5,42 @@ import {Row, Col} from 'react-bootstrap';
 import {arrayFromObject} from '../utils/helpers';
 import APIHelper from '../utils/api-helpers';
 import * as actions from '../actions';
-import ProjectCell from '../components/projects/project-cell';
+import PostCell from '../components/blog/post-cell';
 
-class ProjectListing extends Component {
+class BlogListing extends Component {
   constructor(props) {
     super(props);
-    this.fetchProjects();
+    this.fetchBlogPosts();
   }
 
   componentDidMount () {
     window.scrollTo(0, 0)
   }
 
-  fetchProjects() {
-    APIHelper.fetchProjects().then(projects => {
-      this.props.loadProjects({type: actions.LOAD_PROJECTS, projects})
-    })
+  fetchBlogPosts() {
+    APIHelper.fetchBlogPosts().then(posts => {
+      this.props.loadBlogPosts({type: actions.LOAD_BLOG_POSTS, posts});
+    });
   }
 
   render() {
-    const {projects} = this.props;
-    const projectsArray = arrayFromObject(projects)
+    const {blogPosts} = this.props;
+    const postsArray = arrayFromObject(blogPosts)
     return (
       <main className="container-wrap inside-content">
         <section className="container">
           <header className="inside-header row">
-            <h1 className="content-title col-sm-12">Portfolio</h1>
+            <h1 className="content-title col-sm-12">Blog</h1>
             <ol className="breadcrumb col-sm-12">
               <li><Link to="/">Home</Link></li>
-              <li>Portfolio</li>
+              <li>Blog</li>
             </ol>
           </header>
           <div className="inside-body">
             <Row>
               <Col sm={12}>
-                <ul className="list-unstyled list-inline row thumbnails-hfixed transit-all">
-                  {projectsArray.map(p => (<ProjectCell key={p.id} project={p}/>))}
+                <ul className="home-blog-list list-unstyled inline-list row">
+                  {postsArray.map(p => (<PostCell key={p.id} post={p}/>))}
                 </ul>
               </Col>
             </Row>
@@ -49,16 +49,17 @@ class ProjectListing extends Component {
       </main>
     )
   }
+
 }
 
-function mapStateToProps({projects}) {
-  return {projects}
+function mapStateToProps({blogPosts}) {
+  return {blogPosts}
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    loadProjects: projects => dispatch(actions.loadProjects(projects))
+    loadBlogPosts: posts => dispatch(actions.loadBlogPosts(posts))
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ProjectListing);
+export default connect(mapStateToProps, mapDispatchToProps)(BlogListing);

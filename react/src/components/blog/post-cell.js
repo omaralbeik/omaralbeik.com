@@ -1,6 +1,10 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
+import {Link} from 'react-router-dom';
+import {LinkContainer} from 'react-router-bootstrap';
+import {Button} from "react-bootstrap";
+import links from '../../data/links';
 
 class PostCell extends Component {
   static propTypes = {
@@ -14,6 +18,8 @@ class PostCell extends Component {
         const tag = tags[id];
         if (tag) {
           return (<li key={id}><a href="/">#{tag.name}</a></li>);
+        } else {
+          return null;
         }
       });
     }
@@ -22,12 +28,14 @@ class PostCell extends Component {
   render() {
     const {post, tags, mobHidden} = this.props
     const liClassName = `blog-item-wrap col-sm-6 ${mobHidden ? "hidden-xs" : ""}`
+    const postLink = `${links.blog}/${post.id}`;
+
     return (
       <li className={liClassName}>
         <article className="blog-item">
           <header>
             <h2 className="blog-title">
-              <a href="#!">{post.title}</a>
+              <Link to={postLink}>{post.title}</Link>
             </h2>
             <time className="blog-date" dateTime={post.published_at}>{post.published_at}</time>
           </header>
@@ -38,7 +46,9 @@ class PostCell extends Component {
           </div>
           <div className="blog-item-body">
             <p>{post.summary}</p>
-            <a className="btn btn-wide btn-primary">Read Blog Post</a>
+            <LinkContainer to={postLink}>
+              <Button bsStyle="primary" className="btn-wide">Read Blog Post</Button>
+            </LinkContainer>
           </div>
         </article>
       </li>

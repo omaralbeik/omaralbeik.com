@@ -9,13 +9,17 @@ import LatestBlogPosts from '../components/home/latest-blog-posts';
 import LatestProjects from '../components/home/latest-projects';
 import CurrentCourse from '../components/home/current-course';
 
-class HomePage extends Component {
+class Home extends Component {
   constructor(props) {
     super(props);
     this.fetchSliders();
     this.fetchBlogPosts();
     this.fetchProjects();
     this.fetchLearningCourses();
+  }
+
+  componentDidMount () {
+    window.scrollTo(0, 0)
   }
 
   fetchSliders() {
@@ -42,15 +46,26 @@ class HomePage extends Component {
     })
   }
 
+  generateCurrentCourse(course) {
+    if (!course) {
+      return null
+    }
+    return (<CurrentCourse course={course}/>);
+  }
+
   render() {
     const {sliders, blogPosts, projects, learning} = this.props;
+    const {courses} = learning;
+    const course = arrayFromObject(courses)[0]
+    const latestPostsArray = arrayFromObject(blogPosts).slice(0, 2);
+    const latestProjectsArray = arrayFromObject(projects).slice(0,3);
     return (
       <div>
         <Slider sliders={arrayFromObject(sliders)}/>
         <AboutMe/>
-        <LatestBlogPosts posts={arrayFromObject(blogPosts)}/>
-        <LatestProjects projects={arrayFromObject(projects)}/>
-        <CurrentCourse/>
+        <LatestBlogPosts posts={latestPostsArray}/>
+        <LatestProjects projects={latestProjectsArray}/>
+        {this.generateCurrentCourse(course)}
       </div>
     )
   }
@@ -69,4 +84,4 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(HomePage);
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

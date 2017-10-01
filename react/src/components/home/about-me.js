@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
+import {LinkContainer} from 'react-router-bootstrap';
 import {Grid, Row, Col, Button} from 'react-bootstrap';
 import omar from '../../images/omar-pic.gif';
 import SocialButtons from "../social-buttons";
+import links from '../../data/links';
 
 class AboutMe extends Component {
   render() {
@@ -22,7 +24,9 @@ class AboutMe extends Component {
                 <div className="social-wrap">
                   <SocialButtons/>
                 </div>
-                <Button bsStyle="primary" className="btn-wide">Connect</Button>
+                <LinkContainer to={links.contact}>
+                  <Button bsStyle="primary" className="btn-wide">Connect</Button>
+                </LinkContainer>
               </footer>
             </Col>
           </Row>

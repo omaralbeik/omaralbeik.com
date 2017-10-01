@@ -27,6 +27,7 @@ class NavigationBar extends Component {
                   <LinkContainer exact to="/"><NavItem>Home</NavItem></LinkContainer>
                   <LinkContainer to={links.blog}><NavItem>Blog</NavItem></LinkContainer>
                   <LinkContainer to={links.projects}><NavItem>Portfolio</NavItem></LinkContainer>
+                  <LinkContainer to={links.learning}><NavItem>Learning</NavItem></LinkContainer>
                   <LinkContainer to={links.about}><NavItem>About</NavItem></LinkContainer>
                   <LinkContainer to={links.contact}><NavItem>Contact</NavItem></LinkContainer>
               </Nav>

@@ -223,7 +223,6 @@ class APIHelper {
       if (child) {
         completeUrl += `/${child}/`
       }
-
       var headers = new Headers();
       headers.append('Content-Type', 'application/json');
       headers.append('Authorization', `Token ${APIHelper.AUTH_TOKEN}`);
@@ -232,16 +231,28 @@ class APIHelper {
       fetch(completeUrl, init).then((response) => {
         return response.json();
       }).then((data) => {
+        // response is an array of objects
         if (Array.isArray(data)) {
           resolve(data);
           return;
         }
+
+        // response has pagination and results
         const {results} = data;
         if (results) {
           resolve(results);
-        } else {
-          reject('No Results');
+          return;
         }
+
+        // response is a single object
+        if (data.id) {
+          resolve(data);
+          return;
+        }
+
+        // response is not valid
+        reject('No Results');
+
       }).catch((error) => {
         reject(error);
       });
