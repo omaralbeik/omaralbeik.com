@@ -28,9 +28,11 @@ class Error extends Component {
                   <div className="topic-free-code error">
                     <h2>Error!</h2>
                     <h3>{error}</h3>
-                    <LinkContainer to="/">
-                      <Button bsStyle="primary" className="btn-wide">Back Home</Button>
-                    </LinkContainer>
+                    <p>
+                      <LinkContainer to="/">
+                        <Button bsStyle="primary" className="btn-wide">Back Home</Button>
+                      </LinkContainer>
+                    </p>
                   </div>
                 </Col>
               </div>

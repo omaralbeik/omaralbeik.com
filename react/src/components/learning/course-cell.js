@@ -6,7 +6,7 @@ import {Row, Col} from 'react-bootstrap';
 import {Button} from "react-bootstrap";
 import links from '../../data/links';
 
-import courseImg from '../../images/course-img.jpg';
+import placeholder from '../../images/placeholders/course-placeholder.svg';
 
 class CourseCell extends Component {
   static propTypes = {
@@ -35,13 +35,13 @@ class CourseCell extends Component {
         <Row>
           <Col sm={4}>
             <div className="course-emblem"><picture className="hidden-xs">
-              <source srcSet={courseImg} media="(min-width: 768px)"/>
-              <img srcSet={courseImg} src={courseImg} alt="Course Emblem"/>
+              <source srcSet={placeholder} media="(min-width: 768px)"/>
+              <img srcSet={placeholder} src={placeholder} alt={course.title}/>
             </picture></div>
           </Col>
           <article className="col-sm-8">
             <h2 className="course-title">{course.title}</h2>
-            <p className="course-subtitle"><a href={course.page_url} target="_blank" rel="noopener">{course.subtitle}</a></p>
+            <p className="course-subtitle">{course.school_name}: <a href={course.page_url} target="_blank" rel="noopener">{course.subtitle}</a></p>
             <div className="course-tags">
               <ul className="tag-list list-unstyled list-inline">
                 {this.generateTags(course.tags, tags)}
