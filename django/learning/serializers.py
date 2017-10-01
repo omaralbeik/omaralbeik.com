@@ -57,6 +57,8 @@ class SchoolSerializer(serializers.ModelSerializer):
 
 
 class CourseSerializer(serializers.ModelSerializer):
+    school_name = serializers.SerializerMethodField()
+
     class Meta:
         fields = (
             'id',
@@ -68,9 +70,14 @@ class CourseSerializer(serializers.ModelSerializer):
             'rating',
             'review',
             'school',
+            'school_name',
             'tags',
         )
         model = models.Course
+
+    # return course's school name
+    def get_school_name(self, course):
+        return course.school.name
 
 
 class QuoteSerializer(serializers.ModelSerializer):
