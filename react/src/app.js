@@ -12,9 +12,13 @@ import Footer from './components/footer';
 import links from './data/links';
 
 import Home from './pages/home';
-import BlogListing from './pages/blog-listing';
+import BlogPostListing from './pages/blog-post-listing';
+import BlogPostDetails from './pages/blog-post-details';
 import ProjectListing from './pages/project-listing';
 import ProjectDetails from './pages/project-details';
+import CourseListing from './pages/course-listing';
+import Contact from './pages/contact';
+import Error from './pages/error';
 
 class App extends Component {
   constructor(props) {
@@ -34,9 +38,20 @@ class App extends Component {
         <NavigationBar/>
         <Switch>
           <Route exact path='/' component={Home}/>
-          <Route exact path={links.blog} component={BlogListing}/>
+
+          <Route exact path={links.blog} component={BlogPostListing}/>
+          <Route exact path={`${links.blog}/:post_id`} component={BlogPostDetails}/>
+
           <Route exact path={links.projects} component={ProjectListing}/>
           <Route exact path={`${links.projects}/:project_id`} component={ProjectDetails}/>
+
+          <Route exact path={links.learning} render={() => (<Error error="Page under construction" />)}/>
+          <Route exact path={links.courses} component={CourseListing}/>
+
+          <Route exact path={links.about} render={() => (<Error error="Page under construction" />)}/>
+          <Route exact path={links.contact} component={Contact}/>
+          <Route render={() => (<Error error="Page Not Found. aka 404" />)}/>
+
         </Switch>
         <Footer/>
       </div>

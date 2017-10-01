@@ -6,20 +6,16 @@ import APIHelper from '../utils/api-helpers';
 import * as actions from '../actions';
 import links from '../data/links';
 
-class ProjectDetails extends Component {
+class BlogPostDetails extends Component {
   constructor(props) {
     super(props);
-    this.fetchProject();
+    this.fetchBlogPost()
   }
 
-  componentDidMount () {
-    window.scrollTo(0, 0)
-  }
-
-  fetchProject() {
-    const {project_id} = this.props.match.params;
-    APIHelper.fetchProject(project_id).then(project => {
-      this.props.addProject({type: actions.ADD_PROJECT, project});
+  fetchBlogPost() {
+    const {post_id} = this.props.match.params;
+    APIHelper.fetchBlogPost(post_id).then(post => {
+      this.props.addBlogPost({type: actions.ADD_BLOG_POST, post});
     });
   }
 
@@ -36,25 +32,25 @@ class ProjectDetails extends Component {
     }
   }
 
-  generateProjectDetails(project, tags) {
-    if (!project) {
+  generateBlogPostDetails(post, tags) {
+    if (!post) {
       return;
     }
     return (
       <article className="container topic">
         <header className="inside-header row">
-          <h1 className="content-title col-sm-12">{project.name}</h1>
+          <h1 className="content-title col-sm-12">{post.title}</h1>
           <ol className="breadcrumb col-sm-12">
             <li><Link to="/">Home</Link></li>
-            <li><Link to={links.projects}>Portfolio</Link></li>
-            <li>{project.name}</li>
+            <li><Link to={links.blog}>Blog</Link></li>
+            <li>{post.title}</li>
           </ol>
         </header>
         <div className="inside-body">
           <Row className="topic-meta edgy">
             <Col sm={6} className="topic-date">
-              <span>Released: </span>
-              <time dateTime={project.released_at}>{project.released_at}</time>
+              <span>Published: </span>
+              <time dateTime={post.published_at}>{post.published_at}</time>
             </Col>
             <Col sm={6} className="social-wrap">
               <span>Share</span>
@@ -63,15 +59,18 @@ class ProjectDetails extends Component {
           </Row>
           <Row className="topic-content edgy">
             <Col sm={12}>
-              <div
-                className="topic-free-code"
-                dangerouslySetInnerHTML={{__html: project.html_text}}/>
+              <div className="topic-free-code">
+                <h1>{post.title}</h1>
+                <h2>{post.summary}</h2>
+                <hr/>
+                <div dangerouslySetInnerHTML={{__html: post.html_text}}/>
+                </div>
             </Col>
           </Row>
         </div>
         <footer className="inside-footer edgy">
           <ul className="tag-list list-unstyled list-inline">
-            {this.generateTags(project.tags, tags)}
+            {this.generateTags(post.tags, tags)}
           </ul>
         </footer>
       </article>
@@ -79,27 +78,28 @@ class ProjectDetails extends Component {
   }
 
   render() {
-    const {projects, tags} = this.props;
-    const {project_id} = this.props.match.params;
+    const {blogPosts, tags} = this.props;
+    const {post_id} = this.props.match.params;
 
-    const project = projects[project_id];
+    const post = blogPosts[post_id];
 
     return (
       <main className="container-wrap inside-content">
-        {this.generateProjectDetails(project, tags)}
+        {this.generateBlogPostDetails(post, tags)}
       </main>
     )
   }
+
 }
 
-function mapStateToProps({projects, tags}) {
-  return {projects, tags}
+function mapStateToProps({blogPosts, tags}) {
+  return {blogPosts, tags}
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    addProject: project => dispatch(actions.addProject(project))
+    addBlogPost: post => dispatch(actions.addBlogPost(post))
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ProjectDetails);
+export default connect(mapStateToProps, mapDispatchToProps)(BlogPostDetails);

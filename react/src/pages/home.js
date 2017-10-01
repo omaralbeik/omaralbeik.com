@@ -18,6 +18,10 @@ class Home extends Component {
     this.fetchLearningCourses();
   }
 
+  componentDidMount () {
+    window.scrollTo(0, 0)
+  }
+
   fetchSliders() {
     APIHelper.fetchSliders().then(sliders => {
       this.props.loadSliders({type: actions.LOAD_SLIDERS, sliders});

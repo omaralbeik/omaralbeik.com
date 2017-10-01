@@ -5,6 +5,8 @@ import {Link} from 'react-router-dom';
 import {Col, Button} from 'react-bootstrap';
 import links from '../../data/links';
 
+import courseImg from '../../images/course-img.jpg';
+
 class CurrentCourse extends Component {
   static propTypes = {
     course: PropTypes.object.isRequired
@@ -38,7 +40,10 @@ class CurrentCourse extends Component {
             <div className="row">
               <Col sm={4} md={4} lg={3}>
                 <div className="course-emblem">
-                  <picture></picture>
+                  <picture>
+                    <source srcSet={courseImg} media="(min-width: 768px)"/>
+                    <img srcSet={courseImg} src={courseImg} alt="Course Emblem" className="hidden-xs"/>
+                  </picture>
                 </div>
               </Col>
               <article className="col-sm-8 col-md-8 col-lg-9 ">

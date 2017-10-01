@@ -1294,6 +1294,8 @@ form.cmd-line .textfield {
 }
 form.cmd-line textarea.textfield {
   min-height: 110px;
+	min-width: 200px;
+	max-width: 100%
 }
 form.cmd-line .btn[type="submit"] {
   bottom: -50px;
@@ -1309,6 +1311,7 @@ form.cmd-line select {
     -moz-appearance: none;
     text-indent: 1px;
     text-overflow: '';
+		line-height: normal;
 }
 /*=========================== Course Listing =======================*/
 .course-item {
@@ -1622,6 +1625,28 @@ ul.social-share {
   height: auto;
 }
 }
+
+
+/*=================================== Error ===================================*/
+.error {
+	display: block;
+	margin: 0px auto;
+	width: 100%;
+	text-align: center;
+}
+
+.error > h2 {
+	font-size: 50pt;
+	margin: 0px 0px -25px;
+	text-indent: -3px;
+}
+
+.error > h3 {
+	margin-bottom: 30px;
+}
+
+
+
 /*=============================================================================*/
 /*=============================== Desktops [md] ===============================*/
 /*=============================================================================*/

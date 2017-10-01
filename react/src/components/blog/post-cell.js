@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
+import {Link} from 'react-router-dom';
 import {LinkContainer} from 'react-router-bootstrap';
 import {Button} from "react-bootstrap";
 import links from '../../data/links';
@@ -34,7 +35,7 @@ class PostCell extends Component {
         <article className="blog-item">
           <header>
             <h2 className="blog-title">
-              <a href="#!">{post.title}</a>
+              <Link to={postLink}>{post.title}</Link>
             </h2>
             <time className="blog-date" dateTime={post.published_at}>{post.published_at}</time>
           </header>

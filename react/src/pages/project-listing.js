@@ -13,6 +13,10 @@ class ProjectListing extends Component {
     this.fetchProjects();
   }
 
+  componentDidMount () {
+    window.scrollTo(0, 0)
+  }
+
   fetchProjects() {
     APIHelper.fetchProjects().then(projects => {
       this.props.loadProjects({type: actions.LOAD_PROJECTS, projects})

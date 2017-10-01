@@ -31,6 +31,7 @@ class ProjectCell extends Component {
             </footer>
           </article>
         </div>
+        <Link to={projectLink} className="blocklink"/>
       </li>
     );
   };

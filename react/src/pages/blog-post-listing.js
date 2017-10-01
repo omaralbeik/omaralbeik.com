@@ -13,6 +13,10 @@ class BlogListing extends Component {
     this.fetchBlogPosts();
   }
 
+  componentDidMount () {
+    window.scrollTo(0, 0)
+  }
+
   fetchBlogPosts() {
     APIHelper.fetchBlogPosts().then(posts => {
       this.props.loadBlogPosts({type: actions.LOAD_BLOG_POSTS, posts});

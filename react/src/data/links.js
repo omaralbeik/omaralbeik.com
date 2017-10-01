@@ -32,8 +32,12 @@ export default class Links {
     return '/projects';
   }
 
+  static get learning() {
+    return '/learning';
+  }
+
   static get courses() {
-    return '/courses';
+    return `${this.learning}/courses`
   }
 
   static get about() {
