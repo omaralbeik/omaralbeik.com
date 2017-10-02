@@ -5,6 +5,7 @@ import {Link} from 'react-router-dom';
 import {LinkContainer} from 'react-router-bootstrap';
 import {Button} from "react-bootstrap";
 import links from '../../data/links';
+import TimeAgo from 'react-timeago'
 
 class PostCell extends Component {
   static propTypes = {
@@ -29,7 +30,6 @@ class PostCell extends Component {
     const {post, tags, mobHidden} = this.props
     const liClassName = `blog-item-wrap col-sm-6 ${mobHidden ? "hidden-xs" : ""}`
     const postLink = `${links.blog}/${post.id}`;
-
     return (
       <li className={liClassName}>
         <article className="blog-item">
@@ -37,7 +37,7 @@ class PostCell extends Component {
             <h2 className="blog-title">
               <Link to={postLink}>{post.title}</Link>
             </h2>
-            <time className="blog-date" dateTime={post.published_at}>{post.published_at}</time>
+            <TimeAgo className="blog-date" date={post.published_at}></TimeAgo>
           </header>
           <div className="blog-item-tags">
             <ul className="tag-list">

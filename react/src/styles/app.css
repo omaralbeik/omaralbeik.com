@@ -1696,7 +1696,7 @@ ul.social-share {
 }
 .nav-flatusual #branding .navbar-brand {
   height: auto;
-  padding: 19px;
+  padding: 16px;
 }
 .navbar-brand > img {
   width: 100%;
@@ -1713,6 +1713,7 @@ ul.social-share {
   letter-spacing: 0;
   line-height: 1.1;
   padding: 0 15px;
+	margin-top: 18px;
 }
 /*=============================== Tablet: Omar Albeik Custom Styles =================================*/
 #slider {
