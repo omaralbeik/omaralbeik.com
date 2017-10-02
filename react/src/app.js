@@ -17,6 +17,7 @@ import BlogPostDetails from './pages/blog-post-details';
 import ProjectListing from './pages/project-listing';
 import ProjectDetails from './pages/project-details';
 import CourseListing from './pages/course-listing';
+import About from './pages/about';
 import Contact from './pages/contact';
 import Error from './pages/error';
 
@@ -48,7 +49,7 @@ class App extends Component {
           <Route exact path={links.learning} render={() => (<Error error="Page under construction" />)}/>
           <Route exact path={links.courses} component={CourseListing}/>
 
-          <Route exact path={links.about} render={() => (<Error error="Page under construction" />)}/>
+          <Route exact path={links.about} component={About}/>
           <Route exact path={links.contact} component={Contact}/>
           <Route render={() => (<Error error="Page Not Found. aka 404" />)}/>
 

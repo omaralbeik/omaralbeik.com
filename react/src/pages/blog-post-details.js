@@ -12,6 +12,10 @@ class BlogPostDetails extends Component {
     this.fetchBlogPost()
   }
 
+  componentDidMount () {
+    window.scrollTo(0, 0)
+  }
+
   fetchBlogPost() {
     const {post_id} = this.props.match.params;
     APIHelper.fetchBlogPost(post_id).then(post => {

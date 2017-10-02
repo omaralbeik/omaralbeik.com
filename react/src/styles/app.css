@@ -415,6 +415,7 @@ hr {
   height: 161px;
   padding-top: 1px;
   background-size: 150% auto;
+	background-image: url("../images/placeholders/project-placeholder.svg");
 }
 .proj-thumb-tint {
   background-color: #1a2b33;
@@ -839,7 +840,7 @@ section.container, aside.container {
 }
 .course-title {
   color: #ddd;
-  font-size: 36pt;
+  font-size: 32pt;
   font-weight: 800;
   letter-spacing: -3px;
   line-height: 0.9;
@@ -1630,9 +1631,9 @@ ul.social-share {
 /*=================================== Error ===================================*/
 .error {
 	display: block;
-	margin: 0px auto;
 	width: 100%;
 	text-align: center;
+	margin-bottom: -20px;
 }
 
 .error > h2 {
@@ -1642,7 +1643,7 @@ ul.social-share {
 }
 
 .error > h3 {
-	margin-bottom: 30px;
+	margin-bottom: 20px;
 }
 
 
@@ -1695,7 +1696,7 @@ ul.social-share {
 }
 .nav-flatusual #branding .navbar-brand {
   height: auto;
-  padding: 19px;
+  padding: 16px;
 }
 .navbar-brand > img {
   width: 100%;
@@ -1712,6 +1713,7 @@ ul.social-share {
   letter-spacing: 0;
   line-height: 1.1;
   padding: 0 15px;
+	margin-top: 18px;
 }
 /*=============================== Tablet: Omar Albeik Custom Styles =================================*/
 #slider {

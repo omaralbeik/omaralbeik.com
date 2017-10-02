@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import logo from '../images/logo.svg';
 import {Navbar, Nav, NavItem} from 'react-bootstrap';
 import {LinkContainer} from 'react-router-bootstrap';
-import FontAwesome from 'react-fontawesome';
 import links from '../data/links';
 
 class NavigationBar extends Component {
@@ -18,9 +17,7 @@ class NavigationBar extends Component {
                   </a>
                 </h1>
               </Navbar.Brand>
-              <Navbar.Toggle>
-                <FontAwesome name="bars"/>
-              </Navbar.Toggle>
+              <Navbar.Toggle/>
             </Navbar.Header>
             <Navbar.Collapse>
               <Nav id="navbar" pullRight>
