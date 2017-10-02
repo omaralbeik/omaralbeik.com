@@ -40,6 +40,10 @@ export default class Links {
     return `${this.learning}/courses`
   }
 
+  static get tags() {
+    return '/tags';
+  }
+
   static get about() {
     return '/about';
   }

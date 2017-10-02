@@ -17,6 +17,7 @@ import BlogPostDetails from './pages/blog-post-details';
 import ProjectListing from './pages/project-listing';
 import ProjectDetails from './pages/project-details';
 import CourseListing from './pages/course-listing';
+import Tag from './pages/tag';
 import About from './pages/about';
 import Contact from './pages/contact';
 import Error from './pages/error';
@@ -48,6 +49,8 @@ class App extends Component {
 
           <Route exact path={links.learning} render={() => (<Error error="Page under construction" />)}/>
           <Route exact path={links.courses} component={CourseListing}/>
+
+          <Route exact path={`${links.tags}/:tag_id`}component={Tag}/>
 
           <Route exact path={links.about} component={About}/>
           <Route exact path={links.contact} component={Contact}/>
