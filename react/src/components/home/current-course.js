@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
+import {LinkContainer} from 'react-router-bootstrap';
 import {Col, Button} from 'react-bootstrap';
 import links from '../../data/links';
 
@@ -27,6 +28,7 @@ class CurrentCourse extends Component {
 
   render() {
     const {course, tags} = this.props;
+    const courseLink = `${links.courses}/${course.id}`;
 
     return (
       <div className="container-wrap bg-lighter" id="course-sec-wrap">
@@ -56,7 +58,9 @@ class CurrentCourse extends Component {
                 </div>
                 <p className="course-desc">{course.description}</p>
                 <p>
-                  <Button bsStyle="primary" className="btn-wide">Course Details</Button>
+                  <LinkContainer to={courseLink}>
+                    <Button bsStyle="primary" className="btn-wide">Course Details</Button>
+                  </LinkContainer>
                 </p>
               </article>
             </div>

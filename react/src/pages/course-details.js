@@ -98,7 +98,6 @@ class CourseDetails extends Component {
     const {courses} = this.props.learning ;
     const {course_id} = this.props.match.params;
     const course = courses[course_id];
-    console.log(course_id);
     return (
       <main className="container-wrap inside-content">
         {this.generateCourseDetails(course, tags)}
