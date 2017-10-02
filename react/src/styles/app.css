@@ -1439,6 +1439,7 @@ form.cmd-line select {
   min-width: 120px;
   padding: 40px 10px;
   text-transform: capitalize;
+	background-image: url("../images/placeholders/book-placeholder.svg");
 }
 .book-listing li > a:hover {
   background-position: center 250px;
