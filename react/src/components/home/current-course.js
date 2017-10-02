@@ -17,7 +17,7 @@ class CurrentCourse extends Component {
       return tagIds.map(id => {
         const tag = tags[id];
         if (tag) {
-          return (<li key={id}><a href="/">#{tag.name}</a></li>);
+          return (<li key={id}><Link to={`${links.tags}/${tag.id}`}>#{tag.name}</Link></li>)
         } else {
           return null;
         }

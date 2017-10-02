@@ -15,10 +15,11 @@ class Footer extends Component {
                 <nav className="footer-nav">
                   <ul className="list-unstyled inline-list">
                     <li><Link to="/">Home</Link></li>
-                    <li><Link to="/blog">Blog</Link></li>
-                    <li><Link to="/portfolio">Portfolio</Link></li>
-                    <li><Link to="/about">About</Link></li>
-                    <li><Link to="/contact">Contact</Link></li>
+                    <li><Link to={links.blog}>Blog</Link></li>
+                    <li><Link to={links.projects}>Portfolio</Link></li>
+                    <li><Link to={links.learning}>Learning</Link></li>
+                    <li><Link to={links.about}>About</Link></li>
+                    <li><Link to={links.contact}>Contact</Link></li>
                   </ul>
               </nav>
                 <p>This is a fully integrated open-source project that uses React, <br className="hidden-xs"/>Python and Django to build. Grab your copy from <a href={links.repo} target="_blank" rel="noopener">GitHub</a>.</p>

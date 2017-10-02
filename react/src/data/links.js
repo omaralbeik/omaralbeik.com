@@ -37,7 +37,19 @@ export default class Links {
   }
 
   static get courses() {
-    return `${this.learning}/courses`
+    return `${this.learning}/courses`;
+  }
+
+  static get quotes() {
+    return `${this.learning}/quotes`;
+  }
+
+  static get books() {
+    return `${this.learning}/books`;
+  }
+
+  static get tags() {
+    return '/tags';
   }
 
   static get about() {

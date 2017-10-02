@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
+import {Link} from 'react-router-dom';
 import {LinkContainer} from 'react-router-bootstrap';
 import {Row, Col} from 'react-bootstrap';
 import {Button} from "react-bootstrap";
@@ -18,7 +19,7 @@ class CourseCell extends Component {
       return tagIds.map(id => {
         const tag = tags[id];
         if (tag) {
-          return (<li key={id}><a href="/">#{tag.name}</a></li>);
+          return (<li key={id}><Link to={`${links.tags}/${tag.id}`}>#{tag.name}</Link></li>)
         } else {
           return null;
         }
