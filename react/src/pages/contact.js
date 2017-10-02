@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
-import {Row, Col, Button} from 'react-bootstrap';
+import {Row, Col, Button, FormGroup, FormControl} from 'react-bootstrap';
 import Countries from '../data/countries';
 
 class Contact extends Component {
@@ -29,56 +29,56 @@ class Contact extends Component {
                     <p>Contact attempts are always welcome. <br className="hidden-xs"/>To do so, please fill in the fields below:<br/>
                     <br className="visible-xs-block"/>--------------------<span className="hidden-xs">----------------------</span></p>
 
-                    <div className="form-group">
-                      <div className="col-sm-12">
-                        <input className="form-control textfield" id="name" name="name" placeholder="Full Name" required="" type="text" autoFocus/>
-                      </div>
-                    </div>
+                    <FormGroup>
+                      <Col sm={12}>
+                        <FormControl componentClass="input" className="textfield" id="name" name="name" placeholder="Full Name" type="text"/>
+                      </Col>
+                    </FormGroup>
 
-                    <div className="form-group">
-                      <div className="col-sm-12">
-                        <input className="form-control textfield" id="email" name="email" placeholder="Email Address" required="" type="email"/>
-                      </div>
-                    </div>
+                    <FormGroup>
+                      <Col sm={12}>
+                        <FormControl componentClass="input" className="textfield" id="email" name="email" placeholder="Email Address" required type="email"/>
+                      </Col>
+                    </FormGroup>
 
-                    <div className="form-group">
-                      <div className="col-sm-12">
-                        <input className="form-control textfield" id="phone" name="phone" placeholder="Phone" type="tel"/>
-                      </div>
-                    </div>
+                    <FormGroup>
+                      <Col sm={12}>
+                        <FormControl componentClass="input" className="textfield" id="phone" name="phone" placeholder="Phone" type="tel"/>
+                      </Col>
+                    </FormGroup>
 
-                    <div className="form-group">
-                      <div className="col-sm-12">
-                        <select className="form-control textfield" name="country" id="country" required="required" defaultValue="">
+                    <FormGroup>
+                      <Col sm={12}>
+                        <FormControl componentClass="select" className="textfield" name="country" id="country" required defaultValue="">
                           <option value="">- Country -</option>
                           {Countries.all.map((c, i) => (<option key={i} value={c}>{c}</option>))}
-                        </select>
-                      </div>
-                    </div>
+                        </FormControl>
+                      </Col>
+                    </FormGroup>
 
-                    <div className="form-group">
-                      <div className="col-sm-12">
-                        <input className="form-control textfield" id="city" name="city" placeholder="City" type="text"/>
-                      </div>
-                    </div>
+                    <FormGroup>
+                      <Col sm={12}>
+                        <FormControl componentClass="input" className="textfield" id="city" name="city" placeholder="City" type="text"/>
+                      </Col>
+                    </FormGroup>
 
-                    <div className="form-group">
-                      <div className="col-sm-12">
-                        <input className="form-control textfield" id="subject" name="subject" placeholder="Subject" required="" type="text"/>
-                      </div>
-                    </div>
+                    <FormGroup>
+                      <Col sm={12}>
+                        <FormControl componentClass="input" className="textfield" id="subject" name="subject" placeholder="Subject" required type="text"/>
+                      </Col>
+                    </FormGroup>
 
                     <p className="hidden-xs">---------</p>
-                    <div className="form-group">
-                      <div className="col-sm-12">
-                        <textarea id="message" name="message" placeholder="Message..." rows="4" className="form-control textfield" required=""></textarea>
-                      </div>
-                    </div>
-                    <div className="form-group">
-                      <div className="col-sm-12">
+                    <FormGroup>
+                      <Col sm={12}>
+                        <FormControl componentClass="textarea" id="message" name="message" placeholder="Message..." rows="4" className="textfield" required/>
+                      </Col>
+                    </FormGroup>
+                    <FormGroup>
+                      <Col sm={12}>
                         <Button bsStyle="primary" type="submit">Send Message!</Button>
-                      </div>
-                    </div>
+                      </Col>
+                    </FormGroup>
                   </div>
                 </form>
 
