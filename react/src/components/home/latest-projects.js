@@ -11,7 +11,7 @@ class LatestProjects extends Component {
 
   render() {
     const {projects} = this.props;
-
+    const sortedProjects = projects.sort((p1, p2) => (p1.released_at < p2.released_at))
     return (
       <div className="container-wrap">
         <section id="projects-sec" className="container">
@@ -22,7 +22,7 @@ class LatestProjects extends Component {
           </header>
           <div className="sec-body">
             <ul className="home-project-list list-unstyled list-inline row thumbnails-hfixed transit-all">
-              {projects.map(p => (<ProjectCell key={p.id} project={p}/>))}
+              {sortedProjects.map(p => (<ProjectCell key={p.id} project={p}/>))}
             </ul>
           </div>
           <footer className="sec-footer">

@@ -26,6 +26,7 @@ class BlogListing extends Component {
   render() {
     const {blogPosts} = this.props;
     const postsArray = arrayFromObject(blogPosts)
+    const sortedPosts = postsArray.sort((p1, p2) => (p1.published_at < p2.published_at))
     return (
       <main className="container-wrap inside-content">
         <section className="container">
@@ -40,7 +41,7 @@ class BlogListing extends Component {
             <Row>
               <Col sm={12}>
                 <ul className="home-blog-list list-unstyled inline-list row">
-                  {postsArray.map(p => (<PostCell key={p.id} post={p}/>))}
+                  {sortedPosts.map(p => (<PostCell key={p.id} post={p}/>))}
                 </ul>
               </Col>
             </Row>

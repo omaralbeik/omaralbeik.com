@@ -6,6 +6,9 @@ import APIHelper from '../utils/api-helpers';
 import * as actions from '../actions';
 import links from '../data/links';
 
+import githubIcon from '../images/social-gt.svg';
+import websiteIcon from '../images/social-site.svg';
+
 class ProjectDetails extends Component {
   constructor(props) {
     super(props);
@@ -36,6 +39,46 @@ class ProjectDetails extends Component {
     }
   }
 
+  generateProjectText(project) {
+    if (project.html_text) {
+      return (
+        <div>
+          <br/>
+          <div dangerouslySetInnerHTML={{__html: project.html_text}}/>
+        </div>
+      );
+    }
+  }
+
+  generateProjectGithubLink(project) {
+    if (project.github_url) {
+      return (
+        <li><a href={project.github_url} title="See it on GitHub" target="_blank" rel="noopener"><img src={githubIcon} alt="See it on GitHub"></img></a></li>
+      );
+    }
+  }
+
+  generateProjectWebsiteLink(project) {
+    if (project.website_url) {
+      return (
+        <li><a href={project.website_url} title="Visit the website" target="_blank" rel="noopener"><img src={websiteIcon} alt="Visit the website"></img></a></li>
+      );
+    }
+  }
+
+  generateProjectLinks(project) {
+    return (
+      <div>
+        <hr/>
+        <h2>Visit project pages</h2>
+        <ul className="list-inline list-unstyled thb-icon-list selective-opacity transit-all">
+          {this.generateProjectGithubLink(project)}
+          {this.generateProjectWebsiteLink(project)}
+        </ul>
+      </div>
+    );
+  }
+
   generateProjectDetails(project, tags) {
     if (!project) {
       return;
@@ -63,9 +106,12 @@ class ProjectDetails extends Component {
           </Row>
           <Row className="topic-content edgy">
             <Col sm={12}>
-              <div
-                className="topic-free-code"
-                dangerouslySetInnerHTML={{__html: project.html_text}}/>
+              <div className="topic-free-code">
+                <h1>{project.name}</h1>
+                <h3>{project.summary}</h3>
+                {this.generateProjectText(project)}
+                {this.generateProjectLinks(project)}
+              </div>
             </Col>
           </Row>
         </div>

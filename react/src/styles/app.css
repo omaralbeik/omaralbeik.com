@@ -840,7 +840,7 @@ section.container, aside.container {
 }
 .course-title {
   color: #ddd;
-  font-size: 32pt;
+  font-size: 28pt;
   font-weight: 800;
   letter-spacing: -3px;
   line-height: 0.9;
@@ -854,6 +854,7 @@ section.container, aside.container {
   font-weight: 300;
 }
 .course-subtitle a {
+	font-weight: 600;
   text-decoration: underline;
 }
 .course-tags {
@@ -862,6 +863,7 @@ section.container, aside.container {
   text-overflow: ellipsis;
   white-space: nowrap;
   width: 100%;
+	padding-right: 20px;
 }
 .course-tags .tag-list {
   margin: 0 0 5px;
