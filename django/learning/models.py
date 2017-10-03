@@ -47,6 +47,7 @@ class Course(models.Model):
     title = models.CharField(max_length=255)
     subtitle = models.CharField(max_length=255, blank=True)
     description = models.TextField(blank=True)
+    logo = models.ImageField(upload_to='courses', blank=True)
     page_url = models.URLField(blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
