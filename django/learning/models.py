@@ -8,7 +8,7 @@ class Book(models.Model):
     purchase_url = models.URLField(blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
-    read_at = models.DateField(blank=True)
+    read_at = models.DateField(blank=True, null=True)
     rating = models.IntegerField(blank=True)
     review = models.TextField(blank=True)
 
@@ -50,7 +50,8 @@ class Course(models.Model):
     page_url = models.URLField(blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
-    started_at = models.DateField(blank=True)
+    started_at = models.DateField(blank=True, null=True)
+    graduated_at = models.DateField(blank=True, null=True)
     rating = models.IntegerField(blank=True)
     review = models.TextField(blank=True)
 
@@ -60,7 +61,7 @@ class Course(models.Model):
     tags = models.ManyToManyField('tags.Tag', blank=True)
 
     class Meta:
-        ordering = ['-started_at', 'school', 'title', ]
+        ordering = ['-graduated_at', '-started_at', 'school', 'title', ]
 
     def __str__(self):
         return self.title
