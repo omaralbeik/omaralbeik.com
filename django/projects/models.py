@@ -16,7 +16,7 @@ class Project(models.Model):
 
     # API will not serve the project unless published is set to True
     published = models.BooleanField(default=False)
-    released_at = models.DateField(blank=True)
+    released_at = models.DateField(blank=True, null=True)
 
     # project courses
     course = models.ForeignKey('learning.Course', blank=True, null=True)
@@ -25,7 +25,7 @@ class Project(models.Model):
     tags = models.ManyToManyField('tags.Tag', blank=True)
 
     class Meta:
-        ordering = ['-released_at',]
+        ordering = ['released_at', 'name']
 
     def __str__(self):
         return self.name
