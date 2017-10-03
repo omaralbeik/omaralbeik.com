@@ -11,7 +11,7 @@ class LatestBlogPosts extends Component {
 
   render() {
     const {posts} = this.props;
-
+    const sortedPosts = posts.sort((p1, p2) => (p1.published_at < p2.published_at))
     return (
       <div className="container-wrap">
         <section id="blogs-sec" className="container">
@@ -22,7 +22,7 @@ class LatestBlogPosts extends Component {
           </header>
           <div className="sec-body">
             <ul className="home-blog-list list-unstyled inline-list row">
-              {posts.map((p, i) => (<PostCell key={p.id} mobHidden={i < 1} post={p}/>))}
+              {sortedPosts.map((p, i) => (<PostCell key={p.id} mobHidden={i < 1} post={p}/>))}
             </ul>
           </div>
           <footer className="sec-footer">

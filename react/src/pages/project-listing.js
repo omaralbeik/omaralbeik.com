@@ -26,6 +26,7 @@ class ProjectListing extends Component {
   render() {
     const {projects} = this.props;
     const projectsArray = arrayFromObject(projects)
+    const sortedProjects = projectsArray.sort((p1, p2) => (p1.released_at < p2.released_at))
     return (
       <main className="container-wrap inside-content">
         <section className="container">
@@ -40,7 +41,7 @@ class ProjectListing extends Component {
             <Row>
               <Col sm={12}>
                 <ul className="list-unstyled list-inline row thumbnails-hfixed transit-all">
-                  {projectsArray.map(p => (<ProjectCell key={p.id} project={p}/>))}
+                  {sortedProjects.map(p => (<ProjectCell key={p.id} project={p}/>))}
                 </ul>
               </Col>
             </Row>
