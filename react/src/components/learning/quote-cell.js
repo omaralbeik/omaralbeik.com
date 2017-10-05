@@ -1,33 +1,17 @@
+// React
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import {connect} from 'react-redux';
-import {Link} from 'react-router-dom';
-import links from '../../data/links';
+
+// Components
+import TagList from '../tag-list';
 
 class QuoteCell extends Component {
   static propTypes = {
     quote: PropTypes.object.isRequired
   }
 
-  generateTags(tagIds, tags) {
-    if (tagIds && tags) {
-      return tagIds.map(id => {
-        const tag = tags[id];
-        if (tag) {
-          return (
-            <li key={id}>
-              <Link to={`${links.tags}/${tag.id}`}>#{tag.name}</Link>
-            </li>
-          )
-        } else {
-          return null;
-        }
-      });
-    }
-  }
-
   render() {
-    const {quote, tags} = this.props
+    const {quote} = this.props
 
     return (
       <li className="quote-item">
@@ -40,17 +24,11 @@ class QuoteCell extends Component {
           <span>{quote.quote}</span>
         </blockquote>
         <footer className="inside-footer edgy">
-          <ul className="tag-list list-unstyled list-inline">
-            {this.generateTags(quote.tags, tags)}
-          </ul>
+          <TagList ids={quote.tags} className="tag-list list-unstyled list-inline"/>
         </footer>
       </li>
     );
   };
 }
 
-function mapStateToProps({tags}) {
-  return {tags}
-}
-
-export default connect(mapStateToProps)(QuoteCell);
+export default QuoteCell;

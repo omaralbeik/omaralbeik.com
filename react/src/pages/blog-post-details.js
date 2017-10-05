@@ -1,10 +1,23 @@
+// React
 import React, {Component} from 'react';
+
+// Redux
 import {connect} from 'react-redux';
-import {Link} from 'react-router-dom';
-import {Row, Col} from 'react-bootstrap';
-import APIHelper from '../utils/api-helpers';
 import * as actions from '../actions';
-import links from '../data/links';
+
+// Bootstrap components
+import {Row, Col} from 'react-bootstrap';
+
+// Components
+import Breadcrumb from '../components/breadcrumb';
+import TagList from '../components/tag-list';
+
+// Routing & Links
+import {blogLink, postLink} from '../links';
+
+// Helpers
+import APIHelper from '../utils/api-helpers';
+
 
 class BlogPostDetails extends Component {
   constructor(props) {
@@ -23,19 +36,6 @@ class BlogPostDetails extends Component {
     });
   }
 
-  generateTags(tagIds, tags) {
-    if (tagIds && tags) {
-      return tagIds.map(id => {
-        const tag = tags[id];
-        if (tag) {
-          return (<li key={id}><a href="/">#{tag.name}</a></li>);
-        } else {
-          return null;
-        }
-      });
-    }
-  }
-
   generateBlogPostDetails(post, tags) {
     if (!post) {
       return;
@@ -44,11 +44,7 @@ class BlogPostDetails extends Component {
       <article className="container topic">
         <header className="inside-header row">
           <h1 className="content-title col-sm-12">{post.title}</h1>
-          <ol className="breadcrumb col-sm-12">
-            <li><Link to="/">Home</Link></li>
-            <li><Link to={links.blog}>Blog</Link></li>
-            <li>{post.title}</li>
-          </ol>
+          <Breadcrumb links={[blogLink, postLink(post)]} />
         </header>
         <div className="inside-body">
           <Row className="topic-meta edgy">
@@ -73,9 +69,7 @@ class BlogPostDetails extends Component {
           </Row>
         </div>
         <footer className="inside-footer edgy">
-          <ul className="tag-list list-unstyled list-inline">
-            {this.generateTags(post.tags, tags)}
-          </ul>
+          <TagList ids={post.tags} className="tag-list list-unstyled list-inline"/>
         </footer>
       </article>
     );
@@ -96,8 +90,8 @@ class BlogPostDetails extends Component {
 
 }
 
-function mapStateToProps({blogPosts, tags}) {
-  return {blogPosts, tags}
+function mapStateToProps({blogPosts}) {
+  return {blogPosts}
 }
 
 function mapDispatchToProps(dispatch) {

@@ -1,7 +1,12 @@
+// React
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import ReactSlider from 'react-slick';
+
+// Components
 import Slide from './slide';
+
+// Slick Slider
+import ReactSlider from 'react-slick';
 
 class Slider extends Component {
   static propTypes = {

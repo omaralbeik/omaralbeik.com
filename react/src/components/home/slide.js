@@ -1,7 +1,12 @@
+// React
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
+
+// Bootstrap components
 import {Button, Grid} from 'react-bootstrap';
-import APIHelper from '../../utils/api-helpers';
+
+// Helpers
+import {mediaFileUrl} from '../../utils/helpers';
 
 class Slide extends Component {
   static propTypes = {
@@ -11,8 +16,8 @@ class Slide extends Component {
   render() {
     const {slider} = this.props;
     const style = {
-      backgroundImage: `url("${APIHelper.BASE_URL}${slider.image_url}")`
-    }
+      backgroundImage: `url("${mediaFileUrl(slider.image_url)}")`
+    };
     return (
       <div className="slide-item" style={style}>
         <Grid>

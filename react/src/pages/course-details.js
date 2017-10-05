@@ -1,11 +1,25 @@
+// React
 import React, {Component} from 'react';
-import {connect} from 'react-redux';
-import {Link} from 'react-router-dom';
-import {Row, Col} from 'react-bootstrap';
-import APIHelper from '../utils/api-helpers';
-import * as actions from '../actions';
-import links from '../data/links';
 
+// Redux
+import {connect} from 'react-redux';
+import * as actions from '../actions';
+
+// Bootstrap components
+import {Row, Col} from 'react-bootstrap';
+
+// Components
+import Breadcrumb from '../components/breadcrumb';
+import TagList from '../components/tag-list';
+
+// Routing & Links
+import {learningLink, coursesLink, courseLink} from '../links';
+
+// Helpers
+import APIHelper from '../utils/api-helpers';
+import {mediaFileUrl} from '../utils/helpers';
+
+// Media files
 import placeholder from '../images/placeholders/course-placeholder.svg';
 
 class CourseDetails extends Component {
@@ -25,34 +39,17 @@ class CourseDetails extends Component {
     });
   }
 
-  generateTags(tagIds, tags) {
-    if (tagIds && tags) {
-      return tagIds.map(id => {
-        const tag = tags[id];
-        if (tag) {
-          return (<li key={id}><a href="/">#{tag.name}</a></li>);
-        } else {
-          return null;
-        }
-      });
-    }
-  }
-
   generateCourseDetails(course, tags) {
     if (!course) {
       return;
     }
+    const logoUrl = course.logo_url ? mediaFileUrl(course.logo_url) : placeholder;
     return (
       <article className="container topic">
         <header className="inside-header row">
-          <h1 className="content-title col-sm-12">{course.title}</h1>
+          <h1 className="content-title col-sm-12">{courseLink(course).title}</h1>
           <p className="content-subtitle col-sm-12">{course.subtitle}</p>
-          <ol className="breadcrumb col-sm-12">
-            <li><Link to="/">Home</Link></li>
-            <li><Link to={links.learning}>Learning</Link></li>
-            <li><Link to={links.courses}>Courses</Link></li>
-            <li>{course.title}</li>
-          </ol>
+          <Breadcrumb links={[learningLink, coursesLink, courseLink(course)]}/>
         </header>
         <div className="inside-body">
           <Row className="topic-meta edgy">
@@ -68,14 +65,14 @@ class CourseDetails extends Component {
             <Col sm={12}>
               <div className="thb-wrap">
                 <a href={course.page_url} className="thb-title" target="_blank" rel="noopener">
-                  <img src={placeholder} alt={course.title} className="img-responsive"/>
+                  <img src={logoUrl} alt={course.title} className="img-responsive"/>
                   <span>by {course.school_name}</span>
                 </a>
-                <p class="thb-link">
+                <p className="thb-link">
                   <a href={course.page_url} target="_blank" rel="noopener"><strong>Course Page</strong></a>
                 </p>
               </div>
-              <div class="topic-free-code">
+              <div className="topic-free-code">
                 <h2>Description</h2>
                 <p>{course.description}</p>
                 <h2>Review</h2>
@@ -85,9 +82,7 @@ class CourseDetails extends Component {
           </Row>
         </div>
         <footer className="inside-footer edgy">
-          <ul className="tag-list list-unstyled list-inline">
-            {this.generateTags(course.tags, tags)}
-          </ul>
+          <TagList ids={course.tags} className="tag-list list-unstyled list-inline"/>
         </footer>
       </article>
     );
@@ -106,8 +101,8 @@ class CourseDetails extends Component {
   }
 }
 
-function mapStateToProps({learning, tags}) {
-  return {learning, tags}
+function mapStateToProps({learning}) {
+  return {learning}
 }
 
 function mapDispatchToProps(dispatch) {

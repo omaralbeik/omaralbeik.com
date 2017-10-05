@@ -1,10 +1,17 @@
+// React
 import React, {Component} from 'react';
+
+// Redux
 import {connect} from 'react-redux';
-import {Link} from 'react-router-dom';
-import APIHelper from '../utils/api-helpers';
 import * as actions from '../actions';
 
-class Tag extends Component {
+// Routing & Links
+import {Link} from 'react-router-dom';
+
+// helpers
+import APIHelper from '../utils/api-helpers';
+
+class TagDetails extends Component {
   constructor(props) {
     super(props);
     this.fetchTagProjects();
@@ -106,4 +113,4 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Tag);
+export default connect(mapStateToProps, mapDispatchToProps)(TagDetails);

@@ -1,31 +1,43 @@
+// React
 import React, {Component} from "react";
-import links from "../data/links";
 
-import stackOverflow from '../images/social-so.svg';
-import github from '../images/social-gt.svg';
-import twitter from '../images/social-tw.svg';
-import linkedin from '../images/social-in.svg';
-import medium from '../images/social-md.svg';
-
+// Routing & Links
+import {
+  stackOverflow,
+  github,
+  twitter,
+  linkedin,
+  medium
+} from '../social-links';
 
 class SocialLinks extends Component {
   render() {
     return (
       <ul className="list-unstyled inline-list">
         <li key={0}>
-          <a href={links.stackOverflow} target="_blank" rel="noopener"><img src={stackOverflow} alt="Stack Overflow"/></a>
+          <a href={stackOverflow.url} target="_blank" rel="noopener">
+            <img src={stackOverflow.icon} alt={stackOverflow.name}/>
+          </a>
         </li>
         <li key={1}>
-          <a href={links.github} target="_blank" rel="noopener"><img src={github} alt="Github"/></a>
+          <a href={github.url} target="_blank" rel="noopener">
+            <img src={github.icon} alt={github.name}/>
+          </a>
         </li>
         <li key={2}>
-          <a href={links.twitter} target="_blank" rel="noopener"><img src={twitter} alt="Twitter"/></a>
+          <a href={twitter.url} target="_blank" rel="noopener">
+            <img src={twitter.icon} alt={twitter.name}/>
+          </a>
         </li>
         <li key={3}>
-          <a href={links.linkedin} target="_blank" rel="noopener"><img src={linkedin} alt="LinkedIn"/></a>
+          <a href={linkedin.url} target="_blank" rel="noopener">
+            <img src={linkedin.icon} alt={linkedin.name}/>
+          </a>
         </li>
         <li key={4}>
-          <a href={links.medium} target="_blank" rel="noopener"><img src={medium} alt="Medium"/></a>
+          <a href={medium.url} target="_blank" rel="noopener">
+            <img src={medium.icon} alt={medium.name}/>
+          </a>
         </li>
       </ul>
     );

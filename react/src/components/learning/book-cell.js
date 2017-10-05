@@ -1,7 +1,10 @@
+// React
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
+
+// Routing & Links
 import {Link} from 'react-router-dom';
-import links from '../../data/links';
+import {bookLink} from '../../links';
 
 class BookCell extends Component {
   static propTypes = {
@@ -12,8 +15,8 @@ class BookCell extends Component {
     const {book} = this.props
 
     return (
-      <li class="col-sm-3 col-md-2 col-lg-2">
-        <Link to={`${links.books}/${book.id}`}>{book.name}</Link>
+      <li className="col-sm-3 col-md-2 col-lg-2">
+        <Link to={bookLink(book).url}>{book.name}</Link>
       </li>
     );
   };

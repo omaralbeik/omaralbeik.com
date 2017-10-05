@@ -1,8 +1,13 @@
+// React
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import {Link} from 'react-router-dom';
-import links from '../../data/links';
+
+// Components
 import PostCell from '../blog/post-cell';
+
+// Routing & Links
+import {Link} from 'react-router-dom';
+import {blogLink} from '../../links';
 
 class LatestBlogPosts extends Component {
   static propTypes = {
@@ -17,7 +22,7 @@ class LatestBlogPosts extends Component {
         <section id="blogs-sec" className="container">
           <header className="sec-header">
             <h1>
-              <Link to={links.blog}>Blog Posts...</Link>
+              <Link to={blogLink.url}>Blog Posts...</Link>
             </h1>
           </header>
           <div className="sec-body">
@@ -26,7 +31,7 @@ class LatestBlogPosts extends Component {
             </ul>
           </div>
           <footer className="sec-footer">
-            <Link to={links.blog}>More Articles</Link>
+            <Link to={blogLink.url}>More Articles</Link>
           </footer>
         </section>
       </div>

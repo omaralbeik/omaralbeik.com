@@ -1,12 +1,23 @@
+// React
 import React, {Component} from 'react';
+
+// Redux
 import {connect} from 'react-redux';
-import {Link} from 'react-router-dom';
+import * as actions from '../actions';
+
+// Bootstrap components
 import {Row, Col} from 'react-bootstrap';
+
+// Components
+import Breadcrumb from '../components/breadcrumb';
+import QuoteCell from '../components/learning/quote-cell';
+
+// Routing & Links
+import {learningLink, quotesLink} from '../links';
+
+// Helper
 import {arrayFromObject} from '../utils/helpers';
 import APIHelper from '../utils/api-helpers';
-import * as actions from '../actions';
-import links from '../data/links';
-import QuoteCell from '../components/learning/quote-cell';
 
 class QuoteListing extends Component {
   constructor(props) {
@@ -32,11 +43,7 @@ class QuoteListing extends Component {
         <section className="container topic">
           <header className="inside-header row">
             <h1 className="content-title col-sm-12">Favorite Quotes</h1>
-            <ol className="breadcrumb col-sm-12">
-              <li><Link to="/">Home</Link></li>
-              <li><Link to={links.learning}>learning</Link></li>
-              <li>Quotes</li>
-            </ol>
+            <Breadcrumb links={[learningLink, quotesLink]}/>
           </header>
           <Row>
             <Col sm={12}>

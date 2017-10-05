@@ -1,11 +1,23 @@
+// React
 import React, {Component} from 'react';
+
+// Redux
 import {connect} from 'react-redux';
-import {Link} from 'react-router-dom';
+import * as actions from '../actions';
+
+// Bootstrap components
 import {Row, Col} from 'react-bootstrap';
+
+// Components
+import PostCell from '../components/blog/post-cell';
+import Breadcrumb from '../components/breadcrumb';
+
+// Routing & Links
+import {blogLink} from '../links';
+
+// Helpers
 import {arrayFromObject} from '../utils/helpers';
 import APIHelper from '../utils/api-helpers';
-import * as actions from '../actions';
-import PostCell from '../components/blog/post-cell';
 
 class BlogListing extends Component {
   constructor(props) {
@@ -31,11 +43,8 @@ class BlogListing extends Component {
       <main className="container-wrap inside-content">
         <section className="container">
           <header className="inside-header row">
-            <h1 className="content-title col-sm-12">Blog</h1>
-            <ol className="breadcrumb col-sm-12">
-              <li><Link to="/">Home</Link></li>
-              <li>Blog</li>
-            </ol>
+            <h1 className="content-title col-sm-12">{blogLink.title}</h1>
+            <Breadcrumb links={[blogLink]}/>
           </header>
           <div className="inside-body">
             <Row>

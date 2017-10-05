@@ -410,12 +410,15 @@ hr {
 .home-project-list li:nth-last-child(3) .thumbnail {
   margin: 0 auto;
 }
+.project-cell {
+	display: block;
+}
+
 .proj-thumb {
   background: rgba(0, 0, 0, 0) none no-repeat scroll center 25%;
   height: 161px;
   padding-top: 1px;
   background-size: 150% auto;
-	background-image: url("../images/placeholders/project-placeholder.svg");
 }
 .proj-thumb-tint {
   background-color: #1a2b33;
@@ -761,8 +764,9 @@ section.container, aside.container {
   font-family: 'Share Tech Mono', monospace;
   font-size: 12pt;
   letter-spacing: 0;
-  margin-right: 20px;
+  margin-right: 15px;
   text-transform: uppercase;
+	display: inline-block;
 }
 .footer-body .footer-nav li a {
   color: #888;
@@ -1812,10 +1816,10 @@ ul.social-share {
 }
 .home-project-list li {
   margin: 0 10px 10px;
+	display: block;
 }
 .home-project-list li .blocklink {
   background-color: #fff;
-  display: block;
   height: 100%;
   left: 0;
   margin: 0 5px;
@@ -2150,6 +2154,7 @@ li.blog-item-wrap {
 }
 .home-project-list li {
   margin: 0 10px 10px;
+	display: block;
 }
 .home-project-list li .blocklink {
   background-color: #fff;

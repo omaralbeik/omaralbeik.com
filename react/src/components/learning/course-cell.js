@@ -1,12 +1,21 @@
+// React
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import {connect} from 'react-redux';
-import {Link} from 'react-router-dom';
-import {LinkContainer} from 'react-router-bootstrap';
-import {Row, Col} from 'react-bootstrap';
-import {Button} from "react-bootstrap";
-import links from '../../data/links';
 
+// Bootstrap components
+import {Row, Col, Button} from 'react-bootstrap';
+import {LinkContainer} from 'react-router-bootstrap';
+
+// Components
+import TagList from '../tag-list';
+
+// Routing & Links
+import {coursesLink} from '../../links';
+
+// Helpers
+import APIHelper from '../../utils/api-helpers';
+
+// Media files
 import placeholder from '../../images/placeholders/course-placeholder.svg';
 
 class CourseCell extends Component {
@@ -14,39 +23,25 @@ class CourseCell extends Component {
     course: PropTypes.object.isRequired,
   }
 
-  generateTags(tagIds, tags) {
-    if (tagIds && tags) {
-      return tagIds.map(id => {
-        const tag = tags[id];
-        if (tag) {
-          return (<li key={id}><Link to={`${links.tags}/${tag.id}`}>#{tag.name}</Link></li>)
-        } else {
-          return null;
-        }
-      });
-    }
-  }
-
   render() {
-    const {course, tags} = this.props
-    const courseLink = `${links.courses}/${course.id}`;
+    const {course} = this.props
+    const courseLink = `${coursesLink}/${course.id}`;
+    const logoUrl = course.logo_url ? `${APIHelper.BASE_URL}${course.logo_url}` : placeholder;
 
     return (
       <li className="course-item">
         <Row>
           <Col sm={4}>
             <div className="course-emblem"><picture className="hidden-xs">
-              <source srcSet={placeholder} media="(min-width: 768px)"/>
-              <img srcSet={placeholder} src={placeholder} alt={course.title}/>
+              <source srcSet={logoUrl} media="(min-width: 768px)"/>
+              <img srcSet={logoUrl} src={logoUrl} alt={course.title}/>
             </picture></div>
           </Col>
           <article className="col-sm-8">
             <h2 className="course-title">{course.title}</h2>
             <p className="course-subtitle">{course.school_name}: <a href={course.page_url} target="_blank" rel="noopener">{course.subtitle}</a></p>
             <div className="course-tags">
-              <ul className="tag-list list-unstyled list-inline">
-                {this.generateTags(course.tags, tags)}
-              </ul>
+              <TagList ids={course.tags} className="tag-list list-unstyled list-inline"/>
             </div>
             <p className="course-desc">{course.description}</p>
             <LinkContainer to={courseLink}>
@@ -59,8 +54,4 @@ class CourseCell extends Component {
   };
 }
 
-function mapStateToProps({tags}) {
-  return {tags}
-}
-
-export default connect(mapStateToProps)(CourseCell);
+export default CourseCell;

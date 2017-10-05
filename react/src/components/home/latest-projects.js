@@ -1,8 +1,13 @@
+// React
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import {Link} from 'react-router-dom';
-import links from '../../data/links';
+
+// Components
 import ProjectCell from '../projects/project-cell';
+
+// Routing & Links
+import {Link} from 'react-router-dom';
+import {projectsLink} from '../../links';
 
 class LatestProjects extends Component {
   static propTypes = {
@@ -16,9 +21,7 @@ class LatestProjects extends Component {
       <div className="container-wrap">
         <section id="projects-sec" className="container">
           <header className="sec-header">
-            <h1>
-              <Link to={links.projects}>Latest Projects...</Link>
-            </h1>
+            <h1><Link to={projectsLink.url}>Latest Projects...</Link></h1>
           </header>
           <div className="sec-body">
             <ul className="home-project-list list-unstyled list-inline row thumbnails-hfixed transit-all">
@@ -26,7 +29,7 @@ class LatestProjects extends Component {
             </ul>
           </div>
           <footer className="sec-footer">
-            <Link to={links.projects}>More Projects</Link>
+            <Link to={projectsLink.url}>More Projects</Link>
           </footer>
         </section>
       </div>

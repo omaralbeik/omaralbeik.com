@@ -1,11 +1,22 @@
+// React
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import {connect} from 'react-redux';
-import {Link} from 'react-router-dom';
-import {LinkContainer} from 'react-router-bootstrap';
-import {Col, Button} from 'react-bootstrap';
-import links from '../../data/links';
 
+// Bootstrap components
+import {LinkContainer} from 'react-router-bootstrap';
+import {Row, Col, Button} from 'react-bootstrap';
+
+// Components
+import TagList from '../tag-list';
+
+// Routing & Links
+import {Link} from 'react-router-dom';
+import {coursesLink, courseLink} from '../../links';
+
+// Helpers
+import {mediaFileUrl} from '../../utils/helpers';
+
+// Media files
 import placeholder from '../../images/placeholders/course-placeholder.svg';
 
 class CurrentCourse extends Component {
@@ -13,60 +24,43 @@ class CurrentCourse extends Component {
     course: PropTypes.object.isRequired
   }
 
-  generateTags(tagIds, tags) {
-    if (tagIds && tags) {
-      return tagIds.map(id => {
-        const tag = tags[id];
-        if (tag) {
-          return (<li key={id}><Link to={`${links.tags}/${tag.id}`}>#{tag.name}</Link></li>)
-        } else {
-          return null;
-        }
-      });
-    }
-  }
-
   render() {
-    const {course, tags} = this.props;
-    const courseLink = `${links.courses}/${course.id}`;
+    const {course} = this.props;
+    const logoUrl = course.logo_url ? mediaFileUrl(course.logo_url) : placeholder;
 
     return (
       <div className="container-wrap bg-lighter" id="course-sec-wrap">
         <section className="container" id="course-sec">
           <header className="sec-header">
-            <h1>
-              <Link to={links.courses}>Current Course...</Link>
-            </h1>
+            <h1><Link to={coursesLink.url}>Current Course...</Link></h1>
           </header>
           <div className="sec-body">
-            <div className="row">
+            <Row>
               <Col sm={4} md={4} lg={3}>
                 <div className="course-emblem">
                   <picture>
-                    <source srcSet={placeholder} media="(min-width: 768px)"/>
-                    <img srcSet={placeholder} src={placeholder} alt={course.title} className="hidden-xs"/>
+                    <source srcSet={logoUrl} media="(min-width: 768px)"/>
+                    <img srcSet={logoUrl} src={logoUrl} alt={course.title} className="hidden-xs"/>
                   </picture>
                 </div>
               </Col>
-              <article className="col-sm-8 col-md-8 col-lg-9 ">
+              <Col sm={8} md={8} lg={9}>
                 <h2 className="course-title">{course.title}</h2>
                 <p className="course-subtitle">{course.school_name}: <a href={course.page_url} target="_blank" rel="noopener">{course.subtitle}</a></p>
                 <div className="course-tags">
-                  <ul className="tag-list list-unstyled list-inline">
-                    {this.generateTags(course.tags, tags)}
-                  </ul>
+                  <TagList ids={course.tags} className="tag-list list-unstyled list-inline"/>
                 </div>
                 <p className="course-desc">{course.description}</p>
                 <p>
-                  <LinkContainer to={courseLink}>
+                  <LinkContainer to={courseLink(course).url}>
                     <Button bsStyle="primary" className="btn-wide">Course Details</Button>
                   </LinkContainer>
                 </p>
-              </article>
-            </div>
+              </Col>
+            </Row>
           </div>
           <footer className="sec-footer">
-            <Link to={links.courses}>Previous Courses</Link>
+            <Link to={coursesLink.url}>Previous Courses</Link>
           </footer>
         </section>
       </div>
@@ -74,8 +68,4 @@ class CurrentCourse extends Component {
   }
 }
 
-function mapStateToProps({tags}) {
-  return {tags}
-}
-
-export default connect(mapStateToProps)(CurrentCourse);
+export default CurrentCourse;
