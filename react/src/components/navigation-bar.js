@@ -6,6 +6,7 @@ import {Navbar, Nav, NavItem} from 'react-bootstrap';
 import {LinkContainer} from 'react-router-bootstrap';
 
 // Routing & Links
+import {Link} from 'react-router-dom';
 import {
   homeLink,
   blogLink,
@@ -26,9 +27,9 @@ class NavigationBar extends Component {
             <Navbar.Header>
               <Navbar.Brand>
                 <h1 id="branding">
-                  <a className="navbar-brand" href="/" title="Omar Albeik">
+                  <Link to={homeLink.url} className="navbar-brand" title="Omar Albeik">
                     <img src={logo} alt="Omar Albeik logo"/>
-                  </a>
+                  </Link>
                 </h1>
               </Navbar.Brand>
               <Navbar.Toggle/>

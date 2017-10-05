@@ -13,6 +13,7 @@ import Breadcrumb from '../components/breadcrumb';
 import TagList from '../components/tag-list';
 
 // Routing & Links
+import {Link} from 'react-router-dom';
 import {learningLink, coursesLink, courseLink} from '../links';
 
 // Helpers
@@ -51,7 +52,7 @@ class CourseDetails extends Component {
       <article className="container topic">
         <header className="inside-header row">
           <h1 className="content-title col-sm-12">{courseLink(course).title}</h1>
-          <p className="content-subtitle col-sm-12">{course.subtitle}</p>
+          <p className="content-subtitle col-sm-12">{courseLink(course).subtitle}</p>
           <Breadcrumb links={[learningLink, coursesLink, courseLink(course)]}/>
         </header>
         <div className="inside-body">
@@ -67,12 +68,12 @@ class CourseDetails extends Component {
           <Row className="topic-content edgy">
             <Col sm={12}>
               <div className="thb-wrap">
-                <a href={course.page_url} className="thb-title" target="_blank" rel="noopener">
+                <Link to={course.page_url} className="thb-title" target="_blank" rel="noopener">
                   <img src={logoUrl} alt={course.title} className="img-responsive"/>
                   <span>{`${genericStrings.by} `}{course.school_name}</span>
-                </a>
+                </Link>
                 <p className="thb-link">
-                  <a href={course.page_url} target="_blank" rel="noopener"><strong>{learningStrings.coursePage}</strong></a>
+                  <Link to={course.page_url} target="_blank" rel="noopener"><strong>{learningStrings.coursePage}</strong></Link>
                 </p>
               </div>
               <div className="topic-free-code">

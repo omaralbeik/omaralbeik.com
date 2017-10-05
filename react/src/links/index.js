@@ -72,8 +72,9 @@ export const coursesLink = {
 
 export function courseLink(c) {
   return {
-    name: c.name,
-    title: c.name,
+    name: c.title,
+    title: c.title,
+    subtitle: c.subtitle,
     url: `${coursesLink.url}/${c.id}`
   };
 }

@@ -13,6 +13,7 @@ import Breadcrumb from '../components/breadcrumb';
 import TagList from '../components/tag-list';
 
 // Routing & Links
+import {Link} from 'react-router-dom';
 import {learningLink, booksLink, bookLink} from '../links';
 
 // Helpers
@@ -49,7 +50,7 @@ class BookDetails extends Component {
       <article className="container topic">
         <header className="inside-header row">
           <h1 className="content-title col-sm-12">{book.name}</h1>
-          <p className="content-subtitle col-sm-12">{`${genericStrings.by} `}<strong>{bookLink.subtitle(book)}</strong></p>
+          <p className="content-subtitle col-sm-12">{`${genericStrings.by} `}<strong>{bookLink(book).subtitle}</strong></p>
           <Breadcrumb links={[learningLink, booksLink, bookLink(book)]} />
         </header>
         <div className="inside-body">
@@ -71,7 +72,7 @@ class BookDetails extends Component {
                 <h2>{learningStrings.review}</h2>
                 <p>{book.review}</p>
                 <h2>{learningStrings.purchaseUrl}</h2>
-                <a href={book.purchase_url} target="_blank" rel="noopener">{book.purchase_url}</a>
+                <Link to={book.purchase_url} target="_blank" rel="noopener">{book.purchase_url}</Link>
               </div>
             </Col>
           </Row>

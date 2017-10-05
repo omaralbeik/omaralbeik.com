@@ -10,7 +10,8 @@ import {LinkContainer} from 'react-router-bootstrap';
 import TagList from '../tag-list';
 
 // Routing & Links
-import {coursesLink} from '../../links';
+import {Link} from 'react-router-dom';
+import {courseLink} from '../../links';
 
 // Helpers
 import APIHelper from '../../utils/api-helpers';
@@ -28,7 +29,6 @@ class CourseCell extends Component {
 
   render() {
     const {course} = this.props
-    const courseLink = `${coursesLink}/${course.id}`;
     const logoUrl = course.logo_url ? `${APIHelper.BASE_URL}${course.logo_url}` : placeholder;
 
     return (
@@ -42,12 +42,12 @@ class CourseCell extends Component {
           </Col>
           <article className="col-sm-8">
             <h2 className="course-title">{course.title}</h2>
-            <p className="course-subtitle">{course.school_name}: <a href={course.page_url} target="_blank" rel="noopener">{course.subtitle}</a></p>
+            <p className="course-subtitle">{course.school_name}: <Link to={course.page_url} target="_blank" rel="noopener">{course.subtitle}</Link></p>
             <div className="course-tags">
               <TagList ids={course.tags} className="tag-list list-unstyled list-inline"/>
             </div>
             <p className="course-desc">{course.description}</p>
-            <LinkContainer to={courseLink}>
+            <LinkContainer to={courseLink(course).url}>
               <Button bsStyle="primary" className="btn-wide">{learningStrings.courseDetails}</Button>
             </LinkContainer>
           </article>

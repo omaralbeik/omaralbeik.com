@@ -49,7 +49,7 @@ class CurrentCourse extends Component {
               </Col>
               <Col sm={8} md={8} lg={9}>
                 <h2 className="course-title">{course.title}</h2>
-                <p className="course-subtitle">{course.school_name}: <a href={course.page_url} target="_blank" rel="noopener">{course.subtitle}</a></p>
+                <p className="course-subtitle">{course.school_name}: <Link to={course.page_url} target="_blank" rel="noopener">{course.subtitle}</Link></p>
                 <div className="course-tags">
                   <TagList ids={course.tags} className="tag-list list-unstyled list-inline"/>
                 </div>
