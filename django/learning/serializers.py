@@ -58,6 +58,7 @@ class SchoolSerializer(serializers.ModelSerializer):
 
 class CourseSerializer(serializers.ModelSerializer):
     school_name = serializers.SerializerMethodField()
+    logo_url = serializers.SerializerMethodField()
 
     class Meta:
         fields = (
@@ -65,6 +66,7 @@ class CourseSerializer(serializers.ModelSerializer):
             'title',
             'subtitle',
             'description',
+            'logo_url',
             'page_url',
             'started_at',
             'graduated_at',
@@ -80,6 +82,9 @@ class CourseSerializer(serializers.ModelSerializer):
     def get_school_name(self, course):
         return course.school.name
 
+    # return course's logo url if available
+    def get_logo_url(self, course):
+        return course.logo.url if course.logo else ''
 
 class QuoteSerializer(serializers.ModelSerializer):
     class Meta:
