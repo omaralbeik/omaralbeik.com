@@ -19,6 +19,9 @@ import {
   repoLink
 } from '../links';
 
+// Strings
+import {footerStrings} from '../strings';
+
 class Footer extends Component {
   render() {
     return (
@@ -37,7 +40,7 @@ class Footer extends Component {
                     <li><Link to={contactLink.url}>{contactLink.name}</Link></li>
                   </ul>
               </nav>
-                <p>This is a fully integrated open-source project that uses React, <br className="hidden-xs"/>Python and Django to build. Grab your copy from <a href={repoLink.url} target="_blank" rel="noopener">{repoLink.name}</a>.</p>
+                <p>{footerStrings.openSource1}<br className="hidden-xs"/>{footerStrings.openSource2}<a href={repoLink.url} target="_blank" rel="noopener">{repoLink.name}</a></p>
               </Col>
               <Col sm={6} className="social-wrap">
                 <SocialButtons/>
@@ -46,7 +49,7 @@ class Footer extends Component {
           </Grid>
         </div>
         <div className="footer-copy">
-          <p className="text-center">Copyright &copy; 2017 <a href="https://omaralbeik.com">Omar Albeik</a>. <br className="visible-xs-inline"/>All rights reserved.</p>
+          <p className="text-center">{footerStrings.copyright}<Link to={homeLink.url}>{footerStrings.name}</Link>. <br className="visible-xs-inline"/>{footerStrings.allRights}</p>
         </div>
       </footer>
     )

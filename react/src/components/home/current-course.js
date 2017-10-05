@@ -19,6 +19,9 @@ import {mediaFileUrl} from '../../utils/helpers';
 // Media files
 import placeholder from '../../images/placeholders/course-placeholder.svg';
 
+// Strings
+import {homeStrings} from '../../strings';
+
 class CurrentCourse extends Component {
   static propTypes = {
     course: PropTypes.object.isRequired
@@ -32,7 +35,7 @@ class CurrentCourse extends Component {
       <div className="container-wrap bg-lighter" id="course-sec-wrap">
         <section className="container" id="course-sec">
           <header className="sec-header">
-            <h1><Link to={coursesLink.url}>Current Course...</Link></h1>
+            <h1><Link to={coursesLink.url}>{homeStrings.currentCourse}</Link></h1>
           </header>
           <div className="sec-body">
             <Row>
@@ -53,14 +56,14 @@ class CurrentCourse extends Component {
                 <p className="course-desc">{course.description}</p>
                 <p>
                   <LinkContainer to={courseLink(course).url}>
-                    <Button bsStyle="primary" className="btn-wide">Course Details</Button>
+                    <Button bsStyle="primary" className="btn-wide">{homeStrings.courseDetails}</Button>
                   </LinkContainer>
                 </p>
               </Col>
             </Row>
           </div>
           <footer className="sec-footer">
-            <Link to={coursesLink.url}>Previous Courses</Link>
+            <Link to={coursesLink.url}>{homeStrings.previousCourses}</Link>
           </footer>
         </section>
       </div>

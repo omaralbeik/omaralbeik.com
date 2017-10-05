@@ -9,6 +9,9 @@ import PostCell from '../blog/post-cell';
 import {Link} from 'react-router-dom';
 import {blogLink} from '../../links';
 
+// Strings
+import {homeStrings} from '../../strings';
+
 class LatestBlogPosts extends Component {
   static propTypes = {
     posts: PropTypes.array.isRequired
@@ -22,7 +25,7 @@ class LatestBlogPosts extends Component {
         <section id="blogs-sec" className="container">
           <header className="sec-header">
             <h1>
-              <Link to={blogLink.url}>Blog Posts...</Link>
+              <Link to={blogLink.url}>{homeStrings.blogPosts}</Link>
             </h1>
           </header>
           <div className="sec-body">
@@ -31,7 +34,7 @@ class LatestBlogPosts extends Component {
             </ul>
           </div>
           <footer className="sec-footer">
-            <Link to={blogLink.url}>More Articles</Link>
+            <Link to={blogLink.url}>{homeStrings.moreArticles}</Link>
           </footer>
         </section>
       </div>

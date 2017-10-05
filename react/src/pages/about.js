@@ -13,6 +13,9 @@ import {aboutLink} from '../links';
 // Media files
 import cover from '../images/cover-about-demo.jpg';
 
+// Strings
+import {aboutStrings} from '../strings';
+
 class About extends Component {
   componentDidMount () {
     window.scrollTo(0, 0)
@@ -30,9 +33,9 @@ class About extends Component {
             <img src={cover} alt="About cover" className="img-responsive topic-cover edgy"/>
             <Row className="topic-content edgy">
               <Col sm={12}>
-                <h1>Hello, I'm Omar <span role="img" aria-label="wave emoji">👋</span></h1>
+                <h1>{aboutStrings.title}<span role="img" aria-label={aboutStrings.emojiTitle}>{aboutStrings.emoji}</span></h1>
                 <br/>
-                <p>I am a passionate software developer and designer who continuously enjoys learning more about the ever-growing digital world and the technologies used to make it, drawing inspiration from the artistic chaos of Istanbul to create exceptional software solutions.</p>
+                <p>{aboutStrings.text}</p>
               </Col>
             </Row>
           </div>

@@ -21,6 +21,9 @@ import APIHelper from '../utils/api-helpers';
 // Media files
 import placeholder from '../images/placeholders/book-placeholder.svg';
 
+// Strings
+import {genericStrings, learningStrings} from '../strings';
+
 class BookDetails extends Component {
   constructor(props) {
     super(props);
@@ -46,17 +49,17 @@ class BookDetails extends Component {
       <article className="container topic">
         <header className="inside-header row">
           <h1 className="content-title col-sm-12">{book.name}</h1>
-          <p className="content-subtitle col-sm-12">by <strong>{book.author}</strong></p>
+          <p className="content-subtitle col-sm-12">{`${genericStrings.by} `}<strong>{bookLink.subtitle(book)}</strong></p>
           <Breadcrumb links={[learningLink, booksLink, bookLink(book)]} />
         </header>
         <div className="inside-body">
           <Row className="topic-meta edgy">
             <div className="col-sm-6 topic-date">
-              <span>Read: </span>
+              <span>{`${genericStrings.read}: `}</span>
               <time dateTime={book.read_at}>{book.read_at}</time>
             </div>
             <Col sm={6} className="social-wrap">
-              <span>Share</span>
+              <span>{genericStrings.share}</span>
             </Col>
           </Row>
           <Row className="topic-content edgy">
@@ -65,9 +68,9 @@ class BookDetails extends Component {
                 <img src={placeholder} alt="Book cover" className="img-responsive"/>
               </div>
               <div className="topic-free-code">
-                <h2>Review</h2>
+                <h2>{learningStrings.review}</h2>
                 <p>{book.review}</p>
-                <h2>Purchase URL</h2>
+                <h2>{learningStrings.purchaseUrl}</h2>
                 <a href={book.purchase_url} target="_blank" rel="noopener">{book.purchase_url}</a>
               </div>
             </Col>

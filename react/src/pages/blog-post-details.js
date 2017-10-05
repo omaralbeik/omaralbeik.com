@@ -18,6 +18,8 @@ import {blogLink, postLink} from '../links';
 // Helpers
 import APIHelper from '../utils/api-helpers';
 
+// Strings
+import {genericStrings} from '../strings';
 
 class BlogPostDetails extends Component {
   constructor(props) {
@@ -49,11 +51,11 @@ class BlogPostDetails extends Component {
         <div className="inside-body">
           <Row className="topic-meta edgy">
             <Col sm={6} className="topic-date">
-              <span>Published: </span>
+              <span>{`${genericStrings.published}: `}</span>
               <time dateTime={post.published_at}>{post.published_at}</time>
             </Col>
             <Col sm={6} className="social-wrap">
-              <span>Share</span>
+              <span>{genericStrings.share}</span>
               <ul className="list-unstyled list-inline social-share selective-opacity transit-quick-all"></ul>
             </Col>
           </Row>

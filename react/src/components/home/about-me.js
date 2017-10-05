@@ -14,6 +14,9 @@ import {contactLink} from '../../links';
 // Media files
 import omar from '../../images/omar-pic.gif';
 
+// Strings
+import {genericStrings, homeStrings} from '../../strings';
+
 class AboutMe extends Component {
   render() {
     return (
@@ -21,25 +24,25 @@ class AboutMe extends Component {
         <Grid>
           <Row id="about-sec">
             <Col sm={4} md={3} className="person">
-              <h1>Omar Albeik</h1>
-              <p>Lifelong Learner</p>
+              <h1>{genericStrings.name}</h1>
+              <p>{homeStrings.title}</p>
               <div className="portrait-wrap">
                 <img src={omar} alt="Omar Albeik" className="img-circle"/>
               </div>
             </Col>
             <Col sm={8} md={9} className="bio">
-              <blockquote className="cmd-line">I'm a passionate software developer and AI enthusiast who continuously enjoys learning more about the ever-growing digital world and the technologies used to make it.
+              <blockquote className="cmd-line">{homeStrings.bio}
                 <br/>
                 <br/>
-                Establish connection with @omaralbeik
-                <span className="flashing">█</span>
+                {homeStrings.contact}
+                <span className="flashing">{homeStrings.cursor}</span>
               </blockquote>
               <footer>
                 <div className="social-wrap">
                   <SocialButtons/>
                 </div>
                 <LinkContainer to={contactLink.url}>
-                  <Button bsStyle="primary" className="btn-wide">Connect</Button>
+                  <Button bsStyle="primary" className="btn-wide">{homeStrings.connect}</Button>
                 </LinkContainer>
               </footer>
             </Col>

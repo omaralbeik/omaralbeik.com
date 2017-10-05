@@ -16,6 +16,9 @@ import {postLink} from '../../links';
 // TimeAgo
 import TimeAgo from 'react-timeago'
 
+// Strings
+import {blogStrings} from '../../strings';
+
 class PostCell extends Component {
   static propTypes = {
     post: PropTypes.object.isRequired,
@@ -41,7 +44,7 @@ class PostCell extends Component {
           <div className="blog-item-body">
             <p>{post.summary}</p>
             <LinkContainer to={postLink(post).url}>
-              <Button bsStyle="primary" className="btn-wide">Read Blog Post</Button>
+              <Button bsStyle="primary" className="btn-wide">{blogStrings.cellButton}</Button>
             </LinkContainer>
           </div>
         </article>
