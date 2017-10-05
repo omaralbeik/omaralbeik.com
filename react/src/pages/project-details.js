@@ -13,6 +13,7 @@ import Breadcrumb from '../components/breadcrumb';
 import TagList from '../components/tag-list';
 
 // Routing & Links
+import {Link} from 'react-router-dom';
 import {projectsLink, projectLink} from '../links';
 
 // Helpers
@@ -57,7 +58,7 @@ class ProjectDetails extends Component {
   generateProjectGithubLink(project) {
     if (project.github_url) {
       return (
-        <li><a href={project.github_url} title="See it on GitHub" target="_blank" rel="noopener"><img src={githubIcon} alt="See it on GitHub"></img></a></li>
+        <li><Link to={project.github_url} title="See it on GitHub" target="_blank" rel="noopener"><img src={githubIcon} alt="See it on GitHub"></img></Link></li>
       );
     }
   }
@@ -65,7 +66,7 @@ class ProjectDetails extends Component {
   generateProjectWebsiteLink(project) {
     if (project.website_url) {
       return (
-        <li><a href={project.website_url} title="Visit the website" target="_blank" rel="noopener"><img src={websiteIcon} alt="Visit the website"></img></a></li>
+        <li><Link to={project.website_url} title="Visit the website" target="_blank" rel="noopener"><img src={websiteIcon} alt="Visit the website"></img></Link></li>
       );
     }
   }

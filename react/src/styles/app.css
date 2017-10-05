@@ -378,6 +378,9 @@ hr {
   margin: 5px;
   width: auto;
 }
+.flat-bullets {
+	margin-bottom: 50px;
+}
 .flat-bullets .slick-dots li button {
   background-color: #eee;
   background-image: none;
@@ -409,9 +412,6 @@ hr {
 .home-project-list li:nth-last-child(2) .thumbnail,
 .home-project-list li:nth-last-child(3) .thumbnail {
   margin: 0 auto;
-}
-.project-cell {
-	display: block;
 }
 
 .proj-thumb {
@@ -2384,6 +2384,7 @@ li.blog-item-wrap {
 /*=============================== Phone: Inside Content ================================*/
 .inside-content .thumbnails-hfixed li {
   padding: 0 15px 10px;
+	display: block;
 }
 .inside-content .thumbnail {
   margin: 0 auto;

@@ -2,6 +2,7 @@
 import React, {Component} from "react";
 
 // Routing & Links
+import {Link} from 'react-router-dom';
 import {
   stackOverflow,
   github,
@@ -15,29 +16,29 @@ class SocialLinks extends Component {
     return (
       <ul className="list-unstyled inline-list">
         <li key={0}>
-          <a href={stackOverflow.url} target="_blank" rel="noopener">
+          <Link to={stackOverflow.url} target="_blank" rel="noopener">
             <img src={stackOverflow.icon} alt={stackOverflow.name}/>
-          </a>
+          </Link>
         </li>
         <li key={1}>
-          <a href={github.url} target="_blank" rel="noopener">
+          <Link to={github.url} target="_blank" rel="noopener">
             <img src={github.icon} alt={github.name}/>
-          </a>
+          </Link>
         </li>
         <li key={2}>
-          <a href={twitter.url} target="_blank" rel="noopener">
+          <Link to={twitter.url} target="_blank" rel="noopener">
             <img src={twitter.icon} alt={twitter.name}/>
-          </a>
+          </Link>
         </li>
         <li key={3}>
-          <a href={linkedin.url} target="_blank" rel="noopener">
+          <Link to={linkedin.url} target="_blank" rel="noopener">
             <img src={linkedin.icon} alt={linkedin.name}/>
-          </a>
+          </Link>
         </li>
         <li key={4}>
-          <a href={medium.url} target="_blank" rel="noopener">
+          <Link to={medium.url} target="_blank" rel="noopener">
             <img src={medium.icon} alt={medium.name}/>
-          </a>
+          </Link>
         </li>
       </ul>
     );

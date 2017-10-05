@@ -40,7 +40,7 @@ class Footer extends Component {
                     <li><Link to={contactLink.url}>{contactLink.name}</Link></li>
                   </ul>
               </nav>
-                <p>{footerStrings.openSource1}<br className="hidden-xs"/>{footerStrings.openSource2}<a href={repoLink.url} target="_blank" rel="noopener">{repoLink.name}</a></p>
+                <p>{footerStrings.openSource1}<br className="hidden-xs"/>{footerStrings.openSource2}<Link to={repoLink.url} target="_blank" rel="noopener">{repoLink.name}</Link></p>
               </Col>
               <Col sm={6} className="social-wrap">
                 <SocialButtons/>

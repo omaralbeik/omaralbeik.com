@@ -6,6 +6,7 @@ export const genericStrings = {
   Read: "Read",
   started: "Started",
   description: "Description",
+  released: "Released"
 }
 
 export const errorStrings = {
@@ -38,7 +39,8 @@ export const learningStrings = {
   courseDetails: "Course Details",
   review: "Review",
   purchaseUrl: "Purchase URL",
-  coursePage: "Course Page"
+  coursePage: "Course Page",
+  read: "Read"
 }
 
 export const projectsStrings = {

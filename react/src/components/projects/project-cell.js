@@ -28,7 +28,7 @@ class ProjectCell extends Component {
     }
 
     return (
-      <li className="col-sm-12 col-md-4 col-lg-4 project-cell">
+      <li className="col-sm-12 col-md-4 col-lg-4">
         <div className="thumbnail">
           <Link to={projectLink(project).url} className="proj-blocklink"/>
           <div className="proj-thumb" style={style}>
