@@ -1,5 +1,8 @@
 export default class Countries {
 
+  /**
+   * List of all countries - used in contact page.
+   */
   static get all() {
     return [
       "Afghanistan",

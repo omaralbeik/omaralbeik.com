@@ -1,5 +1,8 @@
+// React
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
+
+// Bootstrap components
 import {Col, Button} from 'react-bootstrap';
 import {LinkContainer} from 'react-router-bootstrap';
 

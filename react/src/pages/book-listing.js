@@ -1,12 +1,23 @@
+// React
 import React, {Component} from 'react';
+
+// Redux
 import {connect} from 'react-redux';
-import {Link} from 'react-router-dom';
+import * as actions from '../actions';
+
+// Bootstrap components
 import {Row, Col} from 'react-bootstrap';
+
+// Components
+import Breadcrumb from '../components/breadcrumb';
+import BookCell from '../components/learning/book-cell';
+
+// Routing & Links
+import {learningLink, booksLink} from '../links';
+
+// Helpers
 import {arrayFromObject} from '../utils/helpers';
 import APIHelper from '../utils/api-helpers';
-import * as actions from '../actions';
-import links from '../data/links';
-import BookCell from '../components/learning/book-cell';
 
 class BookListing extends Component {
   constructor(props) {
@@ -31,17 +42,13 @@ class BookListing extends Component {
       <main className="container-wrap inside-content">
         <section className="container">
           <header className="inside-header row">
-            <h1 className="content-title col-sm-12">Favorite Books</h1>
-            <ol className="breadcrumb col-sm-12">
-              <li><Link to="/">Home</Link></li>
-              <li><Link to={links.learning}>learning</Link></li>
-              <li>Books</li>
-            </ol>
+            <h1 className="content-title col-sm-12">{booksLink.title}</h1>
+            <Breadcrumb links={[learningLink, booksLink]}/>
           </header>
           <div className="inside-body">
             <Row>
               <Col sm={12}>
-                <ul class="list-unstyled list-inline row transit-slow-all book-listing">
+                <ul className="list-unstyled list-inline row transit-slow-all book-listing">
                   {booksArray.map(b => (<BookCell key={b.id} book={b}/>))}
                 </ul>
               </Col>

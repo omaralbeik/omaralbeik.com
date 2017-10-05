@@ -1,9 +1,17 @@
+// React
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import {Link} from 'react-router-dom';
+
+// Bootstrap components
 import {LinkContainer} from 'react-router-bootstrap';
 import {Button} from "react-bootstrap";
-import links from '../../data/links';
+
+// Routing & Links
+import {Link} from 'react-router-dom';
+import {projectLink} from '../../links';
+
+// Helpers
+import {mediaFileUrl} from '../../utils/helpers';
 
 class ProjectCell extends Component {
   static propTypes = {
@@ -12,12 +20,15 @@ class ProjectCell extends Component {
 
   render() {
     const {project} = this.props;
-    const projectLink = `${links.projects}/${project.id}`;
+    const style = {
+      backgroundImage: project.logo_url ? `url("${mediaFileUrl(project.logo_url)}")` : null
+    }
+
     return (
-      <li className="col-md-4 col-lg-4">
+      <li className="col-sm-12 col-md-4 col-lg-4 project-cell">
         <div className="thumbnail">
-          <Link to={projectLink} className="proj-blocklink"/>
-          <div className="proj-thumb">
+          <Link to={projectLink(project).url} className="proj-blocklink"/>
+          <div className="proj-thumb" style={style}>
             <div className="proj-thumb-tint"></div>
           </div>
           <article className="caption">
@@ -25,13 +36,13 @@ class ProjectCell extends Component {
             <time className="proj-date" dateTime={project.released_at}>{project.released_at}</time>
             <p className="proj-desc">{project.summary}</p>
             <footer>
-              <LinkContainer to={projectLink}>
+              <LinkContainer to={projectLink(project).url}>
                 <Button bsStyle="default" className="btn-wide">View Project</Button>
               </LinkContainer>
             </footer>
           </article>
         </div>
-        <Link to={projectLink} className="blocklink"/>
+        <Link to={projectLink(project).url} className="blocklink"/>
       </li>
     );
   };

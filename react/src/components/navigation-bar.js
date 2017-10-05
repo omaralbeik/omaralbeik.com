@@ -1,8 +1,22 @@
+// React
 import React, {Component} from 'react';
-import logo from '../images/logo.svg';
+
+// Bootstrap components
 import {Navbar, Nav, NavItem} from 'react-bootstrap';
 import {LinkContainer} from 'react-router-bootstrap';
-import links from '../data/links';
+
+// Routing & Links
+import {
+  homeLink,
+  blogLink,
+  projectsLink,
+  learningLink,
+  aboutLink,
+  contactLink
+} from '../links';
+
+// Media files
+import logo from '../images/logo.svg';
 
 class NavigationBar extends Component {
   render() {
@@ -21,12 +35,12 @@ class NavigationBar extends Component {
             </Navbar.Header>
             <Navbar.Collapse>
               <Nav id="navbar" pullRight>
-                  <LinkContainer exact to="/"><NavItem>Home</NavItem></LinkContainer>
-                  <LinkContainer to={links.blog}><NavItem>Blog</NavItem></LinkContainer>
-                  <LinkContainer to={links.projects}><NavItem>Portfolio</NavItem></LinkContainer>
-                  <LinkContainer to={links.learning}><NavItem>Learning</NavItem></LinkContainer>
-                  <LinkContainer to={links.about}><NavItem>About</NavItem></LinkContainer>
-                  <LinkContainer to={links.contact}><NavItem>Contact</NavItem></LinkContainer>
+                  <LinkContainer exact to={homeLink.url}><NavItem>{homeLink.name}</NavItem></LinkContainer>
+                  <LinkContainer to={blogLink.url}><NavItem>{blogLink.name}</NavItem></LinkContainer>
+                  <LinkContainer to={projectsLink.url}><NavItem>{projectsLink.name}</NavItem></LinkContainer>
+                  <LinkContainer to={learningLink.url}><NavItem>{learningLink.name}</NavItem></LinkContainer>
+                  <LinkContainer to={aboutLink.url}><NavItem>{aboutLink.name}</NavItem></LinkContainer>
+                  <LinkContainer to={contactLink.url}><NavItem>{contactLink.name}</NavItem></LinkContainer>
               </Nav>
             </Navbar.Collapse>
         </Navbar>

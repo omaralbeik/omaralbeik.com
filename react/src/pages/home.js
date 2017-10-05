@@ -1,13 +1,20 @@
+// React
 import React, {Component} from 'react';
+
+// Redux
 import {connect} from 'react-redux';
-import {arrayFromObject} from '../utils/helpers';
-import APIHelper from '../utils/api-helpers';
 import * as actions from '../actions';
+
+// Components
 import Slider from '../components/home/slider';
 import AboutMe from '../components/home/about-me';
 import LatestBlogPosts from '../components/home/latest-blog-posts';
 import LatestProjects from '../components/home/latest-projects';
 import CurrentCourse from '../components/home/current-course';
+
+// Helpers
+import {arrayFromObject} from '../utils/helpers';
+import APIHelper from '../utils/api-helpers';
 
 class Home extends Component {
   constructor(props) {

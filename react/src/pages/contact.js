@@ -1,6 +1,16 @@
+// React
 import React, {Component} from 'react';
-import {Link} from 'react-router-dom';
+
+// Bootstrap components
 import {Row, Col, Button, FormGroup, FormControl} from 'react-bootstrap';
+
+// Components
+import Breadcrumb from '../components/breadcrumb';
+
+// Routing & Links
+import {contactLink} from '../links';
+
+// Country list
 import Countries from '../data/countries';
 
 class Contact extends Component {
@@ -13,15 +23,11 @@ class Contact extends Component {
       <main className="container-wrap inside-content">
         <article className="container">
           <header className="inside-header row text-center">
-            <h1 className="content-title col-sm-12">Get In Touch</h1>
-            <ol className="breadcrumb col-sm-12">
-              <li><Link to="/">Home</Link></li>
-              <li>Get In Touch</li>
-            </ol>
+            <h1 className="content-title col-sm-12">{contactLink.title}</h1>
+            <Breadcrumb links={[contactLink]}/>
           </header>
 
           <div className="inside-body">
-
             <Row>
               <Col sm={12}>
                 <form className="form-horizontal cmd-line" method="post" action="">

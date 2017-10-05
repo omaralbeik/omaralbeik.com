@@ -1,9 +1,18 @@
+// React
 import React, {Component} from 'react';
+
+// Bootstrap
 import {LinkContainer} from 'react-router-bootstrap';
 import {Grid, Row, Col, Button} from 'react-bootstrap';
-import omar from '../../images/omar-pic.gif';
+
+// Components
 import SocialButtons from "../social-buttons";
-import links from '../../data/links';
+
+// Routing & Links
+import {contactLink} from '../../links';
+
+// Media files
+import omar from '../../images/omar-pic.gif';
 
 class AboutMe extends Component {
   render() {
@@ -19,12 +28,17 @@ class AboutMe extends Component {
               </div>
             </Col>
             <Col sm={8} md={9} className="bio">
-              <blockquote className="cmd-line">I'm a passionate software developer and AI enthusiast who continuously enjoys learning more about the ever-growing digital world and the technologies used to make it. <br/> <br/> Establish connection with @omaralbeik <span className="flashing">█</span></blockquote>
+              <blockquote className="cmd-line">I'm a passionate software developer and AI enthusiast who continuously enjoys learning more about the ever-growing digital world and the technologies used to make it.
+                <br/>
+                <br/>
+                Establish connection with @omaralbeik
+                <span className="flashing">█</span>
+              </blockquote>
               <footer>
                 <div className="social-wrap">
                   <SocialButtons/>
                 </div>
-                <LinkContainer to={links.contact}>
+                <LinkContainer to={contactLink.url}>
                   <Button bsStyle="primary" className="btn-wide">Connect</Button>
                 </LinkContainer>
               </footer>

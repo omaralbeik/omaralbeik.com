@@ -1,11 +1,23 @@
+// React
 import React, {Component} from 'react';
+
+// Redux
 import {connect} from 'react-redux';
-import {Link} from 'react-router-dom';
+import * as actions from '../actions';
+
+// Bootstrap components
 import {Row, Col} from 'react-bootstrap';
+
+// Components
+import Breadcrumb from '../components/breadcrumb';
+import ProjectCell from '../components/projects/project-cell';
+
+// Routing & Links
+import {projectsLink} from '../links';
+
+// Helpers
 import {arrayFromObject} from '../utils/helpers';
 import APIHelper from '../utils/api-helpers';
-import * as actions from '../actions';
-import ProjectCell from '../components/projects/project-cell';
 
 class ProjectListing extends Component {
   constructor(props) {
@@ -31,11 +43,8 @@ class ProjectListing extends Component {
       <main className="container-wrap inside-content">
         <section className="container">
           <header className="inside-header row">
-            <h1 className="content-title col-sm-12">Portfolio</h1>
-            <ol className="breadcrumb col-sm-12">
-              <li><Link to="/">Home</Link></li>
-              <li>Portfolio</li>
-            </ol>
+            <h1 className="content-title col-sm-12">{projectsLink.title}</h1>
+            <Breadcrumb links={[projectsLink]}/>
           </header>
           <div className="inside-body">
             <Row>

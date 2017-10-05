@@ -1,11 +1,24 @@
+// React
 import React, {Component} from 'react';
-import {connect} from 'react-redux';
-import {Link} from 'react-router-dom';
-import {Row, Col} from 'react-bootstrap';
-import APIHelper from '../utils/api-helpers';
-import * as actions from '../actions';
-import links from '../data/links';
 
+// Redux
+import {connect} from 'react-redux';
+import * as actions from '../actions';
+
+// Bootstrap components
+import {Row, Col} from 'react-bootstrap';
+
+// Components
+import Breadcrumb from '../components/breadcrumb';
+import TagList from '../components/tag-list';
+
+// Routing & Links
+import {learningLink, booksLink, bookLink} from '../links';
+
+// Helpers
+import APIHelper from '../utils/api-helpers';
+
+// Media files
 import placeholder from '../images/placeholders/book-placeholder.svg';
 
 class BookDetails extends Component {
@@ -25,20 +38,7 @@ class BookDetails extends Component {
     });
   }
 
-  generateTags(tagIds, tags) {
-    if (tagIds && tags) {
-      return tagIds.map(id => {
-        const tag = tags[id];
-        if (tag) {
-          return (<li key={id}><a href="/">#{tag.name}</a></li>);
-        } else {
-          return null;
-        }
-      });
-    }
-  }
-
-  generateBookDetails(book, tags) {
+  generateBookDetails(book) {
     if (!book) {
       return;
     }
@@ -47,12 +47,7 @@ class BookDetails extends Component {
         <header className="inside-header row">
           <h1 className="content-title col-sm-12">{book.name}</h1>
           <p className="content-subtitle col-sm-12">by <strong>{book.author}</strong></p>
-          <ol className="breadcrumb col-sm-12">
-            <li><Link to="/">Home</Link></li>
-            <li><Link to={links.learning}>Learning</Link></li>
-            <li><Link to={links.books}>Books</Link></li>
-            <li>{book.name}</li>
-          </ol>
+          <Breadcrumb links={[learningLink, booksLink, bookLink(book)]} />
         </header>
         <div className="inside-body">
           <Row className="topic-meta edgy">
@@ -79,30 +74,27 @@ class BookDetails extends Component {
           </Row>
         </div>
         <footer className="inside-footer edgy">
-          <ul className="tag-list list-unstyled list-inline">
-            {this.generateTags(book.tags, tags)}
-          </ul>
+          <TagList ids={book.tags} className="tag-list list-unstyled list-inline"/>
         </footer>
       </article>
     );
   }
 
   render() {
-    const {tags} = this.props;
     const {books} = this.props.learning ;
     const {book_id} = this.props.match.params;
     const book = books[book_id];
 
     return (
       <main className="container-wrap inside-content">
-        {this.generateBookDetails(book, tags)}
+        {this.generateBookDetails(book)}
       </main>
     )
   }
 }
 
-function mapStateToProps({learning, tags}) {
-  return {learning, tags}
+function mapStateToProps({learning}) {
+  return {learning}
 }
 
 function mapDispatchToProps(dispatch) {

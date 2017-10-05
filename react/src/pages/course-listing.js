@@ -1,11 +1,20 @@
+// React
 import React, {Component} from 'react';
+
+// Redux
 import {connect} from 'react-redux';
-import {Link} from 'react-router-dom';
+import * as actions from '../actions';
+
+// Components
+import Breadcrumb from '../components/breadcrumb';
+import CourseCell from '../components/learning/course-cell';
+
+// Routing & Links
+import {learningLink, coursesLink} from '../links';
+
+// Helpers
 import {arrayFromObject} from '../utils/helpers';
 import APIHelper from '../utils/api-helpers';
-import * as actions from '../actions';
-import links from '../data/links';
-import CourseCell from '../components/learning/course-cell';
 
 class CourseListing extends Component {
   constructor(props) {
@@ -30,12 +39,8 @@ class CourseListing extends Component {
       <main className="container-wrap inside-content">
         <section className="container topic">
           <header className="inside-header row">
-            <h1 className="content-title col-sm-12">Courses</h1>
-            <ol className="breadcrumb col-sm-12">
-              <li><Link to="/">Home</Link></li>
-              <li><Link to={links.learning}>Learning</Link></li>
-              <li>Courses</li>
-            </ol>
+            <h1 className="content-title col-sm-12">{coursesLink.title}</h1>
+            <Breadcrumb links={[learningLink, coursesLink]}/>
           </header>
           <ul className="list-unstyled courses-light">
             {coursesArray.map(c => (<CourseCell key={c.id} course={c}/>))}

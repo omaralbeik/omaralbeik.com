@@ -1,11 +1,25 @@
+// React
 import React, {Component} from 'react';
-import {connect} from 'react-redux';
-import {Link} from 'react-router-dom';
-import {Row, Col} from 'react-bootstrap';
-import APIHelper from '../utils/api-helpers';
-import * as actions from '../actions';
-import links from '../data/links';
 
+// Redux
+import {connect} from 'react-redux';
+import * as actions from '../actions';
+
+// Bootstrap components
+import {Row, Col} from 'react-bootstrap';
+
+// Components
+import Breadcrumb from '../components/breadcrumb';
+import TagList from '../components/tag-list';
+
+// Routing & Links
+import {projectsLink, projectLink} from '../links';
+
+// Helpers
+import APIHelper from '../utils/api-helpers';
+import {mediaFileUrl} from '../utils/helpers';
+
+// Media files
 import githubIcon from '../images/social-gt.svg';
 import websiteIcon from '../images/social-site.svg';
 
@@ -24,19 +38,6 @@ class ProjectDetails extends Component {
     APIHelper.fetchProject(project_id).then(project => {
       this.props.addProject({type: actions.ADD_PROJECT, project});
     });
-  }
-
-  generateTags(tagIds, tags) {
-    if (tagIds && tags) {
-      return tagIds.map(id => {
-        const tag = tags[id];
-        if (tag) {
-          return (<li key={id}><a href="/">#{tag.name}</a></li>);
-        } else {
-          return null;
-        }
-      });
-    }
   }
 
   generateProjectText(project) {
@@ -83,17 +84,15 @@ class ProjectDetails extends Component {
     if (!project) {
       return;
     }
+    const coverUrl = mediaFileUrl(project.logo_url) || null;
     return (
       <article className="container topic">
         <header className="inside-header row">
-          <h1 className="content-title col-sm-12">{project.name}</h1>
-          <ol className="breadcrumb col-sm-12">
-            <li><Link to="/">Home</Link></li>
-            <li><Link to={links.projects}>Portfolio</Link></li>
-            <li>{project.name}</li>
-          </ol>
+          <h1 className="content-title col-sm-12">{projectLink(project).title}</h1>
+          <Breadcrumb links={[projectsLink, projectLink(project)]}/>
         </header>
         <div className="inside-body">
+          <img src={coverUrl} alt={project.name} className="img-responsive topic-cover edgy"/>
           <Row className="topic-meta edgy">
             <Col sm={6} className="topic-date">
               <span>Released: </span>
@@ -116,9 +115,7 @@ class ProjectDetails extends Component {
           </Row>
         </div>
         <footer className="inside-footer edgy">
-          <ul className="tag-list list-unstyled list-inline">
-            {this.generateTags(project.tags, tags)}
-          </ul>
+          <TagList ids={project.tags} className="tag-list list-unstyled list-inline"/>
         </footer>
       </article>
     );
@@ -138,8 +135,8 @@ class ProjectDetails extends Component {
   }
 }
 
-function mapStateToProps({projects, tags}) {
-  return {projects, tags}
+function mapStateToProps({projects}) {
+  return {projects}
 }
 
 function mapDispatchToProps(dispatch) {
