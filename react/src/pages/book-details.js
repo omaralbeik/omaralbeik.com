@@ -56,7 +56,7 @@ class BookDetails extends Component {
         <div className="inside-body">
           <Row className="topic-meta edgy">
             <div className="col-sm-6 topic-date">
-              <span>{`${genericStrings.read}: `}</span>
+              <span>{`${learningStrings.read}: `}</span>
               <time dateTime={book.read_at}>{book.read_at}</time>
             </div>
             <Col sm={6} className="social-wrap">
