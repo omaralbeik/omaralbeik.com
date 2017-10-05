@@ -40,8 +40,8 @@ export const tagsLink = {
 
 export function tagLink(t) {
   return {
-    name: t.title,
-    title: t.title,
+    name: t.name,
+    title: `#${t.name}`,
     url: `${tagsLink.url}/${t.id}`
   };
 };

@@ -13,6 +13,9 @@ import {contactLink} from '../links';
 // Country list
 import Countries from '../data/countries';
 
+// Strings
+import {contactStrings} from '../strings';
+
 class Contact extends Component {
   componentDidMount() {
     window.scrollTo(0, 0)
@@ -32,31 +35,31 @@ class Contact extends Component {
               <Col sm={12}>
                 <form className="form-horizontal cmd-line" method="post" action="">
                   <div className="cmd-intro">
-                    <p>Contact attempts are always welcome. <br className="hidden-xs"/>To do so, please fill in the fields below:<br/>
+                    <p>{contactStrings.title1}<br className="hidden-xs"/>{contactStrings.title2}<br/>
                     <br className="visible-xs-block"/>--------------------<span className="hidden-xs">----------------------</span></p>
 
                     <FormGroup>
                       <Col sm={12}>
-                        <FormControl componentClass="input" className="textfield" id="name" name="name" placeholder="Full Name" type="text"/>
+                        <FormControl componentClass="input" className="textfield" id="name" name="name" placeholder={contactStrings.namePlaceholder} type="text"/>
                       </Col>
                     </FormGroup>
 
                     <FormGroup>
                       <Col sm={12}>
-                        <FormControl componentClass="input" className="textfield" id="email" name="email" placeholder="Email Address" required type="email"/>
+                        <FormControl componentClass="input" className="textfield" id="email" name="email" placeholder={contactStrings.emailPlaceholder} required type="email"/>
                       </Col>
                     </FormGroup>
 
                     <FormGroup>
                       <Col sm={12}>
-                        <FormControl componentClass="input" className="textfield" id="phone" name="phone" placeholder="Phone" type="tel"/>
+                        <FormControl componentClass="input" className="textfield" id="phone" name="phone" placeholder={contactStrings.phonePlaceholder} type="tel"/>
                       </Col>
                     </FormGroup>
 
                     <FormGroup>
                       <Col sm={12}>
                         <FormControl componentClass="select" className="textfield" name="country" id="country" required defaultValue="">
-                          <option value="">- Country -</option>
+                          <option value="">{contactStrings.defaultCountry}</option>
                           {Countries.all.map((c, i) => (<option key={i} value={c}>{c}</option>))}
                         </FormControl>
                       </Col>
@@ -64,25 +67,25 @@ class Contact extends Component {
 
                     <FormGroup>
                       <Col sm={12}>
-                        <FormControl componentClass="input" className="textfield" id="city" name="city" placeholder="City" type="text"/>
+                        <FormControl componentClass="input" className="textfield" id="city" name="city" placeholder={contactStrings.cityPlaceholder} type="text"/>
                       </Col>
                     </FormGroup>
 
                     <FormGroup>
                       <Col sm={12}>
-                        <FormControl componentClass="input" className="textfield" id="subject" name="subject" placeholder="Subject" required type="text"/>
+                        <FormControl componentClass="input" className="textfield" id="subject" name="subject" placeholder={contactStrings.subjectPlaceholder} required type="text"/>
                       </Col>
                     </FormGroup>
 
                     <p className="hidden-xs">---------</p>
                     <FormGroup>
                       <Col sm={12}>
-                        <FormControl componentClass="textarea" id="message" name="message" placeholder="Message..." rows="4" className="textfield" required/>
+                        <FormControl componentClass="textarea" id="message" name="message" placeholder={contactStrings.messagePlaceholder} rows="4" className="textfield" required/>
                       </Col>
                     </FormGroup>
                     <FormGroup>
                       <Col sm={12}>
-                        <Button bsStyle="primary" type="submit">Send Message!</Button>
+                        <Button bsStyle="primary" type="submit">{contactStrings.submit}</Button>
                       </Col>
                     </FormGroup>
                   </div>

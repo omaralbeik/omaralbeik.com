@@ -5,8 +5,11 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import * as actions from '../actions';
 
+// Components
+import Breadcrumb from '../components/breadcrumb';
+
 // Routing & Links
-import {Link} from 'react-router-dom';
+import {tagsLink, tagLink} from '../links';
 
 // helpers
 import APIHelper from '../utils/api-helpers';
@@ -74,12 +77,8 @@ class TagDetails extends Component {
     return (
       <section className="container topic">
         <header className="inside-header row">
-          <h1 className="content-title col-sm-12">#{tag.name}</h1>
-          <ol className="breadcrumb col-sm-12">
-            <li><Link to="/">Home</Link></li>
-            <li>Tags</li>
-            <li>#{tag.name}</li>
-          </ol>
+          <h1 className="content-title col-sm-12">{tagLink(tag).title}</h1>\
+          <Breadcrumb links={[tagsLink, tagLink(tag)]}/>
         </header>
       </section>
     );

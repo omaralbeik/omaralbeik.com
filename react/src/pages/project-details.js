@@ -23,6 +23,9 @@ import {mediaFileUrl} from '../utils/helpers';
 import githubIcon from '../images/social-gt.svg';
 import websiteIcon from '../images/social-site.svg';
 
+// Strings
+import {projectsStrings, genericStrings} from '../strings';
+
 class ProjectDetails extends Component {
   constructor(props) {
     super(props);
@@ -71,7 +74,7 @@ class ProjectDetails extends Component {
     return (
       <div>
         <hr/>
-        <h2>Visit project pages</h2>
+        <h2>{projectsStrings.visitPage}</h2>
         <ul className="list-inline list-unstyled thb-icon-list selective-opacity transit-all">
           {this.generateProjectGithubLink(project)}
           {this.generateProjectWebsiteLink(project)}
@@ -95,11 +98,11 @@ class ProjectDetails extends Component {
           <img src={coverUrl} alt={project.name} className="img-responsive topic-cover edgy"/>
           <Row className="topic-meta edgy">
             <Col sm={6} className="topic-date">
-              <span>Released: </span>
+              <span>{`${genericStrings.released}: `}</span>
               <time dateTime={project.released_at}>{project.released_at}</time>
             </Col>
             <Col sm={6} className="social-wrap">
-              <span>Share</span>
+              <span>{genericStrings.share}</span>
               <ul className="list-unstyled list-inline social-share selective-opacity transit-quick-all"></ul>
             </Col>
           </Row>

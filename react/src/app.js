@@ -36,6 +36,9 @@ import './styles/app.css';
 // Helpers
 import APIHelper from './utils/api-helpers';
 
+// Strings
+import {errorStrings} from './strings';
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -61,7 +64,7 @@ class App extends Component {
           <Route exact path={links.projectsLink.url} component={ProjectListing}/>
           <Route exact path={`${links.projectsLink.url}/:project_id`} component={ProjectDetails}/>
 
-          <Route exact path={links.learningLink.url} render={() => (<Error error="Page under construction" />)}/>
+          <Route exact path={links.learningLink.url} render={() => (<Error error={errorStrings.underConstruction}/>)}/>
 
           <Route exact path={links.coursesLink.url} component={CourseListing}/>
           <Route exact path={`${links.coursesLink.url}/:course_id`} component={CourseDetails}/>
@@ -75,7 +78,7 @@ class App extends Component {
 
           <Route exact path={links.aboutLink.url} component={About}/>
           <Route exact path={links.contactLink.url} component={Contact}/>
-          <Route render={() => (<Error error="Page Not Found. aka 404" />)}/>
+          <Route render={() => (<Error error={errorStrings.notFound}/>)}/>
 
         </Switch>
         <Footer/>

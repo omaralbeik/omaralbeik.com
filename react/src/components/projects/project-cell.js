@@ -13,6 +13,9 @@ import {projectLink} from '../../links';
 // Helpers
 import {mediaFileUrl} from '../../utils/helpers';
 
+//  Strings
+import {projectsStrings} from '../../strings';
+
 class ProjectCell extends Component {
   static propTypes = {
     project: PropTypes.object.isRequired
@@ -37,7 +40,7 @@ class ProjectCell extends Component {
             <p className="proj-desc">{project.summary}</p>
             <footer>
               <LinkContainer to={projectLink(project).url}>
-                <Button bsStyle="default" className="btn-wide">View Project</Button>
+                <Button bsStyle="default" className="btn-wide">{projectsStrings.viewProject}</Button>
               </LinkContainer>
             </footer>
           </article>

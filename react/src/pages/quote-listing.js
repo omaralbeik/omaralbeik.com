@@ -42,7 +42,7 @@ class QuoteListing extends Component {
       <main className="container-wrap inside-content">
         <section className="container topic">
           <header className="inside-header row">
-            <h1 className="content-title col-sm-12">Favorite Quotes</h1>
+            <h1 className="content-title col-sm-12">{quotesLink.title}</h1>
             <Breadcrumb links={[learningLink, quotesLink]}/>
           </header>
           <Row>

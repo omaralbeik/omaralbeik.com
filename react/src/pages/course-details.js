@@ -22,6 +22,9 @@ import {mediaFileUrl} from '../utils/helpers';
 // Media files
 import placeholder from '../images/placeholders/course-placeholder.svg';
 
+// Strings
+import {genericStrings, learningStrings} from '../strings';
+
 class CourseDetails extends Component {
   constructor(props) {
     super(props);
@@ -54,11 +57,11 @@ class CourseDetails extends Component {
         <div className="inside-body">
           <Row className="topic-meta edgy">
             <div className="col-sm-6 topic-date">
-              <span>STARTED: </span>
+              <span>{`${genericStrings.started}: `}</span>
               <time dateTime={course.started_at}>{course.started_at}</time>
             </div>
             <Col sm={6} className="social-wrap">
-              <span>Share</span>
+              <span>{genericStrings.share}</span>
             </Col>
           </Row>
           <Row className="topic-content edgy">
@@ -66,16 +69,16 @@ class CourseDetails extends Component {
               <div className="thb-wrap">
                 <a href={course.page_url} className="thb-title" target="_blank" rel="noopener">
                   <img src={logoUrl} alt={course.title} className="img-responsive"/>
-                  <span>by {course.school_name}</span>
+                  <span>{`${genericStrings.by} `}{course.school_name}</span>
                 </a>
                 <p className="thb-link">
-                  <a href={course.page_url} target="_blank" rel="noopener"><strong>Course Page</strong></a>
+                  <a href={course.page_url} target="_blank" rel="noopener"><strong>{learningStrings.coursePage}</strong></a>
                 </p>
               </div>
               <div className="topic-free-code">
-                <h2>Description</h2>
+                <h2>{genericStrings.description}</h2>
                 <p>{course.description}</p>
-                <h2>Review</h2>
+                <h2>{learningStrings.review}</h2>
                 <p>{course.review}</p>
               </div>
             </Col>

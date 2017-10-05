@@ -18,6 +18,9 @@ import APIHelper from '../../utils/api-helpers';
 // Media files
 import placeholder from '../../images/placeholders/course-placeholder.svg';
 
+// Strings
+import {learningStrings} from '../../strings';
+
 class CourseCell extends Component {
   static propTypes = {
     course: PropTypes.object.isRequired,
@@ -45,7 +48,7 @@ class CourseCell extends Component {
             </div>
             <p className="course-desc">{course.description}</p>
             <LinkContainer to={courseLink}>
-              <Button bsStyle="primary" className="btn-wide">Course Details</Button>
+              <Button bsStyle="primary" className="btn-wide">{learningStrings.courseDetails}</Button>
             </LinkContainer>
           </article>
         </Row>
