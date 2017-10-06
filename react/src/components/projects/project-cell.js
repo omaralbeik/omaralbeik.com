@@ -35,7 +35,7 @@ class ProjectCell extends Component {
             <div className="proj-thumb-tint"></div>
           </div>
           <article className="caption">
-            <h2 className="proj-title">{project.name}</h2>
+            <Link to={projectLink(project).url}><h2 className="proj-title">{project.name}</h2></Link>
             <time className="proj-date" dateTime={project.released_at}>{project.released_at}</time>
             <p className="proj-desc">{project.summary}</p>
             <footer>
