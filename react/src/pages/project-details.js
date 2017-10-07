@@ -84,11 +84,17 @@ class ProjectDetails extends Component {
     );
   }
 
+  generateProjectLogo(project) {
+    const logo = project.logo_url;
+    if (logo) {
+      return (<img src={mediaFileUrl(logo)} alt={project.name} className="img-responsive topic-cover edgy"/>);
+    }
+  }
+
   generateProjectDetails(project, tags) {
     if (!project) {
       return;
     }
-    const coverUrl = mediaFileUrl(project.logo_url) || null;
     return (
       <article className="container topic">
         <header className="inside-header row">
@@ -96,7 +102,7 @@ class ProjectDetails extends Component {
           <Breadcrumb links={[projectsLink, projectLink(project)]}/>
         </header>
         <div className="inside-body">
-          <img src={coverUrl} alt={project.name} className="img-responsive topic-cover edgy"/>
+          {this.generateProjectLogo(project)}
           <Row className="topic-meta edgy">
             <Col sm={6} className="topic-date">
               <span>{`${genericStrings.released}: `}</span>

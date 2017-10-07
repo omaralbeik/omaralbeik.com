@@ -5,21 +5,26 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import * as actions from '../actions';
 
+// Bootstrap components
+import {Col} from 'react-bootstrap';
+
 // Components
 import Breadcrumb from '../components/breadcrumb';
+import TagItemCell from '../components/tags/tag-item-cell';
 
 // Routing & Links
 import {tagsLink, tagLink} from '../links';
 
 // helpers
 import APIHelper from '../utils/api-helpers';
+import {arrayFromObject} from '../utils/helpers';
 
 class TagDetails extends Component {
   constructor(props) {
     super(props);
     this.fetchTagProjects();
     this.fetchTagPosts();
-    this.fetchTagSchools();
+    // this.fetchTagSchools();
     this.fetchTagCourses();
     this.fetchTagQuotes();
     this.fetchTagBooks();
@@ -43,12 +48,12 @@ class TagDetails extends Component {
     });
   }
 
-  fetchTagSchools() {
-    const {tag_id} = this.props.match.params;
-    APIHelper.fetchTagSchools(tag_id).then(schools => {
-      this.props.loadLearningSchools({type: actions.LOAD_LEARNING_SCHOOLS, schools});
-    });
-  }
+  // fetchTagSchools() {
+  //   const {tag_id} = this.props.match.params;
+  //   APIHelper.fetchTagSchools(tag_id).then(schools => {
+  //     this.props.loadLearningSchools({type: actions.LOAD_LEARNING_SCHOOLS, schools});
+  //   });
+  // }
 
   fetchTagCourses() {
     const {tag_id} = this.props.match.params;
@@ -70,27 +75,55 @@ class TagDetails extends Component {
     });
   }
 
-  generateTagDetails(tag) {
+  generateTagDetails(tag, items) {
     if (!tag) {
       return;
     }
     return (
-      <section className="container topic">
-        <header className="inside-header row">
-          <h1 className="content-title col-sm-12">{tagLink(tag).title}</h1>\
-          <Breadcrumb links={[tagsLink, tagLink(tag)]}/>
-        </header>
-      </section>
+      <main className="container-wrap inside-content">
+        <section className="container topic">
+          <header className="inside-header row">
+            <h1 className="content-title col-sm-12">{tagLink(tag).title}</h1>\
+            <Breadcrumb links={[tagsLink, tagLink(tag)]}/>
+          </header>
+          <div className="inside-body">
+            <div className="row topic-content edgy">
+              <Col sm={12}>
+                <ul className="list-unstyled trl transit-all">
+                  {items.map((item, index) => (<TagItemCell key={index} item={item}/>))}
+                </ul>
+              </Col>
+            </div>
+          </div>
+        </section>
+      </main>
     );
   }
 
   render() {
     const {tags} = this.props;
-    const {tag_id} = this.props.match.params;
+    var {tag_id} = this.props.match.params;
+    tag_id = parseInt(tag_id, 0);
     const tag = tags[tag_id];
+
+    const {blogPosts, projects} = this.props;
+    const {courses, quotes, books} = this.props.learning;
+
+    const postsArray = arrayFromObject(blogPosts).filter(p => (p.tags.includes(tag_id)));
+    const projectsArray = arrayFromObject(projects).filter(p => (p.tags.includes(tag_id)));
+    const coursesArray = arrayFromObject(courses).filter(c => (c.tags.includes(tag_id)));
+    const quotesArray = arrayFromObject(quotes).filter(q => (q.tags.includes(tag_id)));
+    const booksArray = arrayFromObject(books).filter(b => (b.tags.includes(tag_id)));
+
+    const itemsArray = postsArray
+    .concat(projectsArray)
+    .concat(coursesArray)
+    .concat(quotesArray)
+    .concat(booksArray);
+
     return (
       <main className="container-wrap inside-content">
-        {this.generateTagDetails(tag)}
+        {this.generateTagDetails(tag, itemsArray)}
       </main>
     )
   }
@@ -105,7 +138,7 @@ function mapDispatchToProps(dispatch) {
   return {
     loadBlogPosts: posts => dispatch(actions.loadBlogPosts(posts)),
     loadProjects: projects => dispatch(actions.loadProjects(projects)),
-    loadLearningSchools: schools => dispatch(actions.loadLearningSchools(schools)),
+    // loadLearningSchools: schools => dispatch(actions.loadLearningSchools(schools)),
     loadLearningCourses: courses => dispatch(actions.loadLearningCourses(courses)),
     loadLearningQuotes: quotes => dispatch(actions.loadLearningQuotes(quotes)),
     loadLearningBooks: books => dispatch(actions.loadLearningBooks(books))

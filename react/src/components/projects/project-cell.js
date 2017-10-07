@@ -16,6 +16,9 @@ import {mediaFileUrl} from '../../utils/helpers';
 //  Strings
 import {projectsStrings} from '../../strings';
 
+// Media files
+import placeholder from '../../images/placeholders/project-placeholder.svg';
+
 class ProjectCell extends Component {
   static propTypes = {
     project: PropTypes.object.isRequired
@@ -23,8 +26,9 @@ class ProjectCell extends Component {
 
   render() {
     const {project} = this.props;
+    const logo = project.logo_url ? mediaFileUrl(project.logo_url) : placeholder
     const style = {
-      backgroundImage: project.logo_url ? `url("${mediaFileUrl(project.logo_url)}")` : null
+      backgroundImage: `url("${logo}")`
     }
 
     return (
