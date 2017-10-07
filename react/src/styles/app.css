@@ -1024,7 +1024,7 @@ section.container, aside.container {
   max-width: 970px;
 }
 .topic .inside-body {
-  background-color: #fff;
+  background-color: #eee;
   overflow: hidden;
 }
 .topic-cover.edgy {
@@ -1490,9 +1490,9 @@ form.cmd-line select {
 }
 .trl li.trl-item .trl-item-desc {
   color: rgb(85, 85, 85);
-  height: 38px;
   overflow: hidden;
   text-overflow: ellipsis;
+	margin-bottom: 0;
 }
 .trl + nav.text-center {
   margin: 30px 0 -30px;
@@ -2488,9 +2488,6 @@ form.cmd-line .btn[type="submit"] {
   text-indent: -2px;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: normal;
-}
-.trl li.trl-item .trl-item-desc {
-  display: none;
 }
 .social-wrap ul.social-share {
   float: none;

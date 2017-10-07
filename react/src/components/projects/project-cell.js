@@ -16,6 +16,9 @@ import {mediaFileUrl} from '../../utils/helpers';
 //  Strings
 import {projectsStrings} from '../../strings';
 
+// Media files
+import placeholder from '../../images/placeholders/project-placeholder.svg';
+
 class ProjectCell extends Component {
   static propTypes = {
     project: PropTypes.object.isRequired
@@ -23,8 +26,9 @@ class ProjectCell extends Component {
 
   render() {
     const {project} = this.props;
+    const logo = project.logo_url ? mediaFileUrl(project.logo_url) : placeholder
     const style = {
-      backgroundImage: project.logo_url ? `url("${mediaFileUrl(project.logo_url)}")` : null
+      backgroundImage: `url("${logo}")`
     }
 
     return (
@@ -35,7 +39,7 @@ class ProjectCell extends Component {
             <div className="proj-thumb-tint"></div>
           </div>
           <article className="caption">
-            <h2 className="proj-title">{project.name}</h2>
+            <Link to={projectLink(project).url}><h2 className="proj-title">{project.name}</h2></Link>
             <time className="proj-date" dateTime={project.released_at}>{project.released_at}</time>
             <p className="proj-desc">{project.summary}</p>
             <footer>

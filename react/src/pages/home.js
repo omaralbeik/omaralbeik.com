@@ -55,7 +55,7 @@ class Home extends Component {
 
   generateCurrentCourse(course) {
     if (!course) {
-      return null
+      return null;
     }
     return (<CurrentCourse course={course}/>);
   }

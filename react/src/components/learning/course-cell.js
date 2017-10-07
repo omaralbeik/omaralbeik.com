@@ -14,7 +14,7 @@ import {Link} from 'react-router-dom';
 import {courseLink} from '../../links';
 
 // Helpers
-import APIHelper from '../../utils/api-helpers';
+import {mediaFileUrl} from '../../utils/helpers';
 
 // Media files
 import placeholder from '../../images/placeholders/course-placeholder.svg';
@@ -29,7 +29,7 @@ class CourseCell extends Component {
 
   render() {
     const {course} = this.props
-    const logoUrl = course.logo_url ? `${APIHelper.BASE_URL}${course.logo_url}` : placeholder;
+    const logoUrl = course.logo_url ? mediaFileUrl(course.logo_url) : placeholder;
 
     return (
       <li className="course-item">

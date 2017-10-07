@@ -35,6 +35,7 @@ class CourseListing extends Component {
   render() {
     const {courses} = this.props.learning;
     const coursesArray = arrayFromObject(courses)
+    const sortedCoursesArray = coursesArray.sort((c1, c2) => (c1.started_at < c2.started_at))
     return (
       <main className="container-wrap inside-content">
         <section className="container topic">
@@ -43,7 +44,7 @@ class CourseListing extends Component {
             <Breadcrumb links={[learningLink, coursesLink]}/>
           </header>
           <ul className="list-unstyled courses-light">
-            {coursesArray.map(c => (<CourseCell key={c.id} course={c}/>))}
+            {sortedCoursesArray.map(c => (<CourseCell key={c.id} course={c}/>))}
           </ul>
         </section>
       </main>

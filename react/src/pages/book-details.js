@@ -18,6 +18,7 @@ import {learningLink, booksLink, bookLink} from '../links';
 
 // Helpers
 import APIHelper from '../utils/api-helpers';
+import {mediaFileUrl} from '../utils/helpers';
 
 // Media files
 import placeholder from '../images/placeholders/book-placeholder.svg';
@@ -46,6 +47,7 @@ class BookDetails extends Component {
     if (!book) {
       return;
     }
+    const cover = book.cover_url ? mediaFileUrl(book.cover_url) : placeholder
     return (
       <article className="container topic">
         <header className="inside-header row">
@@ -66,7 +68,7 @@ class BookDetails extends Component {
           <Row className="topic-content edgy">
             <Col sm={12}>
               <div className="thb-wrap">
-                <img src={placeholder} alt="Book cover" className="img-responsive"/>
+                <img src={cover} alt="Book cover" className="img-responsive"/>
               </div>
               <div className="topic-free-code">
                 <h2>{learningStrings.review}</h2>
