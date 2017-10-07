@@ -5,11 +5,13 @@ from . import models
 
 
 class ProjectSerializer(serializers.ModelSerializer):
+    type = serializers.SerializerMethodField()
     html_text = serializers.SerializerMethodField()
     logo_url = serializers.SerializerMethodField()
 
     class Meta:
         fields = (
+            'type',
             'id',
             'name',
             'logo_url',
@@ -22,6 +24,9 @@ class ProjectSerializer(serializers.ModelSerializer):
             'tags',
         )
         model = models.Project
+
+    def get_type(self, project):
+        return 'project'
 
     # return project's text as HTML!
     def get_html_text(self, project):

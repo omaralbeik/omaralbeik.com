@@ -4,10 +4,12 @@ from . import models
 
 
 class SlideSerializer(serializers.ModelSerializer):
+    type = serializers.SerializerMethodField()
     image_url = serializers.SerializerMethodField()
 
     class Meta:
         fields = (
+            'type',
             'id',
             'image_url',
             'title',
@@ -17,6 +19,9 @@ class SlideSerializer(serializers.ModelSerializer):
             'order'
         )
         model = models.Slide
+
+    def get_type(self, slide):
+        return 'slide'
 
     # return slide's background image url if available
     def get_image_url(self, slide):

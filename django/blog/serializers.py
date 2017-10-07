@@ -5,10 +5,12 @@ from . import models
 
 
 class PostSerializer(serializers.ModelSerializer):
+    type = serializers.SerializerMethodField()
     html_text = serializers.SerializerMethodField()
 
     class Meta:
         fields = (
+            'type',
             'id',
             'title',
             'summary',
@@ -17,6 +19,9 @@ class PostSerializer(serializers.ModelSerializer):
             'tags',
         )
         model = models.Post
+
+    def get_type(self, post):
+        return 'post'
 
     # return post's text as HTML!
     def get_html_text(self, post):

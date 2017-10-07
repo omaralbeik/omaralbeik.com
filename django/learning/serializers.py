@@ -4,10 +4,12 @@ from . import models
 
 
 class BookSerializer(serializers.ModelSerializer):
+    type = serializers.SerializerMethodField()
     cover_url = serializers.SerializerMethodField()
 
     class Meta:
         fields = (
+            'type',
             'id',
             'name',
             'author',
@@ -20,18 +22,23 @@ class BookSerializer(serializers.ModelSerializer):
         )
         model = models.Book
 
+    def get_type(self, book):
+        return 'book'
+
     # return book's cover url if available!
     def get_cover_url(self, book):
         return book.cover.url if book.cover else ''
 
 
 class SchoolSerializer(serializers.ModelSerializer):
+    type = serializers.SerializerMethodField()
     course_count = serializers.SerializerMethodField()
     courses = serializers.SerializerMethodField()
     logo_url = serializers.SerializerMethodField()
 
     class Meta:
         fields = (
+            'type',
             'id',
             'name',
             'logo_url',
@@ -41,6 +48,9 @@ class SchoolSerializer(serializers.ModelSerializer):
             'courses',
         )
         model = models.School
+
+    def get_type(self, school):
+        return 'school'
 
     # return all courses for school
     def get_courses(self, school):
@@ -57,11 +67,13 @@ class SchoolSerializer(serializers.ModelSerializer):
 
 
 class CourseSerializer(serializers.ModelSerializer):
+    type = serializers.SerializerMethodField()
     school_name = serializers.SerializerMethodField()
     logo_url = serializers.SerializerMethodField()
 
     class Meta:
         fields = (
+            'type',
             'id',
             'title',
             'subtitle',
@@ -78,6 +90,9 @@ class CourseSerializer(serializers.ModelSerializer):
         )
         model = models.Course
 
+    def get_type(self, course):
+        return 'course'
+
     # return course's school name
     def get_school_name(self, course):
         return course.school.name
@@ -86,9 +101,13 @@ class CourseSerializer(serializers.ModelSerializer):
     def get_logo_url(self, course):
         return course.logo.url if course.logo else ''
 
+
 class QuoteSerializer(serializers.ModelSerializer):
+    type = serializers.SerializerMethodField()
+
     class Meta:
         fields = (
+            'type',
             'id',
             'quote',
             'author',
@@ -96,3 +115,6 @@ class QuoteSerializer(serializers.ModelSerializer):
             'tags',
         )
         model = models.Quote
+
+    def get_type(self, quote):
+        return 'quote'
