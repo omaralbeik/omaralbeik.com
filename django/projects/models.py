@@ -28,4 +28,4 @@ class Project(models.Model):
         ordering = ['released_at', 'name']
 
     def __str__(self):
-        return self.name
+        return self.name if self.published else self.name + " (draft)"
