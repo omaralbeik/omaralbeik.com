@@ -105,6 +105,11 @@ table > thead > tr > th, table > tbody > tr > th, table > tfoot > tr > th, table
   padding: 8px;
   vertical-align: top;
 }
+img {
+	user-drag: none;
+	-moz-user-select: none;
+	-webkit-user-drag: none;
+}
 /*=============================== Transitions ===============================*/
 
 .transit, .transit-all, .transit-all * 						{ transition: all 0.25s ease-in-out; }
