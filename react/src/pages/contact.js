@@ -15,6 +15,7 @@ import Countries from '../data/countries';
 
 // Strings
 import {contactStrings} from '../strings';
+import {EMAIL} from '../data/constants';
 
 class Contact extends Component {
   componentDidMount() {
@@ -33,7 +34,7 @@ class Contact extends Component {
           <div className="inside-body">
             <Row>
               <Col sm={12}>
-                <form className="form-horizontal cmd-line" method="post" action="">
+                <form className="form-horizontal cmd-line" method="POST" action={`https://formspree.io/${EMAIL}`}>
                   <div className="cmd-intro">
                     <p>{contactStrings.title1}<br className="hidden-xs"/>{contactStrings.title2}<br/>
                     <br className="visible-xs-block"/>--------------------<span className="hidden-xs">----------------------</span></p>
