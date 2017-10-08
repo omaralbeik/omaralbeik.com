@@ -1,3 +1,5 @@
+import {API_AUTH_TOKEN} from '../data/constants';
+
 /**
  * Common API helper functions.
  */
@@ -9,10 +11,6 @@ class APIHelper {
 
   static get API_URL() {
     return 'https://api.omaralbeik.com/v1/';
-  }
-
-  static get AUTH_TOKEN() {
-    return 'f3916548fc183f4f9c6eacd4cb5f7fb693de8a99';
   }
 
   static get PROJECTS_URL() {
@@ -319,7 +317,7 @@ class APIHelper {
       }
       var headers = new Headers();
       headers.append('Content-Type', 'application/json');
-      headers.append('Authorization', `Token ${APIHelper.AUTH_TOKEN}`);
+      headers.append('Authorization', `Token ${API_AUTH_TOKEN}`);
 
       var init = { method: 'GET', headers: headers};
       fetch(completeUrl, init).then((response) => {
