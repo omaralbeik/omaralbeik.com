@@ -16,4 +16,5 @@ class Slide(models.Model):
         ordering = ['-created_at',]
 
     def __str__(self):
-        return self.title
+        orderedTitle = "{:d} | {}".format(self.order, self.title)
+        return orderedTitle if self.published else orderedTitle + " (draft)"

@@ -19,7 +19,7 @@ class Post(models.Model):
     tags = models.ManyToManyField('tags.Tag', blank=True)
 
     def __str__(self):
-        return self.title
+        return self.title if self.published else self.title + " (draft)"
 
     class Meta:
         ordering = ['-created_at', ]
