@@ -1,2 +1,2 @@
 export const EMAIL = "omaralbeik@gmail.com";
-export const API_AUTH_TOKEN = "f3916548fc183f4f9c6eacd4cb5f7fb693de8a99";
+export const API_AUTH_TOKEN = "3eef2d602c9ba76de3dcc7873be07496902c138e";

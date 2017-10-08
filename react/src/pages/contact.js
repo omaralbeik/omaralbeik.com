@@ -13,6 +13,9 @@ import {contactLink} from '../links';
 // Country list
 import Countries from '../data/countries';
 
+// Media files
+import ascii from '../images/connect-ascii.svg';
+
 // Strings
 import {contactStrings} from '../strings';
 import {EMAIL} from '../data/constants';
@@ -35,6 +38,7 @@ class Contact extends Component {
             <Row>
               <Col sm={12}>
                 <form className="form-horizontal cmd-line" method="POST" action={`https://formspree.io/${EMAIL}`}>
+                  <img src={ascii} className="img-responsive hidden-xs" alt="connect ascii art"/>
                   <div className="cmd-intro">
                     <p>{contactStrings.title1}<br className="hidden-xs"/>{contactStrings.title2}<br/>
                     <br className="visible-xs-block"/>--------------------<span className="hidden-xs">----------------------</span></p>
