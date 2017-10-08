@@ -6,7 +6,7 @@ import {connect} from 'react-redux';
 import * as actions from '../actions';
 
 // Bootstrap components
-import {Col} from 'react-bootstrap';
+import {Col, Row} from 'react-bootstrap';
 
 // Components
 import Breadcrumb from '../components/breadcrumb';
@@ -80,23 +80,21 @@ class TagDetails extends Component {
       return;
     }
     return (
-      <main className="container-wrap inside-content">
-        <section className="container topic">
-          <header className="inside-header row">
-            <h1 className="content-title col-sm-12">{tagLink(tag).title}</h1>\
-            <Breadcrumb links={[tagsLink, tagLink(tag)]}/>
-          </header>
-          <div className="inside-body">
-            <div className="row topic-content edgy">
-              <Col sm={12}>
-                <ul className="list-unstyled trl transit-all">
-                  {items.map((item, index) => (<TagItemCell key={index} item={item}/>))}
-                </ul>
-              </Col>
-            </div>
-          </div>
-        </section>
-      </main>
+      <section className="container topic">
+        <header className="inside-header row">
+          <h1 className="content-title col-sm-12">{tagLink(tag).title}</h1>\
+          <Breadcrumb links={[tagsLink, tagLink(tag)]}/>
+        </header>
+        <div className="inside-body">
+          <Row className="topic-content edgy">
+            <Col sm={12}>
+              <ul className="list-unstyled trl transit-all">
+                {items.map((item, index) => (<TagItemCell key={index} item={item}/>))}
+              </ul>
+            </Col>
+          </Row>
+        </div>
+      </section>
     );
   }
 

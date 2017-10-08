@@ -16,6 +16,7 @@ import CourseDetails from '../pages/course-details';
 import BookListing from '../pages/book-listing';
 import BookDetails from '../pages/book-details';
 import QuoteListing from '../pages/quote-listing';
+import TagListing from '../pages/tag-listing';
 import TagDetails from '../pages/tag-details';
 import About from '../pages/about';
 import Contact from '../pages/contact';
@@ -46,6 +47,7 @@ class Routes extends Component {
 
       <Route exact path={links.quotesLink.url} component={QuoteListing}/>
 
+      <Route exact path={links.tagsLink.url} component={TagListing}/>
       <Route exact path={`${links.tagsLink.url}/:tag_id`} component={TagDetails}/>
 
       <Route exact path={links.aboutLink.url} component={About}/>

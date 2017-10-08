@@ -1428,7 +1428,6 @@ form.cmd-line select {
 
 /*=========================== Book Listing =======================*/
 .book-listing {
-  text-align: center;
   margin-bottom: 30px;
 }
 .book-listing li {
@@ -1450,6 +1449,27 @@ form.cmd-line select {
 .book-listing li > a:hover {
   background-position: center 250px;
   color: #fff;
+}
+
+/*============================= Tags Listing ===========================*/
+.tags-listing {
+	text-align: center;
+	margin: 0;
+}
+.tags-listing li {
+	display: inline-block;
+	margin: 5px;
+	padding: 3px 12px 3px 12px;
+	background-color: #fff;
+	border-radius: 3px;
+	font-size: 12pt;
+	font-family: "Share Tech Mono", monospace;
+}
+.tags-listing li a {
+	color: #373535;
+}
+.tags-listing li a:hover {
+	color: #ff5b28;
 }
 
 /*=========================== Tag Result Listing =======================*/

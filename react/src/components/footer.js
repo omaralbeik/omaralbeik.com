@@ -14,6 +14,7 @@ import {
   blogLink,
   projectsLink,
   learningLink,
+  tagsLink,
   aboutLink,
   contactLink,
   repoLink
@@ -36,6 +37,7 @@ class Footer extends Component {
                     <li><Link to={blogLink.url}>{blogLink.name}</Link></li>
                     <li><Link to={projectsLink.url}>{projectsLink.name}</Link></li>
                     <li><Link to={learningLink.url}>{learningLink.name}</Link></li>
+                    <li><Link to={tagsLink.url}>{tagsLink.name}</Link></li>
                     <li><Link to={aboutLink.url}>{aboutLink.name}</Link></li>
                     <li><Link to={contactLink.url}>{contactLink.name}</Link></li>
                   </ul>
