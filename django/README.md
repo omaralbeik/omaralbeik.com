@@ -1,10 +1,30 @@
-# omaralbeik.com
-Source code for my own website :)
+![omaralbeik.com server logo](https://github.com/omaralbeik/omaralbeik.com/blob/master/django/assets/logo_server.png)
+
+# omaralbeik.com | API Server
+REST API server built using Django and Python3  
+
+## Main Features
+
+- `GET`/`POST`/`PUT`/`DELETE` endpoints using Django REST Framework.
+- Modularized applications:
+  - blog
+  - projects
+  - learning
+  - sliders
+  - tags
+- PostgreSQL or SQLite3.
+- Results pagination.
+- Requests Throttling system.
+- CMS Admin dashboard to edit database entries.
+- Markdown support!
+  - Write text in Markdown and get instant preview in the admin dashboard
+  - Get text as `html` from the API to present in client
+- Shared tagging system!
 
 
 ## Dependencies
 
-#### This project requires Python and Django to build, if they are not installed on your device, you should install them first.
+### This project requires Python and Django to build, if they are not installed on your device, you should install them first.
 
 1. [Python3](https://www.python.org/downloads/)
 2. [Django](https://www.djangoproject.com/)
