@@ -1,21 +1,18 @@
-![omaralbeik.com server logo](https://github.com/omaralbeik/omaralbeik.com/blob/master/assets/screenshot.jpg)
+<p align="center">
+  <img src="https://cdn.rawgit.com/omaralbeik/omaralbeik.com/master/assets/logo.svg" title="Omar Albeik logo">
+</p>
 
-# omaralbeik.com
-Source code for [**my website**](https://omaralbeik.com/) :)
 
-
-## Branches/Folders
+## Directories
 
 ### Server
 REST API server built using Django and Python3  
 
 - Folder: [**django**](https://github.com/omaralbeik/omaralbeik.com/tree/master/django)
-- Branch: [**server**](https://github.com/omaralbeik/omaralbeik.com/tree/server)
 
 ### Client
 Single page web application with React and Redux.
 
-- Folder: [**react**](https://github.com/omaralbeik/omaralbeik.com/tree/master/react)
 - Branch: [**client**](https://github.com/omaralbeik/omaralbeik.com/tree/client)
 
 
