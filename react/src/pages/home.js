@@ -48,7 +48,7 @@ class Home extends Component {
   }
 
   fetchLearningCourses() {
-    APIHelper.fetchLatestCourses().then(courses => {
+    APIHelper.fetchCurrentCourses().then(courses => {
       this.props.loadLearningCourses({type: actions.LOAD_LEARNING_COURSES, courses})
     })
   }
