@@ -22,4 +22,4 @@ class Post(models.Model):
         return self.title if self.published else self.title + " (draft)"
 
     class Meta:
-        ordering = ['-created_at', ]
+        ordering = ['-published_at', '-created_at', ]
