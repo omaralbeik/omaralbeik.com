@@ -51,8 +51,8 @@ class APIHelper {
     return `${this.LEARNING_URL}courses/`;
   }
 
-  static get LATEST_COURSES_URL() {
-    return `${this.COURSES_URL}latest/`;
+  static get CURRENT_COURSES_URL() {
+    return `${this.COURSES_URL}current/`;
   }
 
   static get QUOTES_URL() {
@@ -161,10 +161,10 @@ class APIHelper {
   }
 
   /**
-   * Get the latest course.
+   * Get all current courses.
    */
-  static fetchLatestCourses() {
-    return this._fetchObject(this.LATEST_COURSES_URL);
+  static fetchCurrentCourses() {
+    return this._fetchObject(this.CURRENT_COURSES_URL);
   }
 
   /**
