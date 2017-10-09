@@ -1,7 +1,7 @@
-![omaralbeik.com server logo](https://github.com/omaralbeik/omaralbeik.com/blob/master/django/assets/logo_server.png)
-
-# omaralbeik.com | API Server
-REST API server built using Django and Python3  
+<p align="center">
+  <img src="https://cdn.rawgit.com/omaralbeik/omaralbeik.com/server/django/assets/logo_server.svg" title="Server logo">
+</p>
+ 
 
 ## Main Features
 
