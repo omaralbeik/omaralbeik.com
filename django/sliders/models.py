@@ -1,5 +1,6 @@
 from django.db import models
 
+
 class Slide(models.Model):
     image = models.ImageField(upload_to='sliders', blank=True)
     title = models.CharField(max_length=24)
@@ -13,7 +14,7 @@ class Slide(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
-        ordering = ['-created_at',]
+        ordering = ['order', '-created_at', ]
 
     def __str__(self):
         orderedTitle = "{:d} | {}".format(self.order, self.title)
