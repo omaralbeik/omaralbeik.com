@@ -43,12 +43,12 @@ class CourseViewSet(viewsets.ModelViewSet):
         serializer = serializers.SchoolSerializer(school, many=False)
         return Response(serializer.data)
 
-    # list route to return latest course
-    # .../learning/courses/latest
+    # list route to return current courses
+    # .../learning/courses/current
     @list_route(methods=['get'])
-    def latest(self, request):
-        latest_course = models.Course.objects.all()[:1]
-        serializer = serializers.CourseSerializer(latest_course, many=True)
+    def current(self, request):
+        current_courses = models.Course.objects.filter(current=True)
+        serializer = serializers.CourseSerializer(current_courses, many=True)
         return Response(serializer.data)
 
 class SchoolViewSet(viewsets.ModelViewSet):

@@ -16,7 +16,7 @@ class Book(models.Model):
     tags = models.ManyToManyField('tags.Tag', blank=True)
 
     class Meta:
-        ordering = ['-read_at', 'author', 'name' ]
+        ordering = ['-read_at', 'author', 'name', ]
 
         # assuming same title might be used for many books by many authors
         # the combination of both book name and book author should be unique
@@ -24,7 +24,6 @@ class Book(models.Model):
 
     def __str__(self):
         return self.name
-
 
 
 class School(models.Model):
@@ -51,6 +50,7 @@ class Course(models.Model):
     page_url = models.URLField(blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
+    current = models.BooleanField(default=False)
     started_at = models.DateField(blank=True, null=True)
     graduated_at = models.DateField(blank=True, null=True)
     rating = models.IntegerField(blank=True)
@@ -62,10 +62,10 @@ class Course(models.Model):
     tags = models.ManyToManyField('tags.Tag', blank=True)
 
     class Meta:
-        ordering = ['-graduated_at', '-started_at', 'school', 'title', ]
+        ordering = ['current', '-graduated_at', '-started_at', 'school', 'title', ]
 
     def __str__(self):
-        return self.title
+        return self.title if not self.current else self.title + " (current)"
 
 
 class Quote(models.Model):
