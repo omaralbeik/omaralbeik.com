@@ -1,5 +1,3 @@
-![omaralbeik.com client logo](https://github.com/omaralbeik/omaralbeik.com/blob/master/react/assets/logo_client.png)
-
 <p align="center">
   <img src="https://cdn.rawgit.com/omaralbeik/omaralbeik.com/client/react/assets/logo_client.svg" title="Client logo">
 </p>
