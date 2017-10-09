@@ -6,16 +6,40 @@
 
 ## Table of Contents
 
-* [**Features**](#features)
-* [**Getting Around**](#getting-around)
-* [**Make it Yours**](#make-it-yours)
-* [**Contributing**](#contributing)
-* [**License**](#license)
+- [**Features**](#features)
+- [**Getting Around**](#getting-around)
+- [**Make it Yours**](#make-it-yours)
+- [**Contributing**](#contributing)
+- [**License**](#license)
 
 
 
 ## Features
 
+#### REST API Server
+- `GET` / `POST` / `PUT` / `DELETE` endpoints using Django REST Framework.
+- Modularized applications:
+  - blog
+  - projects
+  - learning
+  - sliders
+  - tags
+- PostgreSQL or SQLite3.
+- Results pagination.
+- Requests Throttling system.
+- CMS Admin dashboard.
+- Markdown support!
+- Shared tagging system.
+
+#### React Application
+- Single page web application using React.
+- Progressive web app (PWA).
+- Fully Written in ES6.
+- Client-side routing using React router.
+- State management using Redux.
+- Google Analytics support.
+- Customizable design.
+- Fully responsive design with the help of Bootstrap.
 
 
 ## Getting Around
