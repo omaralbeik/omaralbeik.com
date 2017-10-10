@@ -7,14 +7,12 @@ import {LinkContainer} from 'react-router-bootstrap';
 import {Button} from "react-bootstrap";
 
 // Components
+import Time from 'react-time';
 import TagList from '../tag-list';
 
 // Routing & Links
 import {Link} from 'react-router-dom';
 import {postLink} from '../../links';
-
-// TimeAgo
-import TimeAgo from 'react-timeago'
 
 // Strings
 import {blogStrings} from '../../strings';
@@ -36,7 +34,7 @@ class PostCell extends Component {
             <h2 className="blog-title">
               <Link to={postLink(post).url}>{post.title}</Link>
             </h2>
-            <TimeAgo className="blog-date" date={post.published_at}></TimeAgo>
+            <Time className="blog-date" value={post.published_at} titleFormat="YYYY/MM/DD HH:mm" relative/>
           </header>
           <div className="blog-item-tags">
             <TagList ids={post.tags} className="tag-list"/>

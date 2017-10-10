@@ -9,6 +9,7 @@ import * as actions from '../actions';
 import {Row, Col} from 'react-bootstrap';
 
 // Components
+import Time from 'react-time';
 import Breadcrumb from '../components/breadcrumb';
 import TagList from '../components/tag-list';
 import SocialShareButtons from '../components/social-share-buttons';
@@ -60,7 +61,7 @@ class BookDetails extends Component {
           <Row className="topic-meta edgy">
             <div className="col-sm-6 topic-date">
               <span>{`${learningStrings.read}: `}</span>
-              <time dateTime={book.read_at}>{book.read_at}</time>
+              <Time value={book.read_at} format="D/M/YYYY"/>
             </div>
             <Col sm={6} className="social-wrap">
               <span>{genericStrings.share}</span>

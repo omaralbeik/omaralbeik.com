@@ -9,6 +9,7 @@ import * as actions from '../actions';
 import {Row, Col} from 'react-bootstrap';
 
 // Components
+import Time from 'react-time';
 import Breadcrumb from '../components/breadcrumb';
 import TagList from '../components/tag-list';
 import SocialShareButtons from '../components/social-share-buttons';
@@ -107,7 +108,7 @@ class ProjectDetails extends Component {
           <Row className="topic-meta edgy">
             <Col sm={6} className="topic-date">
               <span>{`${genericStrings.released}: `}</span>
-              <time dateTime={project.released_at}>{project.released_at}</time>
+              <Time value={project.released_at} format="D/M/YYYY"/>
             </Col>
             <Col sm={6} className="social-wrap">
               <span>{genericStrings.share}</span>
