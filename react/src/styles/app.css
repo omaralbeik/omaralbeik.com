@@ -1620,12 +1620,12 @@ ul.social-share {
 }
 #navbar::after {
 	content: "";
-	background:url(../images/golden-ribbon.png) no-repeat center center;
+	background:url(../images/golden-ribbon.svg) no-repeat center center;
 	display: block;
 	width: 17px;
 	height: 32px;
 	position:absolute;
-	top:-9px;
+	top:-10px;
 	right:0;
 	z-index:1001;
 }
