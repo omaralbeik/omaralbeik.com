@@ -1529,12 +1529,12 @@ ul.social-share {
   float: none;
   margin: -20px 0;
   position: relative;
-  top: 5px;
+  top: 10px;
 }
 .social-share > li {
   padding: 0;
 }
-.social-share > li a {
+.social-share > li .share-button {
   color: #fff;
   font-size: 8pt;
   height: 30px;
@@ -1542,17 +1542,6 @@ ul.social-share {
   padding: 5px;
   width: 30px;
 }
-.social-share > li a svg path,
-.social-share > li a svg path {
-    fill: #fff;
-}
-.fb-bg {  background-color: #3b5998 !important; }
-.tw-bg {  background-color: #1da1f2 !important; }
-.in-bg {  background-color: #0077b5 !important; }
-.gp-bg {  background-color: #dd4b39 !important; }
-.so-bg {  background-color: #f48024 !important; }
-.md-bg {  background-color: #00ab6c !important; }
-.gt-bg {  background-color: #6e5494 !important; } /* #6cc644 */
 
 /*=============================================================================*/
 /*=========================== All Screens Except Mobile =======================*/
@@ -2518,7 +2507,7 @@ form.cmd-line .btn[type="submit"] {
   float: none;
   margin: -20px 0 0;
 }
-.social-wrap ul.social-share li a {
+.social-wrap ul.social-share li .social-button {
   margin: 0 2px;
 }
 
@@ -2541,9 +2530,9 @@ form.cmd-line .btn[type="submit"] {
   margin: -22px 0 0;
 }
 ul.social-share {
-  top: 4px;
+  top: 8px;
 }
-.social-share > li a {
+.social-share > li .social-button {
   color: #fff;
   font-size: 8pt;
   height: 24px;
