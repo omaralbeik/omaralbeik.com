@@ -35,6 +35,10 @@ class ProjectDetails extends Component {
     this.fetchProject();
   }
 
+  componentWillMount() {
+    document.title = projectsLink.documentTitle;
+  }
+
   componentDidMount () {
     window.scrollTo(0, 0)
   }
@@ -97,6 +101,7 @@ class ProjectDetails extends Component {
     if (!project) {
       return;
     }
+    document.title = projectLink(project).documentTitle;
     return (
       <article className="container topic">
         <header className="inside-header row">

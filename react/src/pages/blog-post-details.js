@@ -29,6 +29,10 @@ class BlogPostDetails extends Component {
     this.fetchBlogPost()
   }
 
+  componentWillMount() {
+    document.title = blogLink.documentTitle;
+  }
+
   componentDidMount () {
     window.scrollTo(0, 0)
   }
@@ -44,6 +48,7 @@ class BlogPostDetails extends Component {
     if (!post) {
       return;
     }
+    document.title = postLink(post).documentTitle;
     return (
       <article className="container topic">
         <header className="inside-header row">

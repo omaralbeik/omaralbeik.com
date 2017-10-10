@@ -21,6 +21,10 @@ import {contactStrings} from '../strings';
 import {EMAIL} from '../data/constants';
 
 class Contact extends Component {
+  componentWillMount() {
+    document.title = contactLink.documentTitle;
+  }
+
   componentDidMount() {
     window.scrollTo(0, 0)
   }

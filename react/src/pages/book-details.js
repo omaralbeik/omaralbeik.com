@@ -34,6 +34,10 @@ class BookDetails extends Component {
     this.fetchBook();
   }
 
+  componentWillMount() {
+    document.title = booksLink.documentTitle;
+  }
+
   componentDidMount () {
     window.scrollTo(0, 0)
   }
@@ -49,6 +53,7 @@ class BookDetails extends Component {
     if (!book) {
       return;
     }
+    document.title = bookLink(book).documentTitle;
     const cover = book.cover_url ? mediaFileUrl(book.cover_url) : placeholder
     return (
       <article className="container topic">

@@ -5,6 +5,9 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import * as actions from '../actions';
 
+// Routing & Links
+import {homeLink} from '../links';
+
 // Components
 import Slider from '../components/home/slider';
 import AboutMe from '../components/home/about-me';
@@ -23,6 +26,10 @@ class Home extends Component {
     this.fetchBlogPosts();
     this.fetchProjects();
     this.fetchLearningCourses();
+  }
+
+  componentWillMount() {
+    document.title = homeLink.documentTitle;
   }
 
   componentDidMount () {

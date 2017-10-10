@@ -34,6 +34,10 @@ class CourseDetails extends Component {
     this.fetchCourse();
   }
 
+  componentWillMount() {
+    document.title = coursesLink.documentTitle;
+  }
+
   componentDidMount () {
     window.scrollTo(0, 0)
   }
@@ -49,6 +53,7 @@ class CourseDetails extends Component {
     if (!course) {
       return;
     }
+    document.title = courseLink(course).documentTitle;
     const logoUrl = course.logo_url ? mediaFileUrl(course.logo_url) : placeholder;
     return (
       <article className="container topic">
