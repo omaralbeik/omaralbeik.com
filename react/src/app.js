@@ -22,6 +22,7 @@ import './styles/app.css';
 
 // Strings
 import {genericStrings, homeStrings} from './strings';
+import {DOMAIN_NAME} from './data/constants';
 
 // Helpers
 import APIHelper from './utils/api-helpers';
@@ -49,7 +50,7 @@ class App extends Component {
           <meta name="twitter:title" content={genericStrings.name}/>
           <meta name="twitter:description" content={genericStrings.title}/>
 
-          <meta property="og:url" content="https://omaralbeik.com"/>
+          <meta property="og:url" content={DOMAIN_NAME}/>
           <meta property="og:title" content={genericStrings.name}/>
           <meta property="og:description" content={genericStrings.title}/>
 
