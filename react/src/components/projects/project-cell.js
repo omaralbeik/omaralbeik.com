@@ -6,6 +6,9 @@ import PropTypes from 'prop-types';
 import {LinkContainer} from 'react-router-bootstrap';
 import {Button} from "react-bootstrap";
 
+// Components
+import Time from 'react-time';
+
 // Routing & Links
 import {Link} from 'react-router-dom';
 import {projectLink} from '../../links';
@@ -40,7 +43,7 @@ class ProjectCell extends Component {
           </div>
           <article className="caption">
             <Link to={projectLink(project).url}><h2 className="proj-title">{project.name}</h2></Link>
-            <time className="proj-date" dateTime={project.released_at}>{project.released_at}</time>
+            <Time className="proj-date" value={project.released_at} format="D/M/YYYY"/>
             <p className="proj-desc">{project.summary}</p>
             <footer>
               <LinkContainer to={projectLink(project).url}>

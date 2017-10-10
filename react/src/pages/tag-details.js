@@ -30,6 +30,10 @@ class TagDetails extends Component {
     this.fetchTagBooks();
   }
 
+  componentWillMount() {
+    document.title = tagsLink.documentTitle;
+  }
+
   componentDidMount() {
     window.scrollTo(0, 0)
   }
@@ -79,6 +83,7 @@ class TagDetails extends Component {
     if (!tag) {
       return;
     }
+    document.title = tagLink(tag).documentTitle;
     return (
       <section className="container topic">
         <header className="inside-header row">

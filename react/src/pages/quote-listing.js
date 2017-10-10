@@ -25,6 +25,10 @@ class QuoteListing extends Component {
     this.fetchQuotes();
   }
 
+  componentWillMount() {
+    document.title = quotesLink.documentTitle;
+  }
+
   componentDidMount () {
     window.scrollTo(0, 0)
   }

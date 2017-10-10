@@ -9,6 +9,7 @@ import * as actions from '../actions';
 import {Row, Col} from 'react-bootstrap';
 
 // Components
+import Time from 'react-time';
 import Breadcrumb from '../components/breadcrumb';
 import TagList from '../components/tag-list';
 import SocialShareButtons from '../components/social-share-buttons';
@@ -28,6 +29,10 @@ class BlogPostDetails extends Component {
     this.fetchBlogPost()
   }
 
+  componentWillMount() {
+    document.title = blogLink.documentTitle;
+  }
+
   componentDidMount () {
     window.scrollTo(0, 0)
   }
@@ -43,6 +48,7 @@ class BlogPostDetails extends Component {
     if (!post) {
       return;
     }
+    document.title = postLink(post).documentTitle;
     return (
       <article className="container topic">
         <header className="inside-header row">
@@ -53,7 +59,7 @@ class BlogPostDetails extends Component {
           <Row className="topic-meta edgy">
             <Col sm={6} className="topic-date">
               <span>{`${genericStrings.published}: `}</span>
-              <time dateTime={post.published_at}>{post.published_at}</time>
+              <Time value={post.published_at} format="D/M/YYYY HH:mm"/>
             </Col>
             <Col sm={6} className="social-wrap">
               <span>{genericStrings.share}</span>

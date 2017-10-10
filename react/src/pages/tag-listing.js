@@ -25,6 +25,10 @@ class TagListing extends Component {
     this.fetchTags();
   }
 
+  componentWillMount() {
+    document.title = tagsLink.documentTitle;
+  }
+
   componentDidMount () {
     window.scrollTo(0, 0)
   }

@@ -17,6 +17,10 @@ import cover from '../images/cover-about-demo.jpg';
 import {aboutStrings} from '../strings';
 
 class About extends Component {
+  componentWillMount() {
+    document.title = aboutLink.documentTitle;
+  }
+
   componentDidMount () {
     window.scrollTo(0, 0)
   }

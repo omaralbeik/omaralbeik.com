@@ -25,6 +25,10 @@ class ProjectListing extends Component {
     this.fetchProjects();
   }
 
+  componentWillMount() {
+    document.title = projectsLink.documentTitle;
+  }
+
   componentDidMount () {
     window.scrollTo(0, 0)
   }

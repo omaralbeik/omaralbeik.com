@@ -22,6 +22,10 @@ class CourseListing extends Component {
     this.fetchLearningCourses();
   }
 
+  componentWillMount() {
+    document.title = coursesLink.documentTitle;
+  }
+
   componentDidMount() {
     window.scrollTo(0, 0)
   }
