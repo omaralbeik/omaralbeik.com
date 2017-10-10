@@ -55,6 +55,8 @@ class App extends Component {
 
           <meta name="description" content={homeStrings.bio}/>
           <meta name="keyword" content={genericStrings.keyword}/>
+
+          <meta name="apple-mobile-web-app-title" content={genericStrings.name}/>
         </Helmet>
         <NavigationBar/>
         <Routes/>
