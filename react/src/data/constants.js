@@ -1,3 +1,6 @@
+// Replace this with your domain
+export const DOMAIN_NAME = "https://omaralbeik.com/";
+
 // Replace this with your email address
 // used in the contact form
 export const EMAIL = "omaralbeik@gmail.com";

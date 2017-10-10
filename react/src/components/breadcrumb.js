@@ -6,6 +6,9 @@ import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
 import {homeLink} from '../links';
 
+// Helpers
+import truncate from 'truncate';
+
 class Breadcrumb extends Component {
   static propTypes = {
     links: PropTypes.array.isRequired
@@ -18,7 +21,7 @@ class Breadcrumb extends Component {
         <li key={0}><Link to={homeLink.url}>{homeLink.name}</Link></li>
         {links.map((l,i) => {
           if (i + 1 === links.length) {
-            return (<li key={i+1}>{l.name}</li>);
+            return (<li key={i+1}>{truncate(l.name, 40)}</li>);
           } else {
             return (<li key={i+1}><Link to={l.url}>{l.name}</Link></li>);
           }
