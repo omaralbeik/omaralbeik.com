@@ -11,6 +11,7 @@ import {Row, Col} from 'react-bootstrap';
 // Components
 import Breadcrumb from '../components/breadcrumb';
 import TagList from '../components/tag-list';
+import SocialShareButtons from '../components/social-share-buttons';
 
 // Routing & Links
 import {blogLink, postLink} from '../links';
@@ -38,7 +39,7 @@ class BlogPostDetails extends Component {
     });
   }
 
-  generateBlogPostDetails(post, tags) {
+  generateBlogPostDetails(post) {
     if (!post) {
       return;
     }
@@ -56,7 +57,7 @@ class BlogPostDetails extends Component {
             </Col>
             <Col sm={6} className="social-wrap">
               <span>{genericStrings.share}</span>
-              <ul className="list-unstyled list-inline social-share selective-opacity transit-quick-all"></ul>
+              <SocialShareButtons url={window.location.href} title={post.title} summary={post.summary} tagIds={post.tags}/>
             </Col>
           </Row>
           <Row className="topic-content edgy">
@@ -78,14 +79,14 @@ class BlogPostDetails extends Component {
   }
 
   render() {
-    const {blogPosts, tags} = this.props;
+    const {blogPosts} = this.props;
     const {post_id} = this.props.match.params;
 
     const post = blogPosts[post_id];
 
     return (
       <main className="container-wrap inside-content">
-        {this.generateBlogPostDetails(post, tags)}
+        {this.generateBlogPostDetails(post)}
       </main>
     )
   }

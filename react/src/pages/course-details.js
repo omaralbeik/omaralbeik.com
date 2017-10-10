@@ -11,6 +11,7 @@ import {Row, Col} from 'react-bootstrap';
 // Components
 import Breadcrumb from '../components/breadcrumb';
 import TagList from '../components/tag-list';
+import SocialShareButtons from '../components/social-share-buttons';
 
 // Routing & Links
 import {Link} from 'react-router-dom';
@@ -63,6 +64,7 @@ class CourseDetails extends Component {
             </div>
             <Col sm={6} className="social-wrap">
               <span>{genericStrings.share}</span>
+              <SocialShareButtons url={window.location.href} title={course.title} summary={course.subtitle} tagIds={course.tags}/>
             </Col>
           </Row>
           <Row className="topic-content edgy">
