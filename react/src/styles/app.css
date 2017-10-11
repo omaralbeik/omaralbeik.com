@@ -1325,6 +1325,27 @@ form.cmd-line select {
     text-overflow: '';
 		line-height: normal;
 }
+
+/*============================ Learning page ========================*/
+.learning-link {
+	display: block;
+	text-align: center;
+	padding: 15px;
+	background-color: #fff;
+	margin: 15px 10px 0 10px;
+	border-radius: 5px;
+	font-family: 'Share Tech Mono', monospace;
+	font-size: 12pt;
+}
+
+.learning-link:hover {
+	text-decoration: none;
+	background-color: #ff5b28;
+	color: #fff;
+	font-weight: 600;
+}
+
+
 /*=========================== Course Listing =======================*/
 .course-item {
   border-radius: 5px;
