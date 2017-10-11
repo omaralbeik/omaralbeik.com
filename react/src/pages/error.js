@@ -42,7 +42,7 @@ class Error extends Component {
                     <h2>{errorStrings.error}</h2>
                     <h3>{error}</h3>
                     <p>
-                      <LinkContainer to={homeLink.url}>
+                      <LinkContainer exact to={homeLink.url}>
                         <Button bsStyle="primary" className="btn-wide">{errorStrings.backHome}</Button>
                       </LinkContainer>
                     </p>
