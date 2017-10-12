@@ -49,6 +49,30 @@ class CourseDetails extends Component {
     });
   }
 
+  generateReview(review) {
+    if (!review) {
+      return;
+    }
+    return (
+      <div>
+        <h2>{learningStrings.review}</h2>
+        <p>{review}</p>
+      </div>
+    )
+  }
+
+  generateSummaryLink(url) {
+    if (!url) {
+      return;
+    }
+    return (
+      <div>
+        <h2>{learningStrings.summary}</h2>
+        <Link to={url} target="_blank" rel="noopener">{url}</Link>
+      </div>
+    );
+  }
+
   generateCourseDetails(course, tags) {
     if (!course) {
       return;
@@ -87,8 +111,9 @@ class CourseDetails extends Component {
               <div className="topic-free-code">
                 <h2>{genericStrings.description}</h2>
                 <p>{course.description}</p>
-                <h2>{learningStrings.review}</h2>
-                <p>{course.review}</p>
+                {this.generateReview(course.review)}
+                <br/>
+                {this.generateSummaryLink(course.summary_url)}
               </div>
             </Col>
           </Row>
