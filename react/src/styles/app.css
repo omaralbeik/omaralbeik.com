@@ -1396,6 +1396,7 @@ form.cmd-line select {
 }
 .quote-listing .quote-item header .quoted-name {
   font-weight: bold;
+	color: #fff;
 }
 .quote-listing .quote-item header .quoted-name a {
   color: #fff;
@@ -1572,6 +1573,17 @@ ul.social-share {
 /*ul.nav li.dropdown:hover ul.dropdown-menu {
   display: block;
 }*/
+.dropdown-menu {
+	padding: 0;
+}
+.dropdown-menu li a {
+	padding: 10px 15px;
+	font-size: 13pt;
+	font-family: "Share Tech Mono",monospace;
+}
+.dropdown-menu li a:hover {
+	color: #ff5b28;
+}
 #header {
   position: relative;
   z-index: 1000;
@@ -1973,7 +1985,7 @@ nav.navbar {
 .nav-flatusual nav.navbar .navbar-nav > li > a {
   color: #373535;
   font-family: "Share Tech Mono",monospace;
-  font-size: 12pt;
+  font-size: 14pt;
   font-weight: normal;
   letter-spacing: 0;
   padding: 7px 15px;
@@ -2011,6 +2023,11 @@ nav.navbar {
   padding: 0 3px;
   position: relative;
   width: 40px;
+}
+.dropdown-menu li a {
+	padding: 15px 15px;
+	font-size: 13pt;
+	font-family: "Share Tech Mono",monospace;
 }
 /*=============================== Phone: Slider ===============================*/
 #slider {

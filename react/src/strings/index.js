@@ -41,6 +41,7 @@ export const homeStrings = {
 export const learningStrings = {
   courseDetails: "Course Details",
   review: "Review",
+  summary: "Summary URL",
   purchaseUrl: "Purchase URL",
   coursePage: "Course Page",
   read: "Read"
