@@ -70,9 +70,9 @@ class Home extends Component {
   render() {
     const {sliders, blogPosts, projects, learning} = this.props;
     const {courses} = learning;
-    const course = arrayFromObject(courses)[0]
-    const latestPostsArray = arrayFromObject(blogPosts).slice(0, 2);
-    const latestProjectsArray = arrayFromObject(projects).slice(0,3);
+    const course = arrayFromObject(courses).filter(c => (c.current))[0]
+    const latestPostsArray = arrayFromObject(blogPosts).sort((p1, p2) => (new Date(p2.published_at).getTime() - new Date(p1.published_at).getTime())).slice(0, 2);
+    const latestProjectsArray = arrayFromObject(projects).sort((p1, p2) => (new Date(p2.released_at).getTime() - new Date(p1.released_at).getTime())).slice(0,3);
     return (
       <div>
         <Slider sliders={arrayFromObject(sliders)}/>

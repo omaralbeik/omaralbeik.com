@@ -41,7 +41,7 @@ class TagListing extends Component {
 
   render() {
     const {tags} = this.props;
-    const tagsArray = arrayFromObject(tags)
+    const tagsArray = arrayFromObject(tags).sort((t1, t2) => (t1.name.localeCompare(t2.name)));
     return (
       <main className="container-wrap inside-content">
         <section className="container topic">
