@@ -76,7 +76,7 @@ class CourseDetails extends Component {
           <Row className="topic-content edgy">
             <Col sm={12}>
               <div className="thb-wrap">
-                <Link to={course.page_url} className="thb-title" target="_blank" rel="noopener">
+                <Link to={course.school_url} className="thb-title" target="_blank" rel="noopener">
                   <img src={logoUrl} alt={course.title} className="img-responsive"/>
                   <span>{`${genericStrings.by} `}{course.school_name}</span>
                 </Link>
