@@ -81,6 +81,7 @@ class CourseSerializer(serializers.ModelSerializer):
             'description',
             'logo_url',
             'page_url',
+            'summary_url',
             'current',
             'started_at',
             'graduated_at',
