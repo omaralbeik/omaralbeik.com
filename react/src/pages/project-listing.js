@@ -42,7 +42,8 @@ class ProjectListing extends Component {
   render() {
     const {projects} = this.props;
     const projectsArray = arrayFromObject(projects)
-    const sortedProjects = projectsArray.sort((p1, p2) => (p1.released_at < p2.released_at))
+    const sortedProjects = projectsArray.sort((p1, p2) => (new Date(p2.released_at).getTime() - new Date(p1.released_at).getTime()));
+
     return (
       <main className="container-wrap inside-content">
         <section className="container">

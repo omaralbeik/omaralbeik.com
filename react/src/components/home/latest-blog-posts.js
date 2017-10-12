@@ -19,7 +19,7 @@ class LatestBlogPosts extends Component {
 
   render() {
     const {posts} = this.props;
-    const sortedPosts = posts.sort((p1, p2) => (p1.published_at < p2.published_at))
+    const sortedPosts = posts.sort((p1, p2) => (new Date(p2.published_at).getTime() - new Date(p1.published_at).getTime()))
     return (
       <div className="container-wrap">
         <section id="blogs-sec" className="container">
