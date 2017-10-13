@@ -30,7 +30,7 @@ class LatestBlogPosts extends Component {
           </header>
           <div className="sec-body">
             <ul className="home-blog-list list-unstyled inline-list row">
-              {sortedPosts.map((p, i) => (<PostCell key={p.id} mobHidden={i < 1} post={p}/>))}
+              {sortedPosts.map((p, i) => (<PostCell key={p.id} mobHidden={i > 0} post={p}/>))}
             </ul>
           </div>
           <footer className="sec-footer">
