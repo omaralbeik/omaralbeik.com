@@ -968,7 +968,7 @@ section.container, aside.container {
 }
 /*=============================== Inside Content ===============================*/
 .inside-content {
-  background: rgba(0, 0, 0, 0) url("../images/bg-inside.jpg") repeat-x scroll center top;
+  background: rgba(0, 0, 0, 0) url("../images/bg-inside.png") repeat-x scroll center top;
 }
 .inside-content .container {
   margin: 0 auto 70px;
