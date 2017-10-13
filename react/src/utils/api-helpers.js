@@ -320,9 +320,23 @@ class APIHelper {
       headers.append('Authorization', `Token ${API_AUTH_TOKEN}`);
 
       var init = { method: 'GET', headers: headers};
-      fetch(completeUrl, init).then((response) => {
-        return response.json();
-      }).then((data) => {
+      fetch(completeUrl, init).then(response => {
+        if (!response.ok) {
+          response.json().then(data => {
+            reject(data.detail || "Something went wrong");
+          }).catch(error => {
+            reject(error.toString());
+          });
+        } else {
+          return response.json();
+        }
+      }).then(data => {
+        // No data!
+        if (!data) {
+          reject('No Results');
+          return;
+        }
+
         // response is an array of objects
         if (Array.isArray(data)) {
           resolve(data);
@@ -345,8 +359,8 @@ class APIHelper {
         // response is not valid
         reject('No Results');
 
-      }).catch((error) => {
-        reject(error);
+      }).catch(error => {
+        reject(error.toString());
       });
     });
   }

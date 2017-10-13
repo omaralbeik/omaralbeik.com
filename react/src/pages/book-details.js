@@ -13,6 +13,7 @@ import Time from 'react-time';
 import Breadcrumb from '../components/breadcrumb';
 import TagList from '../components/tag-list';
 import SocialShareButtons from '../components/social-share-buttons';
+import Error from '../pages/error';
 
 // Routing & Links
 import {Link} from 'react-router-dom';
@@ -31,6 +32,7 @@ import {genericStrings, learningStrings} from '../strings';
 class BookDetails extends Component {
   constructor(props) {
     super(props);
+    this.state = { error: null };
     this.fetchBook();
   }
 
@@ -46,6 +48,8 @@ class BookDetails extends Component {
     const {book_id} = this.props.match.params;
     APIHelper.fetchBook(book_id).then(book => {
       this.props.addLearningBook({type: actions.ADD_LEARNING_BOOK, book});
+    }).catch(error => {
+      this.setState({error: error});
     });
   }
 
@@ -95,6 +99,13 @@ class BookDetails extends Component {
   }
 
   render() {
+    const {error} = this.state;
+    if (error) {
+      return (
+        <Error error={error}/>
+      );
+    }
+
     const {books} = this.props.learning ;
     const {book_id} = this.props.match.params;
     const book = books[book_id];

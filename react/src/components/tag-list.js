@@ -18,7 +18,7 @@ class TagList extends Component {
   generateTags(ids, tags) {
     if (ids && tags) {
       const sortedTags = ids.map(t => (tags[t])).sort((t1, t2) => (t1.name.localeCompare(t2.name)));
-      return sortedTags.map(t => (<li key={t.id}><Link to={tagLink(t).url}>#{t.name}</Link></li>));
+      return sortedTags.map(t => (t ? <li key={t.id}><Link to={tagLink(t).url}>#{t.name}</Link></li> : null));
     }
   }
 

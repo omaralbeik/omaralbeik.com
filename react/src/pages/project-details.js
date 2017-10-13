@@ -13,6 +13,7 @@ import Time from 'react-time';
 import Breadcrumb from '../components/breadcrumb';
 import TagList from '../components/tag-list';
 import SocialShareButtons from '../components/social-share-buttons';
+import Error from '../pages/error';
 
 // Routing & Links
 import {Link} from 'react-router-dom';
@@ -32,6 +33,7 @@ import {projectsStrings, genericStrings} from '../strings';
 class ProjectDetails extends Component {
   constructor(props) {
     super(props);
+    this.state = { error: null };
     this.fetchProject();
   }
 
@@ -47,6 +49,8 @@ class ProjectDetails extends Component {
     const {project_id} = this.props.match.params;
     APIHelper.fetchProject(project_id).then(project => {
       this.props.addProject({type: actions.ADD_PROJECT, project});
+    }).catch(error => {
+      this.setState({error: error});
     });
   }
 
@@ -139,6 +143,13 @@ class ProjectDetails extends Component {
   }
 
   render() {
+    const {error} = this.state;
+    if (error) {
+      return (
+        <Error error={error}/>
+      );
+    }
+
     const {projects, tags} = this.props;
     const {project_id} = this.props.match.params;
 
