@@ -331,6 +331,12 @@ class APIHelper {
           return response.json();
         }
       }).then(data => {
+        // No data!
+        if (!data) {
+          reject('No Results');
+          return;
+        }
+
         // response is an array of objects
         if (Array.isArray(data)) {
           resolve(data);
