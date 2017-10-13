@@ -13,6 +13,7 @@ import Time from 'react-time';
 import Breadcrumb from '../components/breadcrumb';
 import TagList from '../components/tag-list';
 import SocialShareButtons from '../components/social-share-buttons';
+import Error from '../pages/error';
 
 // Routing & Links
 import {Link} from 'react-router-dom';
@@ -31,6 +32,7 @@ import {genericStrings, learningStrings} from '../strings';
 class CourseDetails extends Component {
   constructor(props) {
     super(props);
+    this.state = { error: null };
     this.fetchCourse();
   }
 
@@ -46,6 +48,8 @@ class CourseDetails extends Component {
     const {course_id} = this.props.match.params;
     APIHelper.fetchCourse(course_id).then(course => {
       this.props.addLearningCourse({type: actions.ADD_LEARNING_COURSE, course});
+    }).catch(error => {
+      this.setState({error: error});
     });
   }
 
@@ -126,6 +130,13 @@ class CourseDetails extends Component {
   }
 
   render() {
+    const {error} = this.state;
+    if (error) {
+      return (
+        <Error error={error}/>
+      );
+    }
+
     const {tags} = this.props;
     const {courses} = this.props.learning ;
     const {course_id} = this.props.match.params;
