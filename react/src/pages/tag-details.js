@@ -11,6 +11,7 @@ import {Col, Row} from 'react-bootstrap';
 // Components
 import Breadcrumb from '../components/breadcrumb';
 import TagItemCell from '../components/tags/tag-item-cell';
+import Error from '../pages/error';
 
 // Routing & Links
 import {tagsLink, tagLink} from '../links';
@@ -22,6 +23,8 @@ import {arrayFromObject} from '../utils/helpers';
 class TagDetails extends Component {
   constructor(props) {
     super(props);
+    this.state = { error: null };
+    this.fetchTag()
     this.fetchTagProjects();
     this.fetchTagPosts();
     // this.fetchTagSchools();
@@ -36,6 +39,15 @@ class TagDetails extends Component {
 
   componentDidMount() {
     window.scrollTo(0, 0)
+  }
+
+  fetchTag() {
+    const {tag_id} = this.props.match.params;
+    APIHelper.fetchTag(tag_id).then(tag => {
+      this.props.addTag({type: actions.ADD_TAG, tag});
+    }).catch(error => {
+      this.setState({error: error});
+    });
   }
 
   fetchTagProjects() {
@@ -104,6 +116,13 @@ class TagDetails extends Component {
   }
 
   render() {
+    const {error} = this.state;
+    if (error) {
+      return (
+        <Error error={error}/>
+      );
+    }
+
     const {tags} = this.props;
     var {tag_id} = this.props.match.params;
     tag_id = parseInt(tag_id, 0);
@@ -139,6 +158,7 @@ function mapStateToProps({tags, blogPosts, projects, learning}) {
 
 function mapDispatchToProps(dispatch) {
   return {
+    addTag: tag => dispatch(actions.addTag(tag)),
     loadBlogPosts: posts => dispatch(actions.loadBlogPosts(posts)),
     loadProjects: projects => dispatch(actions.loadProjects(projects)),
     // loadLearningSchools: schools => dispatch(actions.loadLearningSchools(schools)),
