@@ -1456,6 +1456,7 @@ form.cmd-line select {
 /*=========================== Book Listing =======================*/
 .book-listing {
   margin-bottom: 30px;
+	text-align: center;
 }
 .book-listing li {
   padding: 20px;
@@ -1466,9 +1467,10 @@ form.cmd-line select {
   color: transparent;
   display: block;
   font-weight: bold;
-  height: 240px;
+	height: 185px;
+	overflow: hidden;
   letter-spacing: 0;
-  min-width: 120px;
+	width: 120px;
   padding: 40px 10px;
   text-transform: capitalize;
 	background-image: url("../images/placeholders/book-placeholder.svg");
