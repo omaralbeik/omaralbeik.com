@@ -8,7 +8,6 @@ import {LinkContainer} from 'react-router-bootstrap';
 
 // Components
 import TagList from '../tag-list';
-import LazyLoad from 'react-lazy-load';
 
 // Routing & Links
 import {Link} from 'react-router-dom';
@@ -37,12 +36,10 @@ class CourseCell extends Component {
         <Row>
           <Col sm={4}>
             <div className="course-emblem">
-              <LazyLoad>
-                <picture className="hidden-xs">
-                  <source srcSet={logoUrl} media="(min-width: 768px)"/>
-                  <img srcSet={logoUrl} src={logoUrl} alt={course.title}/>
-                </picture>
-              </LazyLoad>
+              <picture className="hidden-xs">
+                <source srcSet={logoUrl} media="(min-width: 768px)"/>
+                <img srcSet={logoUrl} src={logoUrl} alt={course.title}/>
+              </picture>
             </div>
           </Col>
           <article className="col-sm-8">

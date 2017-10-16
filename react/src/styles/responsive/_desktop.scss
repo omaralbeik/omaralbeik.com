@@ -1,0 +1,48 @@
+@import '../colors';
+@import '../fonts';
+
+$information-desktop: "(min-width: 992px) and (max-width: 1199px)";
+
+@media #{$information-desktop} {
+	#slider {
+		height: 500px;
+		margin: 0 0 50px;
+	}
+
+	.slide-item {
+		height: 500px;
+	}
+
+	.slide-text {
+		height: 195px;
+		top: 25%;
+	}
+
+	.slick-dots {
+		bottom: 25px;
+	}
+
+	.nav-flatusual nav.navbar #navbar .navbar-form {
+		padding: 0;
+		width: 540px;
+	}
+
+	.thumbnail .caption .proj-title {
+		font-size: 15pt;
+		letter-spacing: -1px;
+		text-indent: -1px;
+	}
+
+	.thumbnails-hfixed .thumbnail .caption p {
+		height: 76px;
+		overflow: hidden;
+	}
+
+	.inside-content .thumbnail {
+		margin: 0 auto 30px;
+	}
+
+	.book-listing li > a {
+		height: 185px;
+	}
+}
