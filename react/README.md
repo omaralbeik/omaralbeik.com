@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://cdn.rawgit.com/omaralbeik/omaralbeik.com/client/react/assets/logo_client.svg" title="Client logo">
+  <img src="https://cdn.rawgit.com/omaralbeik/omaralbeik.com/client/react/assets/client-banner.svg" title="Client logo">
 </p>
 
 
