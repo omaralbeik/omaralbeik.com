@@ -35,10 +35,12 @@ class CourseCell extends Component {
       <li className="course-item">
         <Row>
           <Col sm={4}>
-            <div className="course-emblem"><picture className="hidden-xs">
-              <source srcSet={logoUrl} media="(min-width: 768px)"/>
-              <img srcSet={logoUrl} src={logoUrl} alt={course.title}/>
-            </picture></div>
+            <div className="course-emblem">
+              <picture className="hidden-xs">
+                <source srcSet={logoUrl} media="(min-width: 768px)"/>
+                <img srcSet={logoUrl} src={logoUrl} alt={course.title}/>
+              </picture>
+            </div>
           </Col>
           <article className="col-sm-8">
             <h2 className="course-title">{course.title}</h2>

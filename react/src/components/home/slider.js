@@ -35,7 +35,7 @@ class Slider extends Component {
   render() {
     const {sliders} = this.props;
     return (
-      <div className="flat-bullets hidden-xs">
+      <div className="flat-bullets">
         {this.generateSlider(sliders)}
       </div>
     );

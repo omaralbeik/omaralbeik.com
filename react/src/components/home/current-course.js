@@ -8,7 +8,6 @@ import {Row, Col, Button} from 'react-bootstrap';
 
 // Components
 import TagList from '../tag-list';
-import LazyLoad from 'react-lazy-load';
 
 // Routing & Links
 import {Link} from 'react-router-dom';
@@ -42,12 +41,10 @@ class CurrentCourse extends Component {
             <Row>
               <Col sm={4} md={4} lg={3}>
                 <div className="course-emblem">
-                  <LazyLoad>
-                    <picture>
-                      <source srcSet={logoUrl} media="(min-width: 768px)"/>
-                      <img srcSet={logoUrl} src={logoUrl} alt={course.title} className="hidden-xs"/>
-                    </picture>
-                  </LazyLoad>
+                  <picture  className="hidden-xs">
+                    <source srcSet={logoUrl} media="(min-width: 768px)"/>
+                    <img srcSet={logoUrl} src={logoUrl} alt={course.title}/>
+                  </picture>
                 </div>
               </Col>
               <Col sm={8} md={8} lg={9}>
