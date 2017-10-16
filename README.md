@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://cdn.rawgit.com/omaralbeik/omaralbeik.com/master/assets/logo.svg" title="Omar Albeik logo">
+  <img src="https://cdn.rawgit.com/omaralbeik/omaralbeik.com/master/assets/banner.svg" title="Omar Albeik logo">
 </p>
 
 
