@@ -11,7 +11,7 @@ import {
   medium
 } from '../social-links';
 
-class SocialLinks extends Component {
+class SocialButtons extends Component {
   render() {
     return (
       <ul className="list-unstyled inline-list">
@@ -45,4 +45,4 @@ class SocialLinks extends Component {
   };
 }
 
-export default SocialLinks;
+export default SocialButtons;

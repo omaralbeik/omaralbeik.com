@@ -15,6 +15,7 @@ import BlogPostListing from '../pages/blog-post-listing';
 import BlogPostDetails from '../pages/blog-post-details';
 import ProjectListing from '../pages/project-listing';
 import ProjectDetails from '../pages/project-details';
+import Learning from '../pages/learning';
 import CourseListing from '../pages/course-listing';
 import CourseDetails from '../pages/course-details';
 import BookListing from '../pages/book-listing';
@@ -63,7 +64,7 @@ class Routes extends Component {
         <Route exact path={links.projectsLink.url} component={ProjectListing}/>
         <Route exact path={`${links.projectsLink.url}/:project_id`} component={ProjectDetails}/>
 
-        <Route exact path={links.learningLink.url} render={() => (<Error error={errorStrings.underConstruction}/>)}/>
+        <Route exact path={links.learningLink.url} component={Learning}/>
 
         <Route exact path={links.coursesLink.url} component={CourseListing}/>
         <Route exact path={`${links.coursesLink.url}/:course_id`} component={CourseDetails}/>

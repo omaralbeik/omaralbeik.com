@@ -48,6 +48,7 @@ class Course(models.Model):
     description = models.TextField(blank=True)
     logo = models.ImageField(upload_to='courses', blank=True)
     page_url = models.URLField(blank=True)
+    summary_url = models.URLField(blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
     current = models.BooleanField(default=False)

@@ -1,12 +1,15 @@
 export const genericStrings = {
   name: "Omar Albeik",
+  title: "Portfolio, Blog and Personal Website",
+  twitter: "@omaralbeik",
   published: "Published",
   share: "Share",
   by: "by",
   Read: "Read",
   started: "Started",
   description: "Description",
-  released: "Released"
+  released: "Released",
+  keyword: "Omar, Albeik, Omar Albeik, Software, AI, Web, Developer, Open Source, Istanbul"
 }
 
 export const errorStrings = {
@@ -38,6 +41,7 @@ export const homeStrings = {
 export const learningStrings = {
   courseDetails: "Course Details",
   review: "Review",
+  summary: "Summary URL",
   purchaseUrl: "Purchase URL",
   coursePage: "Course Page",
   read: "Read"

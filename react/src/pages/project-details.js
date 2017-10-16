@@ -9,8 +9,11 @@ import * as actions from '../actions';
 import {Row, Col} from 'react-bootstrap';
 
 // Components
+import Time from 'react-time';
 import Breadcrumb from '../components/breadcrumb';
 import TagList from '../components/tag-list';
+import SocialShareButtons from '../components/social-share-buttons';
+import Error from '../pages/error';
 
 // Routing & Links
 import {Link} from 'react-router-dom';
@@ -30,7 +33,12 @@ import {projectsStrings, genericStrings} from '../strings';
 class ProjectDetails extends Component {
   constructor(props) {
     super(props);
+    this.state = { error: null };
     this.fetchProject();
+  }
+
+  componentWillMount() {
+    document.title = projectsLink.documentTitle;
   }
 
   componentDidMount () {
@@ -41,6 +49,8 @@ class ProjectDetails extends Component {
     const {project_id} = this.props.match.params;
     APIHelper.fetchProject(project_id).then(project => {
       this.props.addProject({type: actions.ADD_PROJECT, project});
+    }).catch(error => {
+      this.setState({error: error});
     });
   }
 
@@ -95,6 +105,7 @@ class ProjectDetails extends Component {
     if (!project) {
       return;
     }
+    document.title = projectLink(project).documentTitle;
     return (
       <article className="container topic">
         <header className="inside-header row">
@@ -106,11 +117,11 @@ class ProjectDetails extends Component {
           <Row className="topic-meta edgy">
             <Col sm={6} className="topic-date">
               <span>{`${genericStrings.released}: `}</span>
-              <time dateTime={project.released_at}>{project.released_at}</time>
+              <Time value={project.released_at} format="D/M/YYYY"/>
             </Col>
             <Col sm={6} className="social-wrap">
               <span>{genericStrings.share}</span>
-              <ul className="list-unstyled list-inline social-share selective-opacity transit-quick-all"></ul>
+              <SocialShareButtons url={window.location.href} title={project.name} summary={project.summary} tagIds={project.tags}/>
             </Col>
           </Row>
           <Row className="topic-content edgy">
@@ -132,6 +143,13 @@ class ProjectDetails extends Component {
   }
 
   render() {
+    const {error} = this.state;
+    if (error) {
+      return (
+        <Error error={error}/>
+      );
+    }
+
     const {projects, tags} = this.props;
     const {project_id} = this.props.match.params;
 

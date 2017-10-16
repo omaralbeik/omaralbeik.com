@@ -2,7 +2,7 @@
 import React, {Component} from 'react';
 
 // Bootstrap components
-import {Navbar, Nav, NavItem} from 'react-bootstrap';
+import {Navbar, Nav, NavItem, NavDropdown} from 'react-bootstrap';
 import {LinkContainer} from 'react-router-bootstrap';
 
 // Routing & Links
@@ -12,6 +12,9 @@ import {
   blogLink,
   projectsLink,
   learningLink,
+  coursesLink,
+  booksLink,
+  quotesLink,
   aboutLink,
   contactLink
 } from '../links';
@@ -20,7 +23,25 @@ import {
 import logo from '../images/logo.svg';
 
 class NavigationBar extends Component {
+  constructor(props){
+    super(props);
+    this.state = { isOpen: false };
+  }
+
+  openDropDown() {
+    this.setState({ isOpen: true });
+  }
+
+  closeDropDown() {
+    this.setState({ isOpen: false });
+  }
+
+  toggleDropDown() {
+    this.setState({ isOpen: !this.state.isOpen });
+  }
+
   render() {
+    const {isOpen} = this.state;
     return (
       <div className="nav-wrap nav-flatusual transit-all" id="header">
         <Navbar collapseOnSelect>
@@ -36,12 +57,23 @@ class NavigationBar extends Component {
             </Navbar.Header>
             <Navbar.Collapse>
               <Nav id="navbar" pullRight>
-                  <LinkContainer exact to={homeLink.url}><NavItem>{homeLink.name}</NavItem></LinkContainer>
-                  <LinkContainer to={blogLink.url}><NavItem>{blogLink.name}</NavItem></LinkContainer>
-                  <LinkContainer to={projectsLink.url}><NavItem>{projectsLink.name}</NavItem></LinkContainer>
-                  <LinkContainer to={learningLink.url}><NavItem>{learningLink.name}</NavItem></LinkContainer>
-                  <LinkContainer to={aboutLink.url}><NavItem>{aboutLink.name}</NavItem></LinkContainer>
-                  <LinkContainer to={contactLink.url}><NavItem>{contactLink.name}</NavItem></LinkContainer>
+                  <LinkContainer eventKey="1" exact to={homeLink.url}><NavItem>{homeLink.name}</NavItem></LinkContainer>
+                  <LinkContainer eventKey="2" to={blogLink.url}><NavItem>{blogLink.name}</NavItem></LinkContainer>
+                  <LinkContainer eventKey="3" to={projectsLink.url}><NavItem>{projectsLink.name}</NavItem></LinkContainer>
+                  <LinkContainer eventKey="4" to={learningLink.url}
+                    open={isOpen}
+                    onClick={e => {e.preventDefault()}}
+                    onMouseEnter={_ => {this.openDropDown()}}
+                    onMouseLeave={_ => {this.closeDropDown()}}
+                    onToggle={_ => {this.toggleDropDown()}}>
+                    <NavDropdown title={learningLink.name} id="nav-dropdown">
+                      <LinkContainer eventKey="4.1" to={coursesLink.url} onClick={_ => {this.closeDropDown()}}><NavItem>{coursesLink.name}</NavItem></LinkContainer>
+                      <LinkContainer eventKey="4.2" to={booksLink.url} onClick={_ => {this.closeDropDown()}}><NavItem>{booksLink.name}</NavItem></LinkContainer>
+                      <LinkContainer eventKey="4.3" to={quotesLink.url} onClick={_ => {this.closeDropDown()}}><NavItem>{quotesLink.name}</NavItem></LinkContainer>
+                    </NavDropdown>
+                  </LinkContainer>
+                  <LinkContainer eventKey="5" to={aboutLink.url}><NavItem>{aboutLink.name}</NavItem></LinkContainer>
+                  <LinkContainer eventKey="6" to={contactLink.url}><NavItem>{contactLink.name}</NavItem></LinkContainer>
               </Nav>
             </Navbar.Collapse>
         </Navbar>

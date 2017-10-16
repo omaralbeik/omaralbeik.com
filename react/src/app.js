@@ -5,6 +5,9 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import * as actions from './actions';
 
+// Helmet
+import {Helmet} from "react-helmet";
+
 // Components
 import NavigationBar from './components/navigation-bar';
 import Footer from './components/footer';
@@ -17,9 +20,12 @@ import Routes from './routes';
 import './styles/bootstrap.css';
 import './styles/app.css';
 
+// Strings
+import {genericStrings, homeStrings} from './strings';
+import {DOMAIN_NAME} from './data/constants';
+
 // Helpers
 import APIHelper from './utils/api-helpers';
-
 
 class App extends Component {
   constructor(props) {
@@ -36,6 +42,23 @@ class App extends Component {
   render() {
     return (
       <div id="main" className="omaralbeik">
+        <Helmet>
+          <meta name="twitter:site" content={genericStrings.twitter}/>
+          <meta name="twitter:creator" content={genericStrings.twitter}/>
+
+          <meta name="twitter:card" content="summary_large_image"/>
+          <meta name="twitter:title" content={genericStrings.name}/>
+          <meta name="twitter:description" content={genericStrings.title}/>
+
+          <meta property="og:url" content={DOMAIN_NAME}/>
+          <meta property="og:title" content={genericStrings.name}/>
+          <meta property="og:description" content={genericStrings.title}/>
+
+          <meta name="description" content={homeStrings.bio}/>
+          <meta name="keyword" content={genericStrings.keyword}/>
+
+          <meta name="apple-mobile-web-app-title" content={genericStrings.name}/>
+        </Helmet>
         <NavigationBar/>
         <Routes/>
         <Footer/>

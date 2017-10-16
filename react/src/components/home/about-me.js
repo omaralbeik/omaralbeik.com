@@ -12,7 +12,7 @@ import SocialButtons from "../social-buttons";
 import {contactLink} from '../../links';
 
 // Media files
-import omar from '../../images/omar-pic.gif';
+import omar from '../../images/omar-pic.jpg';
 
 // Strings
 import {genericStrings, homeStrings} from '../../strings';

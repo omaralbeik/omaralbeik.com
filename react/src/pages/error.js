@@ -6,12 +6,19 @@ import PropTypes from 'prop-types';
 import {Col, Button} from 'react-bootstrap';
 import {LinkContainer} from 'react-router-bootstrap';
 
+// Routing & Links
+import {homeLink} from '../links';
+
 // Strings
 import {errorStrings} from '../strings';
 
 class Error extends Component {
   static propTypes = {
     error: PropTypes.string,
+  }
+
+  componentWillMount() {
+    document.title = homeLink.documentTitle;
   }
 
   componentDidMount() {
@@ -35,7 +42,7 @@ class Error extends Component {
                     <h2>{errorStrings.error}</h2>
                     <h3>{error}</h3>
                     <p>
-                      <LinkContainer to="/">
+                      <LinkContainer exact to={homeLink.url}>
                         <Button bsStyle="primary" className="btn-wide">{errorStrings.backHome}</Button>
                       </LinkContainer>
                     </p>

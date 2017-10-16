@@ -19,7 +19,7 @@ class LatestProjects extends Component {
 
   render() {
     const {projects} = this.props;
-    const sortedProjects = projects.sort((p1, p2) => (p1.released_at < p2.released_at))
+    const sortedProjects = projects.sort((p1, p2) => (new Date(p2.released_at).getTime() - new Date(p1.released_at).getTime()));
     return (
       <div className="container-wrap">
         <section id="projects-sec" className="container">

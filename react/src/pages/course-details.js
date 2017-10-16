@@ -9,8 +9,11 @@ import * as actions from '../actions';
 import {Row, Col} from 'react-bootstrap';
 
 // Components
+import Time from 'react-time';
 import Breadcrumb from '../components/breadcrumb';
 import TagList from '../components/tag-list';
+import SocialShareButtons from '../components/social-share-buttons';
+import Error from '../pages/error';
 
 // Routing & Links
 import {Link} from 'react-router-dom';
@@ -29,7 +32,12 @@ import {genericStrings, learningStrings} from '../strings';
 class CourseDetails extends Component {
   constructor(props) {
     super(props);
+    this.state = { error: null };
     this.fetchCourse();
+  }
+
+  componentWillMount() {
+    document.title = coursesLink.documentTitle;
   }
 
   componentDidMount () {
@@ -40,13 +48,40 @@ class CourseDetails extends Component {
     const {course_id} = this.props.match.params;
     APIHelper.fetchCourse(course_id).then(course => {
       this.props.addLearningCourse({type: actions.ADD_LEARNING_COURSE, course});
+    }).catch(error => {
+      this.setState({error: error});
     });
+  }
+
+  generateReview(review) {
+    if (!review) {
+      return;
+    }
+    return (
+      <div>
+        <h2>{learningStrings.review}</h2>
+        <p>{review}</p>
+      </div>
+    )
+  }
+
+  generateSummaryLink(url) {
+    if (!url) {
+      return;
+    }
+    return (
+      <div>
+        <h2>{learningStrings.summary}</h2>
+        <Link to={url} target="_blank" rel="noopener">{url}</Link>
+      </div>
+    );
   }
 
   generateCourseDetails(course, tags) {
     if (!course) {
       return;
     }
+    document.title = courseLink(course).documentTitle;
     const logoUrl = course.logo_url ? mediaFileUrl(course.logo_url) : placeholder;
     return (
       <article className="container topic">
@@ -59,16 +94,17 @@ class CourseDetails extends Component {
           <Row className="topic-meta edgy">
             <div className="col-sm-6 topic-date">
               <span>{`${genericStrings.started}: `}</span>
-              <time dateTime={course.started_at}>{course.started_at}</time>
+              <Time value={course.started_at} format="D/M/YYYY"/>
             </div>
             <Col sm={6} className="social-wrap">
               <span>{genericStrings.share}</span>
+              <SocialShareButtons url={window.location.href} title={course.title} summary={course.subtitle} tagIds={course.tags}/>
             </Col>
           </Row>
           <Row className="topic-content edgy">
             <Col sm={12}>
               <div className="thb-wrap">
-                <Link to={course.page_url} className="thb-title" target="_blank" rel="noopener">
+                <Link to={course.school_url} className="thb-title" target="_blank" rel="noopener">
                   <img src={logoUrl} alt={course.title} className="img-responsive"/>
                   <span>{`${genericStrings.by} `}{course.school_name}</span>
                 </Link>
@@ -79,8 +115,9 @@ class CourseDetails extends Component {
               <div className="topic-free-code">
                 <h2>{genericStrings.description}</h2>
                 <p>{course.description}</p>
-                <h2>{learningStrings.review}</h2>
-                <p>{course.review}</p>
+                {this.generateReview(course.review)}
+                <br/>
+                {this.generateSummaryLink(course.summary_url)}
               </div>
             </Col>
           </Row>
@@ -93,6 +130,13 @@ class CourseDetails extends Component {
   }
 
   render() {
+    const {error} = this.state;
+    if (error) {
+      return (
+        <Error error={error}/>
+      );
+    }
+
     const {tags} = this.props;
     const {courses} = this.props.learning ;
     const {course_id} = this.props.match.params;

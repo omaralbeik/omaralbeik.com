@@ -25,6 +25,10 @@ class BookListing extends Component {
     this.fetchBooks();
   }
 
+  componentWillMount() {
+    document.title = booksLink.documentTitle;
+  }
+
   componentDidMount () {
     window.scrollTo(0, 0)
   }

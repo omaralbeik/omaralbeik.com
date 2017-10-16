@@ -9,8 +9,11 @@ import * as actions from '../actions';
 import {Row, Col} from 'react-bootstrap';
 
 // Components
+import Time from 'react-time';
 import Breadcrumb from '../components/breadcrumb';
 import TagList from '../components/tag-list';
+import SocialShareButtons from '../components/social-share-buttons';
+import Error from '../pages/error';
 
 // Routing & Links
 import {Link} from 'react-router-dom';
@@ -29,7 +32,12 @@ import {genericStrings, learningStrings} from '../strings';
 class BookDetails extends Component {
   constructor(props) {
     super(props);
+    this.state = { error: null };
     this.fetchBook();
+  }
+
+  componentWillMount() {
+    document.title = booksLink.documentTitle;
   }
 
   componentDidMount () {
@@ -40,6 +48,8 @@ class BookDetails extends Component {
     const {book_id} = this.props.match.params;
     APIHelper.fetchBook(book_id).then(book => {
       this.props.addLearningBook({type: actions.ADD_LEARNING_BOOK, book});
+    }).catch(error => {
+      this.setState({error: error});
     });
   }
 
@@ -47,6 +57,7 @@ class BookDetails extends Component {
     if (!book) {
       return;
     }
+    document.title = bookLink(book).documentTitle;
     const cover = book.cover_url ? mediaFileUrl(book.cover_url) : placeholder
     return (
       <article className="container topic">
@@ -59,10 +70,11 @@ class BookDetails extends Component {
           <Row className="topic-meta edgy">
             <div className="col-sm-6 topic-date">
               <span>{`${learningStrings.read}: `}</span>
-              <time dateTime={book.read_at}>{book.read_at}</time>
+              <Time value={book.read_at} format="D/M/YYYY"/>
             </div>
             <Col sm={6} className="social-wrap">
               <span>{genericStrings.share}</span>
+              <SocialShareButtons url={window.location.href} title={book.name} summary={book.purchase_url} tagIds={book.tags}/>
             </Col>
           </Row>
           <Row className="topic-content edgy">
@@ -87,6 +99,13 @@ class BookDetails extends Component {
   }
 
   render() {
+    const {error} = this.state;
+    if (error) {
+      return (
+        <Error error={error}/>
+      );
+    }
+
     const {books} = this.props.learning ;
     const {book_id} = this.props.match.params;
     const book = books[book_id];

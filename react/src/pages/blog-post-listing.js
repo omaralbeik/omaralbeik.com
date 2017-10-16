@@ -25,6 +25,10 @@ class BlogListing extends Component {
     this.fetchBlogPosts();
   }
 
+  componentWillMount() {
+    document.title = blogLink.documentTitle;
+  }
+
   componentDidMount () {
     window.scrollTo(0, 0)
   }

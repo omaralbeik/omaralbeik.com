@@ -9,8 +9,11 @@ import * as actions from '../actions';
 import {Row, Col} from 'react-bootstrap';
 
 // Components
+import Time from 'react-time';
 import Breadcrumb from '../components/breadcrumb';
 import TagList from '../components/tag-list';
+import SocialShareButtons from '../components/social-share-buttons';
+import Error from '../pages/error';
 
 // Routing & Links
 import {blogLink, postLink} from '../links';
@@ -24,7 +27,12 @@ import {genericStrings} from '../strings';
 class BlogPostDetails extends Component {
   constructor(props) {
     super(props);
+    this.state = { error: null };
     this.fetchBlogPost()
+  }
+
+  componentWillMount() {
+    document.title = blogLink.documentTitle;
   }
 
   componentDidMount () {
@@ -35,13 +43,16 @@ class BlogPostDetails extends Component {
     const {post_id} = this.props.match.params;
     APIHelper.fetchBlogPost(post_id).then(post => {
       this.props.addBlogPost({type: actions.ADD_BLOG_POST, post});
+    }).catch(error => {
+      this.setState({error: error});
     });
   }
 
-  generateBlogPostDetails(post, tags) {
+  generateBlogPostDetails(post) {
     if (!post) {
       return;
     }
+    document.title = postLink(post).documentTitle;
     return (
       <article className="container topic">
         <header className="inside-header row">
@@ -52,11 +63,11 @@ class BlogPostDetails extends Component {
           <Row className="topic-meta edgy">
             <Col sm={6} className="topic-date">
               <span>{`${genericStrings.published}: `}</span>
-              <time dateTime={post.published_at}>{post.published_at}</time>
+              <Time value={post.published_at} format="D/M/YYYY HH:mm"/>
             </Col>
             <Col sm={6} className="social-wrap">
               <span>{genericStrings.share}</span>
-              <ul className="list-unstyled list-inline social-share selective-opacity transit-quick-all"></ul>
+              <SocialShareButtons url={window.location.href} title={post.title} summary={post.summary} tagIds={post.tags}/>
             </Col>
           </Row>
           <Row className="topic-content edgy">
@@ -78,14 +89,21 @@ class BlogPostDetails extends Component {
   }
 
   render() {
-    const {blogPosts, tags} = this.props;
+    const {error} = this.state;
+    if (error) {
+      return (
+        <Error error={error}/>
+      );
+    }
+
+    const {blogPosts} = this.props;
     const {post_id} = this.props.match.params;
 
     const post = blogPosts[post_id];
 
     return (
       <main className="container-wrap inside-content">
-        {this.generateBlogPostDetails(post, tags)}
+        {this.generateBlogPostDetails(post)}
       </main>
     )
   }

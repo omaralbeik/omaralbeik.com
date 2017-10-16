@@ -22,6 +22,10 @@ class CourseListing extends Component {
     this.fetchLearningCourses();
   }
 
+  componentWillMount() {
+    document.title = coursesLink.documentTitle;
+  }
+
   componentDidMount() {
     window.scrollTo(0, 0)
   }
@@ -35,7 +39,7 @@ class CourseListing extends Component {
   render() {
     const {courses} = this.props.learning;
     const coursesArray = arrayFromObject(courses)
-    const sortedCoursesArray = coursesArray.sort((c1, c2) => (c1.started_at < c2.started_at))
+    const sortedCoursesArray = coursesArray.sort((c1, c2) => (new Date(c2.started_at).getTime() - new Date(c1.started_at).getTime()))
     return (
       <main className="container-wrap inside-content">
         <section className="container topic">

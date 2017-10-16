@@ -968,7 +968,7 @@ section.container, aside.container {
 }
 /*=============================== Inside Content ===============================*/
 .inside-content {
-  background: rgba(0, 0, 0, 0) url("../images/bg-inside.jpg") repeat-x scroll center top;
+  background: rgba(0, 0, 0, 0) url("../images/bg-inside.png") repeat-x scroll center top;
 }
 .inside-content .container {
   margin: 0 auto 70px;
@@ -1325,6 +1325,27 @@ form.cmd-line select {
     text-overflow: '';
 		line-height: normal;
 }
+
+/*============================ Learning page ========================*/
+.learning-link {
+	display: block;
+	text-align: center;
+	padding: 15px;
+	background-color: #fff;
+	margin: 15px 10px 0 10px;
+	border-radius: 5px;
+	font-family: 'Share Tech Mono', monospace;
+	font-size: 12pt;
+}
+
+.learning-link:hover {
+	text-decoration: none;
+	background-color: #ff5b28;
+	color: #fff;
+	font-weight: 600;
+}
+
+
 /*=========================== Course Listing =======================*/
 .course-item {
   border-radius: 5px;
@@ -1375,6 +1396,7 @@ form.cmd-line select {
 }
 .quote-listing .quote-item header .quoted-name {
   font-weight: bold;
+	color: #fff;
 }
 .quote-listing .quote-item header .quoted-name a {
   color: #fff;
@@ -1434,6 +1456,7 @@ form.cmd-line select {
 /*=========================== Book Listing =======================*/
 .book-listing {
   margin-bottom: 30px;
+	text-align: center;
 }
 .book-listing li {
   padding: 20px;
@@ -1444,9 +1467,10 @@ form.cmd-line select {
   color: transparent;
   display: block;
   font-weight: bold;
-  height: 240px;
+	height: 185px;
+	overflow: hidden;
   letter-spacing: 0;
-  min-width: 120px;
+	width: 120px;
   padding: 40px 10px;
   text-transform: capitalize;
 	background-image: url("../images/placeholders/book-placeholder.svg");
@@ -1529,12 +1553,12 @@ ul.social-share {
   float: none;
   margin: -20px 0;
   position: relative;
-  top: 5px;
+  top: 10px;
 }
 .social-share > li {
   padding: 0;
 }
-.social-share > li a {
+.social-share > li .share-button {
   color: #fff;
   font-size: 8pt;
   height: 30px;
@@ -1542,17 +1566,6 @@ ul.social-share {
   padding: 5px;
   width: 30px;
 }
-.social-share > li a svg path,
-.social-share > li a svg path {
-    fill: #fff;
-}
-.fb-bg {  background-color: #3b5998 !important; }
-.tw-bg {  background-color: #1da1f2 !important; }
-.in-bg {  background-color: #0077b5 !important; }
-.gp-bg {  background-color: #dd4b39 !important; }
-.so-bg {  background-color: #f48024 !important; }
-.md-bg {  background-color: #00ab6c !important; }
-.gt-bg {  background-color: #6e5494 !important; } /* #6cc644 */
 
 /*=============================================================================*/
 /*=========================== All Screens Except Mobile =======================*/
@@ -1562,6 +1575,17 @@ ul.social-share {
 /*ul.nav li.dropdown:hover ul.dropdown-menu {
   display: block;
 }*/
+.dropdown-menu {
+	padding: 0;
+}
+.dropdown-menu li a {
+	padding: 10px 15px;
+	font-size: 13pt;
+	font-family: "Share Tech Mono",monospace;
+}
+.dropdown-menu li a:hover {
+	color: #ff5b28;
+}
 #header {
   position: relative;
   z-index: 1000;
@@ -1631,12 +1655,12 @@ ul.social-share {
 }
 #navbar::after {
 	content: "";
-	background:url(../images/golden-ribbon.png) no-repeat center center;
+	background:url(../images/golden-ribbon.svg) no-repeat center center;
 	display: block;
 	width: 17px;
 	height: 32px;
 	position:absolute;
-	top:-9px;
+	top:-10px;
 	right:0;
 	z-index:1001;
 }
@@ -1963,7 +1987,7 @@ nav.navbar {
 .nav-flatusual nav.navbar .navbar-nav > li > a {
   color: #373535;
   font-family: "Share Tech Mono",monospace;
-  font-size: 12pt;
+  font-size: 14pt;
   font-weight: normal;
   letter-spacing: 0;
   padding: 7px 15px;
@@ -2001,6 +2025,11 @@ nav.navbar {
   padding: 0 3px;
   position: relative;
   width: 40px;
+}
+.dropdown-menu li a {
+	padding: 15px 15px;
+	font-size: 13pt;
+	font-family: "Share Tech Mono",monospace;
 }
 /*=============================== Phone: Slider ===============================*/
 #slider {
@@ -2518,7 +2547,7 @@ form.cmd-line .btn[type="submit"] {
   float: none;
   margin: -20px 0 0;
 }
-.social-wrap ul.social-share li a {
+.social-wrap ul.social-share li .social-button {
   margin: 0 2px;
 }
 
@@ -2541,9 +2570,9 @@ form.cmd-line .btn[type="submit"] {
   margin: -22px 0 0;
 }
 ul.social-share {
-  top: 4px;
+  top: 8px;
 }
-.social-share > li a {
+.social-share > li .social-button {
   color: #fff;
   font-size: 8pt;
   height: 24px;

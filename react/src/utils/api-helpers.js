@@ -315,38 +315,38 @@ class APIHelper {
       if (child) {
         completeUrl += `/${child}/`
       }
+      if (!completeUrl.endsWith('/')) {
+        completeUrl += '/';
+      }
       var headers = new Headers();
       headers.append('Content-Type', 'application/json');
       headers.append('Authorization', `Token ${API_AUTH_TOKEN}`);
 
       var init = { method: 'GET', headers: headers};
-      fetch(completeUrl, init).then((response) => {
-        return response.json();
-      }).then((data) => {
-        // response is an array of objects
-        if (Array.isArray(data)) {
+      fetch(completeUrl, init).then(response => {
+        if (!response.ok) {
+          response.json().then(data => {
+            reject(data.detail || "Something wrong happened");
+          }).catch(error => {
+            reject(error.message)
+          });
+        } else {
+          return response.json();
+        }
+      }).then(data => {
+        if (!data) { // no data!
+          reject('No Results');
+        } else if (Array.isArray(data)) { // response is an array of objects
           resolve(data);
-          return;
-        }
-
-        // response has pagination and results
-        const {results} = data;
-        if (results) {
-          resolve(results);
-          return;
-        }
-
-        // response is a single object
-        if (data.id) {
+        } else if (data.results) { // response has pagination and results
+          resolve(data.results);
+        } else if (data.id) { // response is a single object
           resolve(data);
-          return;
+        } else { // response is not valid
+          reject('No Results');
         }
-
-        // response is not valid
-        reject('No Results');
-
-      }).catch((error) => {
-        reject(error);
+      }).catch(error => {
+        reject(error.message);
       });
     });
   }
