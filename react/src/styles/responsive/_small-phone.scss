@@ -22,10 +22,6 @@ $information-small-phone: "screen and (max-width: 469px)";
 		}
 	}
 
-	ul.social-share {
-		top: 8px;
-	}
-
 	.social-share {
 		> li .social-button {
 			color: $white-color;
@@ -34,6 +30,9 @@ $information-small-phone: "screen and (max-width: 469px)";
 			margin: 0 2px;
 			padding: 3px;
 			width: 25px;
+		}
+		ul & {
+			top: 8px;
 		}
 	}
 

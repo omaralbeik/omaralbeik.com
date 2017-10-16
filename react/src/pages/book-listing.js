@@ -41,7 +41,8 @@ class BookListing extends Component {
 
   render() {
     const {books} = this.props.learning;
-    const booksArray = arrayFromObject(books)
+    const booksArray = arrayFromObject(books);
+    
     return (
       <main className="container-wrap inside-content">
         <section className="container">

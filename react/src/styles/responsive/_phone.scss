@@ -53,51 +53,39 @@ $information-phone: "(max-width: 767px)";
 		padding: 19px 5px 23px;
 	}
 
-	.nav-flatusual nav.navbar .navbar-nav > li > a {
-		color: $mine-shaft-color;
-		font-family: $mono-font-stack;
-		font-size: 14pt;
-		font-weight: normal;
-		letter-spacing: 0;
-		padding: 7px 15px;
-		text-shadow: 0 1px 0 $white-color;
-		text-transform: uppercase;
-	}
 
-	.nav-flatusual nav.navbar .navbar-nav > li > a:hover {
-		background-color: $gallery-color;
-		color: $orange-color;
-	}
-
-	.nav-flatusual nav.navbar .navbar-nav > .active > a,
-	.nav-flatusual nav.navbar .navbar-nav > .active > a:focus,
-	.nav-flatusual nav.navbar .navbar-nav > .active > a:hover {
-		background-color: $orange-color;
-		color: $gallery-color;
-		text-shadow: 0 1px 0 $mine-shaft-color;
-	}
-
-	.nav-flatusual nav.navbar .navbar-nav > .open > a,
-	.nav-flatusual nav.navbar .navbar-nav > .open > a:focus,
-	.nav-flatusual nav.navbar .navbar-nav > .open > a:hover {
-		background-color: $gallery-color;
-		color: $orange-color;
-	}
-
-	.navbar-toggle {
-		background-color: transparent;
-		background-image: none;
-		border: medium none;
-		border-radius: 40px;
-		float: right;
-		font-size: 24px;
-		height: 40px;
-		margin-bottom: 8px;
-		margin-right: 10px;
-		margin-top: 7px;
-		padding: 0 3px;
-		position: relative;
-		width: 40px;
+	.nav-flatusual {
+		nav.navbar {
+			.navbar-nav {
+				> li > a {
+					color: $mine-shaft-color;
+					font-family: $mono-font-stack;
+					font-size: 14pt;
+					font-weight: normal;
+					letter-spacing: 0;
+					padding: 7px 15px;
+					text-shadow: 0 1px 0 $white-color;
+					text-transform: uppercase;
+					&:hover {
+						background-color: $gallery-color;
+						color: $orange-color;
+					}
+				}
+				.active > a {
+					&:focus, &:hover {
+						background-color: $orange-color;
+						color: $gallery-color;
+						text-shadow: 0 1px 0 $mine-shaft-color;
+					}
+				}
+				.open > a {
+					&:focus, &:hover {
+						background-color: $gallery-color;
+						color: $orange-color;
+					}
+				}
+			}
+		}
 	}
 
 	.dropdown-menu li a {
@@ -119,6 +107,7 @@ $information-phone: "(max-width: 767px)";
 			margin: 0 0 10px;
 		}
 	}
+
 	//** About Section
 	.bio {
 		.cmd-line {
@@ -169,14 +158,10 @@ $information-phone: "(max-width: 767px)";
 			}
 		}
 	}
+
 	//** Containers
 	.sec-header {
 		margin: 0 0 20px;
-
-		.fa-terminal {
-			margin-left: 5px;
-			margin-right: 10px;
-		}
 	}
 
 	.sec-footer {
@@ -189,10 +174,6 @@ $information-phone: "(max-width: 767px)";
 		right: 0;
 		text-align: left;
 		text-transform: uppercase;
-
-		.fa-caret-right {
-			margin: 0 7px;
-		}
 	}
 
 	.bg-highlighted {
@@ -212,6 +193,7 @@ $information-phone: "(max-width: 767px)";
 			margin-bottom: 0;
 		}
 	}
+
 	//** Blog Section
 	.blog-item > header {
 		padding: 25px 25px 20px;
@@ -322,6 +304,7 @@ $information-phone: "(max-width: 767px)";
 			}
 		}
 	}
+	
 	//** Courses Section
 	#course-sec {
 		article {
@@ -381,6 +364,7 @@ $information-phone: "(max-width: 767px)";
 		max-width: 240px;
 		width: 100%;
 	}
+
 	//** Footer
 	#footer {
 		position: static;
@@ -426,6 +410,7 @@ $information-phone: "(max-width: 767px)";
 		margin: 0 0 2px;
 		line-height: 1.2;
 	}
+
 	//** Inside Content
 	.inside-content .container {
 		margin: 0 auto 10px;
@@ -490,6 +475,7 @@ $information-phone: "(max-width: 767px)";
 		font-size: 8pt;
 		padding: 0 3px;
 	}
+
 	//** Inside Content
 	.inside-content {
 		.thumbnails-hfixed li {
@@ -569,6 +555,7 @@ $information-phone: "(max-width: 767px)";
 	.quote-listing {
 		> li {
 			padding: 20px 10px;
+
 			> a {
 				height: 185px;
 			}
