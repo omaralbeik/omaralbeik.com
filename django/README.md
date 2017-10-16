@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://cdn.rawgit.com/omaralbeik/omaralbeik.com/server/django/assets/logo_server.svg" title="Server logo">
+  <img src="https://cdn.rawgit.com/omaralbeik/omaralbeik.com/server/django/assets/server-banner.svg" title="Server logo">
 </p>
 
 
