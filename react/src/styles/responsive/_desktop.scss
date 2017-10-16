@@ -27,19 +27,23 @@ $information-desktop: "(min-width: 992px) and (max-width: 1199px)";
 		width: 540px;
 	}
 
-	.thumbnail .caption .proj-title {
-		font-size: 15pt;
-		letter-spacing: -1px;
-		text-indent: -1px;
-	}
+	.thumbnail {
+		.caption {
+			.proj-title {
+				font-size: 15pt;
+				letter-spacing: -1px;
+				text-indent: -1px;
+			}
+		}
+		
+		.thumbnails-hfixed & .caption p {
+			height: 76px;
+			overflow: hidden;
+		}
 
-	.thumbnails-hfixed .thumbnail .caption p {
-		height: 76px;
-		overflow: hidden;
-	}
-
-	.inside-content .thumbnail {
-		margin: 0 auto 30px;
+		.inside-content & {
+			margin: 0 auto 30px;
+		}
 	}
 
 	.book-listing li > a {

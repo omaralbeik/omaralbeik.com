@@ -4,34 +4,36 @@
 $information-tablet: "(min-width: 768px) and (max-width: 991px)";
 
 @media #{$information-tablet} {
-	.nav-flatusual nav.navbar .navbar-header {
-		width: 150px;
-	}
+	.nav-flatusual {
+		nav.navbar {
+			.navbar-header {
+				width: 150px;
+			}
 
-	.nav-flatusual #branding .navbar-brand {
-		height: auto;
-		padding: 16px;
-	}
+			.navbar-nav {
+				#navbar & {
+					margin-right: 10px;
+					padding: 20px 0;
 
-	.navbar-brand > img {
-		width: 100%;
-	}
+					> li > a {
+						font-size: 12pt;
+						letter-spacing: 0;
+						line-height: 1.1;
+						padding: 0 15px;
+						margin-top: 18px;
+					}
+				}
+			}
+		}
 
-	.navbar-inverse #navbar2-dsktp .navbar-form {
-		width: 190px;
-	}
+		#branding .navbar-brand {
+			height: auto;
+			padding: 16px;
 
-	.nav-flatusual nav.navbar #navbar .navbar-nav {
-		margin-right: 10px;
-		padding: 20px 0;
-	}
-
-	.nav-flatusual nav.navbar .navbar-nav > li > a {
-		font-size: 12pt;
-		letter-spacing: 0;
-		line-height: 1.1;
-		padding: 0 15px;
-		margin-top: 18px;
+			> img {
+				width: 100%;
+			}
+		}
 	}
 
 	#slider {
@@ -40,7 +42,103 @@ $information-tablet: "(min-width: 768px) and (max-width: 991px)";
 
 	.slide-item {
 		height: 300px;
+
+		&.container {
+			height: 100%;
+			position: relative;
+		}
 	}
+
+	.slide-text {
+		height: 195px;
+		top: 20%;
+
+		h2 {
+			font-size: 40pt;
+			letter-spacing: -2px;
+		}
+
+		p {
+			font-size: 16pt;
+		}
+	}
+
+	.slick-next,
+	.slick-prev {
+		position: absolute;
+		z-index: 10000;
+		height: 60px;
+		width: 60px;
+
+		&:before {
+			color: $white-color;
+			font-family: $slick-font-stack;
+			font-size: 60px;
+			line-height: 1;
+			opacity: 0.15;
+			height: 60px;
+			width: 60px;
+		}
+	}
+
+	.slick-next {
+		right: 15px;
+	}
+
+	.slick-prev {
+		left: 15px;
+	}
+
+	.slick-dots {
+		bottom: 30px;
+
+		li button::before {
+			color: $white-color;
+			font-size: 10px;
+			opacity: 0.4;
+		}
+	}
+
+	.slick-dots li button::before {
+		color: $black-color !important;
+	}
+
+	.slick-dots li.slick-active button::before {
+		color: $gray-color !important;
+	}
+
+	.flat-bullets {
+		margin-bottom: 50px;
+
+		.slick-dots li {
+			height: 8px;
+			margin: 5px;
+			width: auto;
+		}
+
+		.slick-dots li {
+			button {
+				background-color: $gallery-color;
+				background-image: none;
+				border-radius: 0;
+				height: 8px;
+				width: 40px;
+				padding: 0;
+			}
+
+			&.slick-active button {
+				background-color: $flamingo-color;
+				opacity: 1;
+
+				&:before {
+					display: none;
+				}
+			}
+		}
+	}
+
+
+	/*
 
 	.slide-text {
 		height: 195px;
@@ -69,6 +167,8 @@ $information-tablet: "(min-width: 768px) and (max-width: 991px)";
 		left: 10px;
 	}
 
+	*/
+
 	.person {
 		top: 20px;
 	}
@@ -92,37 +192,18 @@ $information-tablet: "(min-width: 768px) and (max-width: 991px)";
 		margin: 0 0 17px;
 	}
 
-	#quotes-sec blockquote {
-		width: 460px;
-
-		&:before {
-			left: -80px;
-			top: -30px;
-		}
-
-		&:after {
-			right: -80px;
-			top: -30px;
-		}
-
-		> span {
-			font-size: 15pt;
-			line-height: 1.4;
-		}
-	}
-
-	#footer .row .col-sm-12:last-child {
-		text-align: center;
-		margin: 10px 0 0;
-		border-top: $emperor-color dashed 1px;
-		padding-top: 25px;
-	}
-
 	#footer {
 		#footer-nav {
 			margin-bottom: 20px;
 			width: 100%;
 			text-align: center;
+		}
+
+		.row .col-sm-12:last-child {
+			text-align: center;
+			margin: 10px 0 0;
+			border-top: $emperor-color dashed 1px;
+			padding-top: 25px;
 		}
 
 		> li li {
@@ -146,14 +227,19 @@ $information-tablet: "(min-width: 768px) and (max-width: 991px)";
 			line-height: 1.8;
 		}
 	}
+
 	//** Projects Section
-	#projects-sec .sec-footer {
-		text-align: center;
+	#projects-sec {
+		.sec-footer {
+			text-align: center;
+		}
+		.sec-body {
+			padding-right: 20px;
+		}
 	}
 
 	.home-project-list {
 		text-align: center;
-
 		li {
 			margin: 0 10px 10px;
 			display: block;
@@ -175,15 +261,15 @@ $information-tablet: "(min-width: 768px) and (max-width: 991px)";
 			}
 		}
 	}
-	
-	.thumbnail:hover .proj-thumb {
-		background-size: auto 110%;
-	}
 
 	.thumbnail {
 		margin: 0;
 		max-width: 100%;
 		width: 100%;
+
+		&:hover .proj-thumb {
+			background-size: auto 110%;
+		}
 
 		.proj-thumb {
 			float: left;
@@ -210,19 +296,22 @@ $information-tablet: "(min-width: 768px) and (max-width: 991px)";
 		}
 	}
 
-	.thumbnails-hfixed .thumbnail .caption {
-		h2 {
-			font-size: 13.5pt;
-			height: 21px;
-			margin: 0 0 5px;
-		}
+	.thumbnail {
+		.thumbnails-hfixed & .caption {
+			h2 {
+				font-size: 15.5pt;
+				height: 21px;
+				margin: 0 0 5px;
+			}
 
-		p {
-			height: 54px;
-			line-height: 1.5;
-			margin: 0;
+			p {
+				height: 54px;
+				line-height: 1.5;
+				margin: 0;
+			}
 		}
 	}
+
 	//** Inside Content
 	.inside-content .thumbnail {
 		margin: 0 auto 10px;
