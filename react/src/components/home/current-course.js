@@ -43,9 +43,9 @@ class CurrentCourse extends Component {
               <Col sm={4} md={4} lg={3}>
                 <div className="course-emblem">
                   <LazyLoad>
-                    <picture>
+                    <picture  className="hidden-xs">
                       <source srcSet={logoUrl} media="(min-width: 768px)"/>
-                      <img srcSet={logoUrl} src={logoUrl} alt={course.title} className="hidden-xs"/>
+                      <img srcSet={logoUrl} src={logoUrl} alt={course.title}/>
                     </picture>
                   </LazyLoad>
                 </div>
