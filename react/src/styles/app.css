@@ -28,7 +28,11 @@ html {
   height: 100%; }
 
 #main {
-  height: 100%; }
+  height: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+  padding: 0 0 275px;
+  position: relative; }
 
 body,
 p,
@@ -206,12 +210,6 @@ img {
 
 *:-ms-input-placeholder {
   color: #777 !important; }
-
-#main {
-  min-height: 100vh;
-  overflow: hidden;
-  padding: 0 0 275px;
-  position: relative; }
 
 .container-wrap {
   padding: 25px 0; }
@@ -426,7 +424,7 @@ fieldset[disabled] .btn-black:hover {
   background: none no-repeat scroll center center;
   height: 628px;
   background-size: cover; }
-  .slide-item.container {
+  .slide-item .container {
     height: 100%;
     position: relative; }
 
@@ -452,14 +450,12 @@ fieldset[disabled] .btn-black:hover {
     margin: 0 0 20px;
     text-shadow: 0 0 10px #000; }
 
-.slick-next,
-.slick-prev {
+.slick-prev, .slick-next {
   position: absolute;
   z-index: 10000;
   height: 60px;
   width: 60px; }
-  .slick-next:before,
-  .slick-prev:before {
+  .slick-prev::before, .slick-next::before {
     color: #fff;
     font-family: "slick";
     font-size: 60px;
@@ -477,15 +473,11 @@ fieldset[disabled] .btn-black:hover {
 .slick-dots {
   bottom: 30px; }
   .slick-dots li button::before {
-    color: #fff;
     font-size: 10px;
-    opacity: 0.4; }
-
-.slick-dots li button::before {
-  color: #000 !important; }
-
-.slick-dots li.slick-active button::before {
-  color: #888 !important; }
+    opacity: 0.4;
+    color: #000 !important; }
+  .slick-dots li.slick-active button::before {
+    color: #888 !important; }
 
 .flat-bullets {
   margin-bottom: 50px; }
@@ -493,18 +485,18 @@ fieldset[disabled] .btn-black:hover {
     height: 8px;
     margin: 5px;
     width: auto; }
-  .flat-bullets .slick-dots li button {
-    background-color: #eee;
-    background-image: none;
-    border-radius: 0;
-    height: 8px;
-    width: 40px;
-    padding: 0; }
-  .flat-bullets .slick-dots li.slick-active button {
+    .flat-bullets .slick-dots li button {
+      background-color: #eee;
+      background-image: none;
+      border-radius: 0;
+      height: 8px;
+      width: 40px;
+      padding: 0; }
+      .flat-bullets .slick-dots li button::before {
+        display: none; }
+  .flat-bullets li.slick-active button {
     background-color: #e9541d;
     opacity: 1; }
-    .flat-bullets .slick-dots li.slick-active button:before {
-      display: none; }
 
 .thumbnail {
   border: medium none;
@@ -734,7 +726,7 @@ section.container {
   background: none; }
 
 .bg-lighter {
-  background: #282627 url("../images/bg-lighter.jpg") repeat scroll center center;
+  background: #1d1b1c url("../images/bg-lighter.jpg") repeat scroll center center;
   padding: 45px 0; }
   .bg-lighter .sec-header {
     background: transparent url("../images/hr-light.gif") no-repeat scroll 100px 22px; }
@@ -826,7 +818,7 @@ section.container {
 
 .footer-body {
   background-color: #171314;
-  border-top: 1px solid #363236;
+  border-top: 1px solid #1d1b1c;
   box-shadow: 0 -1px 0 #000;
   height: 210px;
   padding: 70px 0; }
@@ -1208,7 +1200,7 @@ section.container {
         opacity: 1.0; }
 
 .inside-footer {
-  background: #363636 url("../images/bg-lighter.jpg") repeat scroll center center;
+  background: #333 url("../images/bg-lighter.jpg") repeat scroll center center;
   border-radius: 0 0 4px 4px;
   padding: 40px 5% 30px; }
   .inside-footer .tag-list {
@@ -2148,6 +2140,8 @@ ul.social-share {
       bottom: -10px;
       position: relative;
       right: auto; }
+      form.cmd-line .btn[type="submit"]:active {
+        bottom: -11px; }
   .courses-light .course-item {
     border-radius: 4px;
     margin: 0 0 25px;

@@ -52,7 +52,7 @@ class TagListing extends Component {
           <div className="inside-body">
             <Row className="topic-content edgy">
               <Col sm={12}>
-                <ul className="list-unstyled quote-listing tags-listing">
+                <ul className="list-unstyled tags-listing">
                   {tagsArray.map(t => (<li key={t.id}><Link to={tagLink(t).url}>#{t.name}</Link></li>))}
                 </ul>
               </Col>
