@@ -22,6 +22,10 @@ html {
 
 #main {
 	height: 100%;
+	min-height: 100vh;
+	overflow: hidden;
+	padding: 0 0 275px;
+	position: relative;
 }
 
 body,
@@ -244,13 +248,6 @@ img {
 
 *:-ms-input-placeholder {
 	color: $boulder-color !important;
-}
-
-#main {
-	min-height: 100vh;
-	overflow: hidden;
-	padding: 0 0 275px;
-	position: relative;
 }
 
 .container-wrap {
@@ -521,65 +518,64 @@ fieldset[disabled] .btn-black:hover {
 
 //** Slider
 #slider {
-	background-color: $nile-blue-color;
-	height: 628px;
-	margin: 0 0 60px;
-	position: relative;
+  background-color: $nile-blue-color;
+  height: 628px;
+  margin: 0 0 60px;
+  position: relative;
 }
 
 .slide-item {
-	background: none no-repeat scroll center center;
-	height: 628px;
-	background-size: cover;
+  background: none no-repeat scroll center center;
+  height: 628px;
+  background-size: cover;
 
-	&.container {
-		height: 100%;
-		position: relative;
+	.container {
+	  height: 100%;
+	  position: relative;
 	}
 }
 
 .slide-text {
-	box-sizing: content-box;
-	height: 250px;
-	margin-bottom: -125px;
-	padding: 0 50px;
-	position: absolute;
-	top: 30%;
+  box-sizing: content-box;
+  height: 250px;
+  margin-bottom: -125px;
+  padding: 0 50px;
+  position: absolute;
+  top: 30%;
 
 	h2 {
-		color: $alto-color;
-		font-size: 54pt;
-		font-weight: 800;
-		letter-spacing: -4px;
-		line-height: 0.9;
-		margin: 0 0 7px;
-		text-shadow: 0 -1px 0 $white-color, 0 3px 6px rgba($black-color, .2);
+	  color: $alto-color;
+	  font-size: 54pt;
+	  font-weight: 800;
+	  letter-spacing: -4px;
+	  line-height: 0.9;
+	  margin: 0 0 7px;
+	  text-shadow: 0 -1px 0 $white-color, 0 3px 6px rgba($black-color, .2);
 	}
 
 	p {
-		color: $alto-color;
-		font-family: $open-sans-font-stack;
-		font-size: 16pt;
-		margin: 0 0 20px;
-		text-shadow: 0 0 10px $black-color;
+	  color: $alto-color;
+	  font-family: $open-sans-font-stack;
+	  font-size: 16pt;
+	  margin: 0 0 20px;
+	  text-shadow: 0 0 10px $black-color;
 	}
 }
 
-.slick-next,
-.slick-prev {
-	position: absolute;
-	z-index: 10000;
-	height: 60px;
-	width: 60px;
+.slick-prev, .slick-next {
+  position: absolute;
+  z-index: 10000;
+  height: 60px;
+  width: 60px;
 
-	&:before {
+	&::before {
 		color: $white-color;
-		font-family: $slick-font-stack;
-		font-size: 60px;
-		line-height: 1;
-		opacity: 0.15;
-		height: 60px;
-		width: 60px;
+	  font-family: $slick-font-stack;
+	  font-size: 60px;
+	  line-height: 1;
+	  opacity: 0.15;
+	  height: 60px;
+	  width: 60px;
 	}
 }
 
@@ -591,51 +587,49 @@ fieldset[disabled] .btn-black:hover {
 	left: 15px;
 }
 
+//** Flat Bullets
 .slick-dots {
-	bottom: 30px;
-
-	li button::before {
-		color: $white-color;
-		font-size: 10px;
-		opacity: 0.4;
+  bottom: 30px;
+	li {
+		button {
+			&::before {
+				font-size: 10px;
+				opacity: 0.4;
+				color: $black-color !important;
+			}
+		}
 	}
-}
 
-.slick-dots li button::before {
-	color: $black-color !important;
-}
-
-.slick-dots li.slick-active button::before {
-	color: $gray-color !important;
+	li.slick-active button::before {
+	  color: $gray-color !important;
+	}
 }
 
 .flat-bullets {
 	margin-bottom: 50px;
 
 	.slick-dots li {
-		height: 8px;
-		margin: 5px;
-		width: auto;
-	}
+	  height: 8px;
+	  margin: 5px;
+	  width: auto;
 
-	.slick-dots li {
 		button {
-			background-color: $gallery-color;
-			background-image: none;
-			border-radius: 0;
-			height: 8px;
-			width: 40px;
-			padding: 0;
-		}
+		  background-color: $gallery-color;
+		  background-image: none;
+		  border-radius: 0;
+		  height: 8px;
+		  width: 40px;
+		  padding: 0;
 
-		&.slick-active button {
-			background-color: $flamingo-color;
-			opacity: 1;
-
-			&:before {
+			&::before {
 				display: none;
 			}
 		}
+	}
+
+	li.slick-active button {
+	  background-color: $flamingo-color;
+	  opacity: 1;
 	}
 }
 
@@ -928,7 +922,7 @@ section.container {
 }
 
 .bg-lighter {
-	background: #282627 url('../images/bg-lighter.jpg') repeat scroll center center;
+	background: $thunder-color url('../images/bg-lighter.jpg') repeat scroll center center;
 	padding: 45px 0;
 
 	.sec-header {
@@ -938,7 +932,7 @@ section.container {
 
 .bg-lighter .sec-footer,
 .bg-lighter .sec-header > h1 a {
-	background: #282627 url('../images/bg-lighter.jpg') no-repeat scroll center center;
+	background: $light-thunder-color url('../images/bg-lighter.jpg') no-repeat scroll center center;
 }
 
 //** Home Blog Section
@@ -1051,7 +1045,7 @@ section.container {
 
 .footer-body {
 	background-color: $cod-gray-color;
-	border-top: 1px solid #363236;
+	border-top: 1px solid $thunder-color;
 	box-shadow: 0 -1px 0 $black-color;
 	height: 210px;
 	padding: 70px 0;
@@ -1487,16 +1481,17 @@ section.container {
 	}
 
 	h2 {
-		font-size: 20pt;
+		margin: 32px 0 10px;
+		font-size: 22pt;
 	}
 
 	h3 {
-		font-size: 18pt;
+		font-size: 16pt;
 		color: $flamingo-color;
 	}
 
 	h4 {
-		font-size: 16pt;
+		font-size: 14pt;
 		letter-spacing: 0;
 	}
 
@@ -1512,8 +1507,17 @@ section.container {
 	p,
 	ul {
 		font-family: $open-sans-font-stack;
-		font-size: 11pt;
+		color: $baltic-sea-color;
+		font-size: 12pt;
 		line-height: 1.6;
+		& strong {
+			font-weight: 600;
+		}
+	}
+
+	a {
+		font-weight: 400;
+		color: $orange-color;
 	}
 
 	hr {
@@ -1565,7 +1569,7 @@ section.container {
 }
 //** Inside Container's Footer
 .inside-footer {
-	background: #363636 url('../images/bg-lighter.jpg') repeat scroll center center;
+	background: $mine-shaft-color url('../images/bg-lighter.jpg') repeat scroll center center;
 	border-radius: 0 0 4px 4px;
 	padding: 40px 5% 30px;
 
@@ -1994,3 +1998,4 @@ ul.social-share {
 @import 'responsive/phablet';
 @import 'responsive/very-large-desktop';
 @import 'responsive/large-desktop';
+@import 'syntax';
