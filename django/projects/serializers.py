@@ -30,7 +30,7 @@ class ProjectSerializer(serializers.ModelSerializer):
 
     # return project's text as HTML!
     def get_html_text(self, project):
-        return markdown2.markdown(project.text, extras=['target-blank-links'])
+        return markdown2.markdown(project.text, extras=['target-blank-links', 'fenced-code-blocks',])
 
     # return project's logo url if available
     def get_logo_url(self, project):

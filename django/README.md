@@ -131,9 +131,10 @@ This project requires Python and Django to build, if they are not installed on y
 1. [Python3](https://www.python.org/downloads/)
 2. [Django](https://www.djangoproject.com/)
 3. [Django REST Framework](http://www.django-rest-framework.org/)
-4. [Markdownx](https://github.com/neutronX/django-markdownx)
-5. [Markdown2](https://github.com/trentm/python-markdown2)
-6. [Django CORS Headers](https://github.com/ottoyiu/django-cors-headers)
+4. [Pygments](https://github.com/odeoncg/django-pygments)
+5. [Markdownx](https://github.com/neutronX/django-markdownx)
+6. [Markdown2](https://github.com/trentm/python-markdown2)
+7. [Django CORS Headers](https://github.com/ottoyiu/django-cors-headers)
 
 #### Install Python dependencies
 
