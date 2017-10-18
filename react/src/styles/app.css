@@ -1145,12 +1145,13 @@ section.container {
     color: #183847;
     margin: 27px 0 5px; }
   .topic-free-code h2 {
-    font-size: 20pt; }
+    margin: 32px 0 10px;
+    font-size: 22pt; }
   .topic-free-code h3 {
-    font-size: 18pt;
+    font-size: 16pt;
     color: #e9541d; }
   .topic-free-code h4 {
-    font-size: 16pt;
+    font-size: 14pt;
     letter-spacing: 0; }
   .topic-free-code:first-child {
     margin-top: 0; }
@@ -1162,8 +1163,20 @@ section.container {
   .topic-free-code p,
   .topic-free-code ul {
     font-family: "Open Sans", Arial, Helvetica, sans-serif;
-    font-size: 11pt;
+    color: #322d36;
+    font-size: 12pt;
     line-height: 1.6; }
+    .topic-free-code address strong,
+    .topic-free-code dl strong,
+    .topic-free-code dt strong,
+    .topic-free-code li strong,
+    .topic-free-code ol strong,
+    .topic-free-code p strong,
+    .topic-free-code ul strong {
+      font-weight: 600; }
+  .topic-free-code a {
+    font-weight: 400;
+    color: #ff5b28; }
   .topic-free-code hr {
     border-color: #fff;
     border-bottom: 1px solid #fff;

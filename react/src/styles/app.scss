@@ -1481,16 +1481,17 @@ section.container {
 	}
 
 	h2 {
-		font-size: 20pt;
+		margin: 32px 0 10px;
+		font-size: 22pt;
 	}
 
 	h3 {
-		font-size: 18pt;
+		font-size: 16pt;
 		color: $flamingo-color;
 	}
 
 	h4 {
-		font-size: 16pt;
+		font-size: 14pt;
 		letter-spacing: 0;
 	}
 
@@ -1506,8 +1507,17 @@ section.container {
 	p,
 	ul {
 		font-family: $open-sans-font-stack;
-		font-size: 11pt;
+		color: $baltic-sea-color;
+		font-size: 12pt;
 		line-height: 1.6;
+		& strong {
+			font-weight: 600;
+		}
+	}
+
+	a {
+		font-weight: 400;
+		color: $orange-color;
 	}
 
 	hr {
