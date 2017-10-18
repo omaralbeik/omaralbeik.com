@@ -31,6 +31,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'pygments',
     'markdownx',
     'markdown2',
     'rest_framework.authtoken',
