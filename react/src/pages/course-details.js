@@ -21,7 +21,7 @@ import {learningLink, coursesLink, courseLink} from '../links';
 
 // Helpers
 import APIHelper from '../utils/api-helpers';
-import {mediaFileUrl} from '../utils/helpers';
+import {mediaFileUrl, arrayFromObject} from '../utils/helpers';
 
 // Media files
 import placeholder from '../images/placeholders/course-placeholder.svg';
@@ -140,7 +140,15 @@ class CourseDetails extends Component {
     const {tags} = this.props;
     const {courses} = this.props.learning ;
     const {course_id} = this.props.match.params;
-    const course = courses[course_id];
+
+    var course;
+    if (parseInt(course_id, 0)) { // get course by id
+      course = courses[course_id]
+    } else { // get course by url_title
+      const coursesArray = arrayFromObject(courses);
+      course = coursesArray.filter(c => (c.url_title === course_id))[0]
+    }
+
     return (
       <main className="container-wrap inside-content">
         {this.generateCourseDetails(course, tags)}

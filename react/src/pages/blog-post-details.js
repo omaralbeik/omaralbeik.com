@@ -20,6 +20,7 @@ import {blogLink, postLink} from '../links';
 
 // Helpers
 import APIHelper from '../utils/api-helpers';
+import {arrayFromObject} from '../utils/helpers';
 
 // Strings
 import {genericStrings} from '../strings';
@@ -99,7 +100,13 @@ class BlogPostDetails extends Component {
     const {blogPosts} = this.props;
     const {post_id} = this.props.match.params;
 
-    const post = blogPosts[post_id];
+    var post;
+    if (parseInt(post_id, 0)) { // get post by id
+      post = blogPosts[post_id]
+    } else { // get post by url_title
+      const postsArray = arrayFromObject(blogPosts);
+      post = postsArray.filter(p => (p.url_title === post_id))[0]
+    }
 
     return (
       <main className="container-wrap inside-content">

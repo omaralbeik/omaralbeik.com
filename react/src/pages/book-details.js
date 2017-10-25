@@ -21,7 +21,7 @@ import {learningLink, booksLink, bookLink} from '../links';
 
 // Helpers
 import APIHelper from '../utils/api-helpers';
-import {mediaFileUrl} from '../utils/helpers';
+import {mediaFileUrl, arrayFromObject} from '../utils/helpers';
 
 // Media files
 import placeholder from '../images/placeholders/book-placeholder.svg';
@@ -108,7 +108,14 @@ class BookDetails extends Component {
 
     const {books} = this.props.learning ;
     const {book_id} = this.props.match.params;
-    const book = books[book_id];
+
+    var book;
+    if (parseInt(book_id, 0)) { // get book by id
+      book = books[book_id]
+    } else { // get book by url_name
+      const booksArray = arrayFromObject(books);
+      book = booksArray.filter(b => (b.url_name === book_id))[0]
+    }
 
     return (
       <main className="container-wrap inside-content">

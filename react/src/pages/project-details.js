@@ -21,7 +21,7 @@ import {projectsLink, projectLink} from '../links';
 
 // Helpers
 import APIHelper from '../utils/api-helpers';
-import {mediaFileUrl} from '../utils/helpers';
+import {mediaFileUrl, arrayFromObject} from '../utils/helpers';
 
 // Media files
 import githubIcon from '../images/social-gt.svg';
@@ -153,7 +153,14 @@ class ProjectDetails extends Component {
     const {projects, tags} = this.props;
     const {project_id} = this.props.match.params;
 
-    const project = projects[project_id];
+    var project;
+    if (parseInt(project_id, 0)) { // get project by id
+      project = projects[project_id]
+    } else { // get project by url_name
+      const projectsArray = arrayFromObject(projects);
+      project = projectsArray.filter(p => (p.url_name === project_id))[0]
+    }
+
 
     return (
       <main className="container-wrap inside-content">

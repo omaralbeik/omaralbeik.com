@@ -25,12 +25,6 @@ class TagDetails extends Component {
     super(props);
     this.state = { error: null };
     this.fetchTag()
-    this.fetchTagProjects();
-    this.fetchTagPosts();
-    // this.fetchTagSchools();
-    this.fetchTagCourses();
-    this.fetchTagQuotes();
-    this.fetchTagBooks();
   }
 
   componentWillMount() {
@@ -44,50 +38,48 @@ class TagDetails extends Component {
   fetchTag() {
     const {tag_id} = this.props.match.params;
     APIHelper.fetchTag(tag_id).then(tag => {
+      this.fetchTagItems(tag.id);
       this.props.addTag({type: actions.ADD_TAG, tag});
     }).catch(error => {
       this.setState({error: error});
     });
   }
 
-  fetchTagProjects() {
-    const {tag_id} = this.props.match.params;
+  fetchTagItems(tag_id) {
+    this.fetchTagProjects(tag_id);
+    this.fetchTagPosts(tag_id);
+    this.fetchTagCourses(tag_id);
+    this.fetchTagQuotes(tag_id);
+    this.fetchTagBooks(tag_id);
+  }
+
+  fetchTagProjects(tag_id) {
     APIHelper.fetchTagProjects(tag_id).then(projects => {
       this.props.loadProjects({type: actions.LOAD_PROJECTS, projects});
     });
   }
 
-  fetchTagPosts() {
-    const {tag_id} = this.props.match.params;
+  fetchTagPosts(tag_id) {
     APIHelper.fetchTagPosts(tag_id).then(posts => {
       this.props.loadBlogPosts({type: actions.LOAD_BLOG_POSTS, posts});
     });
   }
 
-  // fetchTagSchools() {
-  //   const {tag_id} = this.props.match.params;
-  //   APIHelper.fetchTagSchools(tag_id).then(schools => {
-  //     this.props.loadLearningSchools({type: actions.LOAD_LEARNING_SCHOOLS, schools});
-  //   });
-  // }
-
-  fetchTagCourses() {
-    const {tag_id} = this.props.match.params;
+  fetchTagCourses(tag_id) {
     APIHelper.fetchTagCourses(tag_id).then(courses => {
       this.props.loadLearningCourses({type: actions.LOAD_LEARNING_COURSES, courses});
     });
   }
 
-  fetchTagQuotes() {
-    const {tag_id} = this.props.match.params;
+  fetchTagQuotes(tag_id) {
     APIHelper.fetchTagQuotes(tag_id).then(quotes => {
       this.props.loadLearningQuotes({type: actions.LOAD_LEARNING_QUOTES, quotes});
     });
   }
 
-  fetchTagBooks() {
-    const {tag_id} = this.props.match.params;
+  fetchTagBooks(tag_id) {
     APIHelper.fetchTagBooks(tag_id).then(books => {
+      this.props.loadLearningBooks({type: actions.LOAD_LEARNING_BOOKS, books});
     });
   }
 
@@ -125,17 +117,23 @@ class TagDetails extends Component {
 
     const {tags} = this.props;
     var {tag_id} = this.props.match.params;
-    tag_id = parseInt(tag_id, 0);
-    const tag = tags[tag_id];
+
+    var tag;
+    if (parseInt(tag_id, 0)) { // get tag by id
+      tag = tags[tag_id]
+    } else { // get tag by url_name
+      const tagsArray = arrayFromObject(tags);
+      tag = tagsArray.filter(t => (t.url_name === tag_id))[0];
+    }
 
     const {blogPosts, projects} = this.props;
     const {courses, quotes, books} = this.props.learning;
 
-    const postsArray = arrayFromObject(blogPosts).filter(p => (p.tags.includes(tag_id)));
-    const projectsArray = arrayFromObject(projects).filter(p => (p.tags.includes(tag_id)));
-    const coursesArray = arrayFromObject(courses).filter(c => (c.tags.includes(tag_id)));
-    const quotesArray = arrayFromObject(quotes).filter(q => (q.tags.includes(tag_id)));
-    const booksArray = arrayFromObject(books).filter(b => (b.tags.includes(tag_id)));
+    const postsArray = arrayFromObject(blogPosts).filter(p => (p.tags.includes(tag.id)));
+    const projectsArray = arrayFromObject(projects).filter(p => (p.tags.includes(tag.id)));
+    const coursesArray = arrayFromObject(courses).filter(c => (c.tags.includes(tag.id)));
+    const quotesArray = arrayFromObject(quotes).filter(q => (q.tags.includes(tag.id)));
+    const booksArray = arrayFromObject(books).filter(b => (b.tags.includes(tag.id)));
 
     const itemsArray = postsArray
     .concat(projectsArray)

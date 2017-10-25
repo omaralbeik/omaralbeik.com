@@ -18,7 +18,7 @@ export function postLink(p) {
   return {
     name: p.title,
     title: p.title,
-    url: `${blogLink.url}/${p.id}`,
+    url: `${blogLink.url}/${p.url_title}`,
     documentTitle: `${p.title} | ${genericStrings.name}`
   };
 };
@@ -34,7 +34,7 @@ export function projectLink(p) {
   return {
     name: p.name,
     title: p.name,
-    url: `${projectsLink.url}/${p.id}`,
+    url: `${projectsLink.url}/${p.url_name}`,
     documentTitle: `${p.name} | ${genericStrings.name}`
   };
 };
@@ -50,7 +50,7 @@ export function tagLink(t) {
   return {
     name: t.name,
     title: `#${t.name}`,
-    url: `${tagsLink.url}/${t.id}`,
+    url: `${tagsLink.url}/${t.url_name}`,
     documentTitle: `${t.name} | ${genericStrings.name}`
   };
 };
@@ -88,7 +88,7 @@ export function courseLink(c) {
     name: c.title,
     title: c.title,
     subtitle: c.subtitle,
-    url: `${coursesLink.url}/${c.id}`,
+    url: `${coursesLink.url}/${c.url_title}`,
     documentTitle: `${c.title} | ${genericStrings.name}`
   };
 }
@@ -112,7 +112,7 @@ export function bookLink(b) {
     name: b.name,
     title: b.name,
     subtitle: b.author,
-    url: `${booksLink.url}/${b.id}`,
+    url: `${booksLink.url}/${b.url_name}`,
     documentTitle: `${b.name} | ${genericStrings.name}`
   };
 }
