@@ -1,8 +1,10 @@
 from django.db import models
+from utils.helpers import generate_url_name
 
 
 class Book(models.Model):
     name = models.CharField(max_length=255)
+    url_name = models.CharField(max_length=255, editable=False, default='')
     author = models.CharField(max_length=255, blank=True)
     cover = models.ImageField(upload_to='books', blank=True)
     purchase_url = models.URLField(blank=True)
@@ -14,6 +16,10 @@ class Book(models.Model):
 
     # book tags
     tags = models.ManyToManyField('tags.Tag', blank=True)
+
+    def save(self, *args, **kwargs):
+        self.url_name = generate_url_name(self.name)
+        super(Book, self).save(*args, **kwargs)
 
     class Meta:
         ordering = ['-read_at', 'author', 'name', ]
@@ -28,12 +34,17 @@ class Book(models.Model):
 
 class School(models.Model):
     name = models.CharField(max_length=255, unique=True)
+    url_name = models.CharField(max_length=255, editable=False, default='')
     logo = models.ImageField(upload_to='schools', blank=True)
     website_url = models.URLField(blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
     # school tags
     tags = models.ManyToManyField('tags.Tag', blank=True)
+
+    def save(self, *args, **kwargs):
+        self.url_name = generate_url_name(self.name)
+        super(School, self).save(*args, **kwargs)
 
     class Meta:
         ordering = ['name', ]
@@ -44,6 +55,7 @@ class School(models.Model):
 
 class Course(models.Model):
     title = models.CharField(max_length=255)
+    url_title = models.CharField(max_length=255, editable=False, default='')
     subtitle = models.CharField(max_length=255, blank=True)
     description = models.TextField(blank=True)
     logo = models.ImageField(upload_to='courses', blank=True)
@@ -61,6 +73,10 @@ class Course(models.Model):
 
     # course tags
     tags = models.ManyToManyField('tags.Tag', blank=True)
+
+    def save(self, *args, **kwargs):
+        self.url_title = generate_url_name(self.title)
+        super(Course, self).save(*args, **kwargs)
 
     class Meta:
         ordering = ['current', '-graduated_at', '-started_at', 'school', 'title', ]

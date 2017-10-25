@@ -1,3 +1,4 @@
+from django.shortcuts import get_object_or_404
 from rest_framework import viewsets
 from rest_framework.decorators import detail_route
 from rest_framework.response import Response
@@ -13,6 +14,20 @@ class TagViewSet(viewsets.ModelViewSet):
     permission_classes = (permissions.IsAuthenticated,)
     queryset = models.Tag.objects.all()
     serializer_class = serializers.TagSerializer
+
+    def retrieve(self, request, pk=None):
+        queryset = self.queryset
+
+        try: # retrieve tag by primary key
+            pk = int(pk)
+            tag = get_object_or_404(queryset, pk=pk)
+            serializer = self.get_serializer(tag)
+            return Response(serializer.data)
+
+        except: # retrieve tag by title
+            tag = get_object_or_404(queryset.filter(url_name=pk))
+            serializer = self.get_serializer(tag)
+            return Response(serializer.data)
 
     # detail route to return all project with tag
     # .../tags/[tag_id]/projects

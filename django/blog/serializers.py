@@ -11,6 +11,7 @@ class PostSerializer(serializers.ModelSerializer):
     class Meta:
         fields = (
             'type',
+            'url_title',
             'id',
             'title',
             'summary',

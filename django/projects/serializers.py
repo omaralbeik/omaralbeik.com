@@ -14,6 +14,7 @@ class ProjectSerializer(serializers.ModelSerializer):
             'type',
             'id',
             'name',
+            'url_name',
             'logo_url',
             'summary',
             'html_text',

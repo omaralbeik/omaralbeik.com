@@ -1,3 +1,4 @@
+from django.shortcuts import get_object_or_404
 from rest_framework import viewsets
 from rest_framework.decorators import detail_route, list_route
 from rest_framework.response import Response
@@ -12,6 +13,20 @@ class BookViewSet(viewsets.ModelViewSet):
     queryset = models.Book.objects.all()
     serializer_class = serializers.BookSerializer
 
+    def retrieve(self, request, pk=None):
+        queryset = self.queryset
+
+        try: # retrieve book by primary key
+            pk = int(pk)
+            book = get_object_or_404(queryset, pk=pk)
+            serializer = self.get_serializer(book)
+            return Response(serializer.data)
+
+        except: # retrieve book by name
+            book = get_object_or_404(queryset.filter(url_name=pk))
+            serializer = self.get_serializer(book)
+            return Response(serializer.data)
+
     # detail route to return book tags
     # .../learning/books/[book_id]/tags
     @detail_route(methods=['get'])
@@ -25,6 +40,20 @@ class CourseViewSet(viewsets.ModelViewSet):
     permission_classes = (permissions.IsAuthenticated,)
     queryset = models.Course.objects.all()
     serializer_class = serializers.CourseSerializer
+
+    def retrieve(self, request, pk=None):
+        queryset = self.queryset
+
+        try: # retrieve course by primary key
+            pk = int(pk)
+            course = get_object_or_404(queryset, pk=pk)
+            serializer = self.get_serializer(course)
+            return Response(serializer.data)
+
+        except: # retrieve course by title
+            course = get_object_or_404(queryset.filter(url_title=pk))
+            serializer = self.get_serializer(course)
+            return Response(serializer.data)
 
     # detail route to return course tags
     # .../learning/courses/[course_id]/tags
@@ -55,6 +84,20 @@ class SchoolViewSet(viewsets.ModelViewSet):
     permission_classes = (permissions.IsAuthenticated,)
     queryset = models.School.objects.all()
     serializer_class = serializers.SchoolSerializer
+
+    def retrieve(self, request, pk=None):
+        queryset = self.queryset
+
+        try: # retrieve school by primary key
+            pk = int(pk)
+            school = get_object_or_404(queryset, pk=pk)
+            serializer = self.get_serializer(school)
+            return Response(serializer.data)
+
+        except: # retrieve school by name
+            school = get_object_or_404(queryset.filter(url_name=pk))
+            serializer = self.get_serializer(school)
+            return Response(serializer.data)
 
     # detail route to return school tags
     # .../learning/schools/[school_id]/tags

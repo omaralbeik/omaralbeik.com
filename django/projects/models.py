@@ -1,9 +1,11 @@
 from django.db import models
 from markdownx.models import MarkdownxField
+from utils.helpers import generate_url_name
 
 
 class Project(models.Model):
     name = models.CharField(max_length=255, unique=True)
+    url_name = models.CharField(max_length=255, editable=False, default='')
     logo = models.ImageField(upload_to='projects', blank=True)
     summary = models.CharField(max_length=255, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
@@ -23,6 +25,10 @@ class Project(models.Model):
 
     # post tags
     tags = models.ManyToManyField('tags.Tag', blank=True)
+
+    def save(self, *args, **kwargs):
+        self.url_name = generate_url_name(self.name)
+        super(Project, self).save(*args, **kwargs)
 
     class Meta:
         ordering = ['-released_at', 'name']
