@@ -1524,6 +1524,8 @@ ul.social-share {
     text-indent: -3px; }
   .error > h3 {
     margin-bottom: 20px; }
+  .error a {
+    color: #fff; }
 
 @media (min-width: 768px) {
   #header {

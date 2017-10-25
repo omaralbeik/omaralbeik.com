@@ -1989,6 +1989,10 @@ ul.social-share {
 	> h3 {
 		margin-bottom: 20px;
 	}
+
+	a {
+		color: $white-color;
+	}
 }
 @import 'responsive/all-but-phone';
 @import 'responsive/desktop';
