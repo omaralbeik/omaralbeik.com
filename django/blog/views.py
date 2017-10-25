@@ -1,3 +1,4 @@
+from django.shortcuts import get_object_or_404
 from rest_framework import mixins
 from rest_framework import viewsets
 from rest_framework.decorators import detail_route, list_route
@@ -14,6 +15,20 @@ class PostViewSet(viewsets.ModelViewSet):
     # return only published items
     queryset = models.Post.objects.filter(published=True)
     serializer_class = serializers.PostSerializer
+
+    def retrieve(self, request, pk=None):
+        queryset = self.queryset
+
+        try: # retrieve post by primary key
+            pk = int(pk)
+            post = get_object_or_404(queryset, pk=pk)
+            serializer = self.get_serializer(post)
+            return Response(serializer.data)
+
+        except: # retrieve post by title
+            post = get_object_or_404(queryset.filter(url_title=pk))
+            serializer = self.get_serializer(post)
+            return Response(serializer.data)
 
     # detail route to return post tags
     # .../blog/posts/[post_id]/tags

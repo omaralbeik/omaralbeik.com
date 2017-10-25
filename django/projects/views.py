@@ -1,3 +1,4 @@
+from django.shortcuts import get_object_or_404
 from rest_framework import viewsets
 from rest_framework.decorators import detail_route, list_route
 from rest_framework.response import Response
@@ -13,6 +14,20 @@ class ProjectViewSet(viewsets.ModelViewSet):
     # return only published items
     queryset = models.Project.objects.filter(published=True)
     serializer_class = serializers.ProjectSerializer
+
+    def retrieve(self, request, pk=None):
+        queryset = self.queryset
+
+        try: # retrieve project by primary key
+            pk = int(pk)
+            project = get_object_or_404(queryset, pk=pk)
+            serializer = self.get_serializer(project)
+            return Response(serializer.data)
+
+        except: # retrieve project by title
+            project = get_object_or_404(queryset.filter(url_name=pk))
+            serializer = self.get_serializer(project)
+            return Response(serializer.data)
 
     # detail route to return project tags
     # .../projects/[project_id]/tags
