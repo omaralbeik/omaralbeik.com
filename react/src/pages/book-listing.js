@@ -11,6 +11,7 @@ import {Row, Col} from 'react-bootstrap';
 // Components
 import Breadcrumb from '../components/breadcrumb';
 import BookCell from '../components/learning/book-cell';
+import ReactLoading from 'react-loading';
 
 // Routing & Links
 import {learningLink, booksLink} from '../links';
@@ -39,10 +40,26 @@ class BookListing extends Component {
     })
   }
 
+  generateBody(books) {
+    if (books.length === 0) {
+      return <ReactLoading type="bubbles" color="#aaa" className="loading"/>;
+    } else {
+      return (
+        <Row>
+          <Col sm={12}>
+            <ul className="list-unstyled list-inline row transit-slow-all book-listing">
+              {books.map(b => (<BookCell key={b.id} book={b}/>))}
+            </ul>
+          </Col>
+        </Row>
+      )
+    }
+  }
+
   render() {
     const {books} = this.props.learning;
     const booksArray = arrayFromObject(books);
-    
+
     return (
       <main className="container-wrap inside-content">
         <section className="container">
@@ -51,13 +68,7 @@ class BookListing extends Component {
             <Breadcrumb links={[learningLink, booksLink]}/>
           </header>
           <div className="inside-body">
-            <Row>
-              <Col sm={12}>
-                <ul className="list-unstyled list-inline row transit-slow-all book-listing">
-                  {booksArray.map(b => (<BookCell key={b.id} book={b}/>))}
-                </ul>
-              </Col>
-            </Row>
+            {this.generateBody(booksArray)}
           </div>
         </section>
       </main>

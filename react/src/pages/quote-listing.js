@@ -41,7 +41,9 @@ class QuoteListing extends Component {
 
   render() {
     const {quotes} = this.props.learning;
-    const quotesArray = arrayFromObject(quotes)
+    var quotesArray = arrayFromObject(quotes)
+    quotesArray.sort((q1, q2) => (q1.id < q2.id))
+    
     return (
       <main className="container-wrap inside-content">
         <section className="container topic">

@@ -10,6 +10,7 @@ import {Row, Col} from 'react-bootstrap';
 
 // Components
 import Time from 'react-time';
+import ReactLoading from 'react-loading';
 import Breadcrumb from '../components/breadcrumb';
 import TagList from '../components/tag-list';
 import SocialShareButtons from '../components/social-share-buttons';
@@ -55,7 +56,7 @@ class BookDetails extends Component {
 
   generateBookDetails(book) {
     if (!book) {
-      return;
+      return <ReactLoading type="bubbles" color="#aaa" className="loading"/>;
     }
     document.title = bookLink(book).documentTitle;
     const cover = book.cover_url ? mediaFileUrl(book.cover_url) : placeholder

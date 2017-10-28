@@ -42,7 +42,7 @@ class SocialShareButtons extends Component {
   render() {
     const buttonSize = 28
     const {url, title, summary, tagIds, tags} = this.props;
-    const hashtags = tagIds.map(i => tags[i].share_name);
+    const hashtags = tagIds.map(i => tags[i].url_name);
 
     const emailSummary = `${title}\n${summary}\n\n${url}`;
     return (

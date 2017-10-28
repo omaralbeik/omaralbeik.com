@@ -1,24 +1,33 @@
 /* SCSS Document */
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:300italic,600italic,300,600,700,800");
 @import url("https://fonts.googleapis.com/css?family=Share+Tech+Mono");
+@import url("https://fonts.googleapis.com/css?family=Roboto:300");
 @import url(~slick-carousel/slick/slick.css);
 @import url(~slick-carousel/slick/slick-theme.css);
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:300italic,600italic,300,600,700,800");
 @import url("https://fonts.googleapis.com/css?family=Share+Tech+Mono");
+@import url("https://fonts.googleapis.com/css?family=Roboto:300");
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:300italic,600italic,300,600,700,800");
 @import url("https://fonts.googleapis.com/css?family=Share+Tech+Mono");
+@import url("https://fonts.googleapis.com/css?family=Roboto:300");
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:300italic,600italic,300,600,700,800");
 @import url("https://fonts.googleapis.com/css?family=Share+Tech+Mono");
+@import url("https://fonts.googleapis.com/css?family=Roboto:300");
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:300italic,600italic,300,600,700,800");
 @import url("https://fonts.googleapis.com/css?family=Share+Tech+Mono");
+@import url("https://fonts.googleapis.com/css?family=Roboto:300");
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:300italic,600italic,300,600,700,800");
 @import url("https://fonts.googleapis.com/css?family=Share+Tech+Mono");
+@import url("https://fonts.googleapis.com/css?family=Roboto:300");
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:300italic,600italic,300,600,700,800");
 @import url("https://fonts.googleapis.com/css?family=Share+Tech+Mono");
+@import url("https://fonts.googleapis.com/css?family=Roboto:300");
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:300italic,600italic,300,600,700,800");
 @import url("https://fonts.googleapis.com/css?family=Share+Tech+Mono");
+@import url("https://fonts.googleapis.com/css?family=Roboto:300");
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:300italic,600italic,300,600,700,800");
 @import url("https://fonts.googleapis.com/css?family=Share+Tech+Mono");
+@import url("https://fonts.googleapis.com/css?family=Roboto:300");
 *:focus {
   outline: none !important;
   text-decoration: none !important; }
@@ -581,6 +590,9 @@ fieldset[disabled] .btn-black:hover {
   top: 0;
   width: 100%;
   z-index: 100; }
+
+.loading {
+  margin: auto; }
 
 .cmd-line {
   background-color: #171314;
@@ -1607,7 +1619,14 @@ ul.social-share {
         margin: 0; }
     .inside-content .blog-item-wrap:first-child .blog-item-body > p {
       font-size: 12pt;
-      height: auto; } }
+      height: auto; }
+  .about h1 {
+    font-size: 32pt; }
+  .about p {
+    font-family: "Roboto", Arial, Helvetica, sans-serif;
+    font-size: 16pt;
+    line-height: 1.5;
+    font-weight: 300; } }
 
 @media (min-width: 992px) and (max-width: 1199px) {
   #slider {
@@ -2128,6 +2147,10 @@ ul.social-share {
       color: #e9541d;
       font-size: 14pt;
       letter-spacing: 0; }
+  .about h1 {
+    font-size: 25pt; }
+  .about p {
+    font-size: 12pt; }
   .topic-content > div {
     padding: 30px calc(5% + 20px); }
   .thb-link {

@@ -9,6 +9,7 @@ import * as actions from '../actions';
 import {Row, Col} from 'react-bootstrap';
 
 // Components
+import ReactLoading from 'react-loading';
 import Breadcrumb from '../components/breadcrumb';
 import ProjectCell from '../components/projects/project-cell';
 
@@ -39,6 +40,22 @@ class ProjectListing extends Component {
     })
   }
 
+  generateBody(projects) {
+    if (projects.length === 0 ) {
+      return <ReactLoading type="bubbles" color="#aaa" className="loading"/>;
+    } else {
+      return (
+        <Row>
+          <Col sm={12}>
+            <ul className="list-unstyled list-inline row thumbnails-hfixed transit-all">
+              {projects.map(p => (<ProjectCell key={p.id} project={p}/>))}
+            </ul>
+          </Col>
+        </Row>
+      )
+    }
+  }
+
   render() {
     const {projects} = this.props;
     const projectsArray = arrayFromObject(projects)
@@ -52,13 +69,7 @@ class ProjectListing extends Component {
             <Breadcrumb links={[projectsLink]}/>
           </header>
           <div className="inside-body">
-            <Row>
-              <Col sm={12}>
-                <ul className="list-unstyled list-inline row thumbnails-hfixed transit-all">
-                  {sortedProjects.map(p => (<ProjectCell key={p.id} project={p}/>))}
-                </ul>
-              </Col>
-            </Row>
+            {this.generateBody(sortedProjects)}
           </div>
         </section>
       </main>

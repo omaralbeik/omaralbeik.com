@@ -732,6 +732,10 @@ fieldset[disabled] .btn-black:hover {
 	z-index: 100;
 }
 
+.loading {
+	margin: auto;
+}
+
 //** About Section
 .cmd-line {
 	background-color: $cod-gray-color;
@@ -1530,6 +1534,7 @@ section.container {
 		max-width: 100%;
 	}
 }
+
 
 .topic-rating {
 	margin: 3px 0;
