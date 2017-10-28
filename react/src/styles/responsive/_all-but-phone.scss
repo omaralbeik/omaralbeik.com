@@ -135,4 +135,16 @@ $information-all-but-phone: "(min-width: 768px)";
 			}
 		}
 	}
+
+	.about {
+		h1 {
+			font-size: 32pt;
+		}
+		p {
+			font-family: $roboto-font-stack;
+			font-size: 16pt;
+			line-height: 1.5;
+			font-weight: 300;
+		}
+	}
 }

@@ -467,6 +467,15 @@ $information-phone: "(max-width: 767px)";
 		}
 	}
 
+	.about {
+		h1 {
+			font-size: 25pt;
+		}
+		p {
+			font-size: 12pt;
+		}
+	}
+
 	.topic-content > div {
 		padding: 30px calc(5% + 20px);
 	}

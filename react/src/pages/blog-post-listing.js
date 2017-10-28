@@ -11,6 +11,7 @@ import {Row, Col} from 'react-bootstrap';
 // Components
 import PostCell from '../components/blog/post-cell';
 import Breadcrumb from '../components/breadcrumb';
+import ReactLoading from 'react-loading';
 
 // Routing & Links
 import {blogLink} from '../links';
@@ -39,6 +40,22 @@ class BlogListing extends Component {
     });
   }
 
+  generateBody(posts) {
+    if (posts.length === 0) {
+      return <ReactLoading type="bubbles" color="#aaa" className="loading"/>;
+    } else {
+      return (
+        <Row>
+          <Col sm={12}>
+            <ul className="home-blog-list list-unstyled inline-list row">
+              {posts.map(p => (<PostCell key={p.id} post={p}/>))}
+            </ul>
+          </Col>
+        </Row>
+      )
+    }
+  }
+
   render() {
     const {blogPosts} = this.props;
     const postsArray = arrayFromObject(blogPosts)
@@ -51,13 +68,7 @@ class BlogListing extends Component {
             <Breadcrumb links={[blogLink]}/>
           </header>
           <div className="inside-body">
-            <Row>
-              <Col sm={12}>
-                <ul className="home-blog-list list-unstyled inline-list row">
-                  {sortedPosts.map(p => (<PostCell key={p.id} post={p}/>))}
-                </ul>
-              </Col>
-            </Row>
+            {this.generateBody(sortedPosts)}
           </div>
         </section>
       </main>

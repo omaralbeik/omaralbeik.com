@@ -64,7 +64,7 @@ export const aboutStrings = {
   title: "Hello, I'm Omar ",
   emojiTitle: "wave emoji",
   emoji: "👋",
-  text: "I am a passionate software developer and designer who continuously enjoys learning more about the ever-growing digital world and the technologies used to make it, drawing inspiration from the artistic chaos of Istanbul to create exceptional software solutions."
+  text: "I am a passionate software developer, AI enthusiast and lifelong learner who continuously enjoys learning more about the ever-growing digital world and the technologies used to make it, drawing inspiration from the artistic chaos of Istanbul to create exceptional software solutions."
 }
 
 export const contactStrings = {

@@ -35,7 +35,7 @@ class About extends Component {
           </header>
           <div className="inside-body">
             <img src={cover} alt="About cover" className="img-responsive topic-cover edgy"/>
-            <Row className="topic-content edgy">
+            <Row className="topic-content edgy about">
               <Col sm={12}>
                 <h1>{aboutStrings.title}<span role="img" aria-label={aboutStrings.emojiTitle}>{aboutStrings.emoji}</span></h1>
                 <br/>

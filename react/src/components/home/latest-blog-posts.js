@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 
 // Components
 import PostCell from '../blog/post-cell';
+import ReactLoading from 'react-loading';
 
 // Routing & Links
 import {Link} from 'react-router-dom';
@@ -15,6 +16,18 @@ import {homeStrings} from '../../strings';
 class LatestBlogPosts extends Component {
   static propTypes = {
     posts: PropTypes.array.isRequired
+  }
+
+  generateBody(posts) {
+    if (posts.length === 0) {
+      return <ReactLoading type="bubbles" color="#aaa" className="loading"/>;
+    } else {
+      return (
+        <ul className="home-blog-list list-unstyled inline-list row">
+          {posts.map((p, i) => (<PostCell key={p.id} mobHidden={i > 0} post={p}/>))}
+        </ul>
+      )
+    }
   }
 
   render() {
@@ -29,9 +42,7 @@ class LatestBlogPosts extends Component {
             </h1>
           </header>
           <div className="sec-body">
-            <ul className="home-blog-list list-unstyled inline-list row">
-              {sortedPosts.map((p, i) => (<PostCell key={p.id} mobHidden={i > 0} post={p}/>))}
-            </ul>
+            {this.generateBody(sortedPosts)}
           </div>
           <footer className="sec-footer">
             <Link to={blogLink.url}>{homeStrings.moreArticles}</Link>
