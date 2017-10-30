@@ -8,7 +8,7 @@ import * as actions from '../actions';
 // Components
 import Breadcrumb from '../components/breadcrumb';
 import CourseCell from '../components/learning/course-cell';
-import ReactLoading from 'react-loading';
+import Loading from '../components/loading';
 
 // Routing & Links
 import {learningLink, coursesLink} from '../links';
@@ -39,7 +39,7 @@ class CourseListing extends Component {
 
   generateBody(courses) {
     if (courses.length === 0 ) {
-      return <ReactLoading type="bubbles" color="#aaa" className="loading"/>;
+      return <Loading/>;
     } else {
       return (
         <ul className="list-unstyled courses-light">

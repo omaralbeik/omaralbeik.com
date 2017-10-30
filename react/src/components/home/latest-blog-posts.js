@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 // Components
 import PostCell from '../blog/post-cell';
-import ReactLoading from 'react-loading';
+import Loading from '../loading';
 
 // Routing & Links
 import {Link} from 'react-router-dom';
@@ -20,7 +20,7 @@ class LatestBlogPosts extends Component {
 
   generateBody(posts) {
     if (posts.length === 0) {
-      return <ReactLoading type="bubbles" color="#aaa" className="loading"/>;
+      return <Loading/>;
     } else {
       return (
         <ul className="home-blog-list list-unstyled inline-list row">

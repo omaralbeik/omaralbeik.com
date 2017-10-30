@@ -11,7 +11,7 @@ import {Row, Col} from 'react-bootstrap';
 // Components
 import Breadcrumb from '../components/breadcrumb';
 import BookCell from '../components/learning/book-cell';
-import ReactLoading from 'react-loading';
+import Loading from '../components/loading';
 
 // Routing & Links
 import {learningLink, booksLink} from '../links';
@@ -42,7 +42,7 @@ class BookListing extends Component {
 
   generateBody(books) {
     if (books.length === 0) {
-      return <ReactLoading type="bubbles" color="#aaa" className="loading"/>;
+      return <Loading/>;
     } else {
       return (
         <Row>
