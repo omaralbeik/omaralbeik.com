@@ -10,11 +10,11 @@ import {Row, Col} from 'react-bootstrap';
 
 // Components
 import Time from 'react-time';
-import ReactLoading from 'react-loading';
 import Breadcrumb from '../components/breadcrumb';
 import TagList from '../components/tag-list';
 import SocialShareButtons from '../components/social-share-buttons';
 import Error from '../pages/error';
+import Loading from '../components/loading';
 
 // Routing & Links
 import {blogLink, postLink} from '../links';
@@ -52,7 +52,7 @@ class BlogPostDetails extends Component {
 
   generateBlogPostDetails(post) {
     if (!post) {
-      return <ReactLoading type="bubbles" color="#aaa" className="loading"/>;
+      return <Loading/>;
     }
     document.title = postLink(post).documentTitle;
     return (

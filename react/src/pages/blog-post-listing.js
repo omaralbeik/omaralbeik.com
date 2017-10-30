@@ -11,7 +11,7 @@ import {Row, Col} from 'react-bootstrap';
 // Components
 import PostCell from '../components/blog/post-cell';
 import Breadcrumb from '../components/breadcrumb';
-import ReactLoading from 'react-loading';
+import Loading from '../components/loading';
 
 // Routing & Links
 import {blogLink} from '../links';
@@ -42,7 +42,7 @@ class BlogListing extends Component {
 
   generateBody(posts) {
     if (posts.length === 0) {
-      return <ReactLoading type="bubbles" color="#aaa" className="loading"/>;
+      return <Loading/>;
     } else {
       return (
         <Row>

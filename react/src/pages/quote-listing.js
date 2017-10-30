@@ -11,6 +11,7 @@ import {Row, Col} from 'react-bootstrap';
 // Components
 import Breadcrumb from '../components/breadcrumb';
 import QuoteCell from '../components/learning/quote-cell';
+import Loading from '../components/loading';
 
 // Routing & Links
 import {learningLink, quotesLink} from '../links';
@@ -39,11 +40,27 @@ class QuoteListing extends Component {
     })
   }
 
+  generateBody(quotes) {
+    if (quotes.length === 0) {
+      return <Loading/>;
+    } else {
+      return (
+        <Row>
+          <Col sm={12}>
+            <ul className="list-unstyled quote-listing">
+              {quotes.map(q => (<QuoteCell key={q.id} quote={q}/>))}
+            </ul>
+          </Col>
+        </Row>
+      );
+    }
+  }
+
   render() {
     const {quotes} = this.props.learning;
     var quotesArray = arrayFromObject(quotes)
     quotesArray.sort((q1, q2) => (q1.id < q2.id))
-    
+
     return (
       <main className="container-wrap inside-content">
         <section className="container topic">
@@ -51,13 +68,7 @@ class QuoteListing extends Component {
             <h1 className="content-title col-sm-12">{quotesLink.title}</h1>
             <Breadcrumb links={[learningLink, quotesLink]}/>
           </header>
-          <Row>
-            <Col sm={12}>
-              <ul className="list-unstyled quote-listing">
-                {quotesArray.map(q => (<QuoteCell key={q.id} quote={q}/>))}
-              </ul>
-            </Col>
-          </Row>
+          {this.generateBody(quotesArray)}
         </section>
       </main>
     )

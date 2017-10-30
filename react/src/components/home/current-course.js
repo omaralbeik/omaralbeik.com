@@ -8,7 +8,7 @@ import {Row, Col, Button} from 'react-bootstrap';
 
 // Components
 import TagList from '../tag-list';
-import ReactLoading from 'react-loading';
+import Loading from '../loading';
 
 // Routing & Links
 import {Link} from 'react-router-dom';
@@ -30,7 +30,7 @@ class CurrentCourse extends Component {
 
   generateBody(course, logoUrl) {
     if (!course) {
-      return <ReactLoading type="bubbles" color="#aaa" className="loading"/>;
+      return <Loading/>;
     } else {
       return (
         <Row>

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 // Components
 import ProjectCell from '../projects/project-cell';
-import ReactLoading from 'react-loading';
+import Loading from '../loading';
 
 // Routing & Links
 import {Link} from 'react-router-dom';
@@ -20,7 +20,7 @@ class LatestProjects extends Component {
 
   generateBody(projects) {
     if (projects.length === 0) {
-      return <ReactLoading type="bubbles" color="#aaa" className="loading"/>;
+      return <Loading/>;
     } else {
       return (
         <ul className="home-project-list list-unstyled list-inline row thumbnails-hfixed transit-all">

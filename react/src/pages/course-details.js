@@ -10,11 +10,11 @@ import {Row, Col} from 'react-bootstrap';
 
 // Components
 import Time from 'react-time';
-import ReactLoading from 'react-loading';
 import Breadcrumb from '../components/breadcrumb';
 import TagList from '../components/tag-list';
 import SocialShareButtons from '../components/social-share-buttons';
 import Error from '../pages/error';
+import Loading from '../components/loading';
 
 // Routing & Links
 import {Link} from 'react-router-dom';
@@ -80,7 +80,7 @@ class CourseDetails extends Component {
 
   generateCourseDetails(course, tags) {
     if (!course) {
-      return <ReactLoading type="bubbles" color="#aaa" className="loading"/>;
+      return <Loading/>;
     }
     document.title = courseLink(course).documentTitle;
     const logoUrl = course.logo_url ? mediaFileUrl(course.logo_url) : placeholder;

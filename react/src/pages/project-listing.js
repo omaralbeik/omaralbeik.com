@@ -9,9 +9,9 @@ import * as actions from '../actions';
 import {Row, Col} from 'react-bootstrap';
 
 // Components
-import ReactLoading from 'react-loading';
 import Breadcrumb from '../components/breadcrumb';
 import ProjectCell from '../components/projects/project-cell';
+import Loading from '../components/loading';
 
 // Routing & Links
 import {projectsLink} from '../links';
@@ -42,7 +42,7 @@ class ProjectListing extends Component {
 
   generateBody(projects) {
     if (projects.length === 0 ) {
-      return <ReactLoading type="bubbles" color="#aaa" className="loading"/>;
+      return <Loading/>;
     } else {
       return (
         <Row>
