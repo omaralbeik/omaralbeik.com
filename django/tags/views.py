@@ -34,7 +34,7 @@ class TagViewSet(viewsets.ModelViewSet):
     @detail_route(methods=['get'])
     def projects(self, request, pk=None):
         tag = self.get_object()
-        porjects = projects.models.Project.objects.filter(tags__in=[tag])
+        porjects = projects.models.Project.objects.filter(published=True).filter(tags__in=[tag])
         serializer = projects.serializers.ProjectSerializer(porjects, many=True)
         return Response(serializer.data)
 
@@ -43,7 +43,7 @@ class TagViewSet(viewsets.ModelViewSet):
     @detail_route(methods=['get'])
     def posts(self, request, pk=None):
         tag = self.get_object()
-        posts = blog.models.Post.objects.filter(tags__in=[tag])
+        posts = blog.models.Post.objects.filter(published=True).filter(tags__in=[tag])
         serializer = blog.serializers.PostSerializer(posts, many=True)
         return Response(serializer.data)
 
