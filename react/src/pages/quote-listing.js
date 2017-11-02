@@ -58,8 +58,8 @@ class QuoteListing extends Component {
 
   render() {
     const {quotes} = this.props.learning;
-    var quotesArray = arrayFromObject(quotes)
-    quotesArray.sort((q1, q2) => (q1.id < q2.id))
+    const quotesArray = arrayFromObject(quotes)
+    const sortedQuotes = quotesArray.sort((q1, q2) => (new Date(q2.created_at).getTime() - new Date(q1.created_at).getTime()));
 
     return (
       <main className="container-wrap inside-content">
@@ -68,7 +68,7 @@ class QuoteListing extends Component {
             <h1 className="content-title col-sm-12">{quotesLink.title}</h1>
             <Breadcrumb links={[learningLink, quotesLink]}/>
           </header>
-          {this.generateBody(quotesArray)}
+          {this.generateBody(sortedQuotes)}
         </section>
       </main>
     )
