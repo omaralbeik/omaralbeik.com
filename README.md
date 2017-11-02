@@ -8,7 +8,6 @@
 
 - [**Features**](#features)
 - [**Getting Around**](#getting-around)
-- [**Make it Yours**](#make-it-yours)
 - [**Contributing**](#contributing)
 - [**License**](#license)
 
@@ -44,22 +43,21 @@
 
 ## Getting Around
 
-This repository consists of two main directories:
+This project is hosted in two separate repositories:
 
-- [**django**](https://github.com/omaralbeik/omaralbeik.com/tree/master/django) REST API server built using Django and Python3  
-- [**react**](https://github.com/omaralbeik/omaralbeik.com/tree/master/react) Single page web application with React and Redux.
-
-
-
-## Make it Yours
+- [**omaralbeik.com-api**](https://github.com/omaralbeik/omaralbeik.com-api) REST API server built using Django and Python3
+- [**omaralbeik.com-client**](https://github.com/omaralbeik/omaralbeik.com-client) Single page web application with React and Redux.
 
 
 
 ## Contributing
 
-Your feedback is always appreciated and welcomed. If you find a bug in the source code or a mistake in the documentation, you can help me by submitting an issue [**here**](https://github.com/omaralbeik/omaralbeik.com/issues). Even better you can submit a Pull Request with a fix :)
+Your feedback is always appreciated and welcomed. If you find a bug in the source code or a mistake in the documentation, you can help me by submitting an issue. Even better you can submit a Pull Request with a fix :)
+
+- [API issues page](https://github.com/omaralbeik/omaralbeik.com-api/issues)
+- [Client issues page](https://github.com/omaralbeik/omaralbeik.com-client/issues)
 
 
 
 ## License
-This repo is released under the [MIT License](https://github.com/omaralbeik/omaralbeik.com/blob/master/LICENSE).
+This repo is released under the [MIT License](LICENSE).
