@@ -13,7 +13,7 @@ class PostViewSet(viewsets.ModelViewSet):
     permission_classes = (permissions.IsAuthenticated,)
 
     # return only published items
-    queryset = models.Post.objects.filter(published=True)
+    queryset = models.Post.visible.all()
     serializer_class = serializers.PostSerializer
 
     def retrieve(self, request, pk=None):
@@ -42,6 +42,6 @@ class PostViewSet(viewsets.ModelViewSet):
     # .../blog/posts/latest
     @list_route()
     def latest(self, request):
-        latest_posts = models.Post.objects.filter(published=True)[:2]
+        latest_posts = models.Post.visible.all()[:2]
         serializer = self.get_serializer(latest_posts, many=True)
         return Response(serializer.data)

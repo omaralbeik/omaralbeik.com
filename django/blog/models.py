@@ -4,6 +4,11 @@ from markdownx.models import MarkdownxField
 from utils.helpers import generate_url_name
 
 
+class PostManager(models.Manager):
+    def get_queryset(self):
+        return super(PostManager, self).get_queryset().filter(published=True)
+
+
 class Post(models.Model):
     title = models.CharField(max_length=255)
     url_title = models.CharField(max_length=255, editable=False, default='')
@@ -20,6 +25,9 @@ class Post(models.Model):
 
     # post tags
     tags = models.ManyToManyField('tags.Tag', blank=True)
+
+    objects = models.Manager()
+    visible = PostManager()
 
     def save(self, *args, **kwargs):
         self.url_title = generate_url_name(self.title)

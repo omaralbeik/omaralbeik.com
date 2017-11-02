@@ -123,6 +123,7 @@ class QuoteSerializer(serializers.ModelSerializer):
             'quote',
             'author',
             'author_job_title',
+            'created_at',
             'tags',
         )
         model = models.Quote
