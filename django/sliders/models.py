@@ -1,6 +1,11 @@
 from django.db import models
 
 
+class SlideManager(models.Manager):
+    def get_queryset(self):
+        return super(SlideManager, self).get_queryset().filter(published=True)
+
+
 class Slide(models.Model):
     image = models.ImageField(upload_to='sliders', blank=True)
     title = models.CharField(max_length=24)
@@ -12,6 +17,9 @@ class Slide(models.Model):
     # API will not serve the slider unless published is set to True
     published = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
+
+    objects = models.Manager()
+    visible = SlideManager()
 
     class Meta:
         ordering = ['order', '-created_at', ]

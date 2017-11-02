@@ -12,7 +12,7 @@ class ProjectViewSet(viewsets.ModelViewSet):
     permission_classes = (permissions.IsAuthenticated,)
 
     # return only published items
-    queryset = models.Project.objects.filter(published=True)
+    queryset = models.Project.visible.all()
     serializer_class = serializers.ProjectSerializer
 
     def retrieve(self, request, pk=None):
@@ -42,6 +42,6 @@ class ProjectViewSet(viewsets.ModelViewSet):
     # .../projects/latest
     @list_route()
     def latest(self, request):
-        latest_projects = models.Project.objects.filter(published=True)[:3]
+        latest_projects = models.Project.visible.all()[:3]
         serializer = self.get_serializer(latest_projects, many=True)
         return Response(serializer.data)
