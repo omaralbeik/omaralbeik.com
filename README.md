@@ -39,8 +39,8 @@
 
 This project is hosted in two separate repositories:
 
-- [**omaralbeik.com-api**](https://github.com/omaralbeik/omaralbeik.com-api) REST API server built using Django and Python3
-- [**omaralbeik.com-client**](https://github.com/omaralbeik/omaralbeik.com-client) Single page web application with React and Redux.
+- [**website-api**](https://github.com/omaralbeik/website-api) REST API server built using Django and Python3
+- [**website-client**](https://github.com/omaralbeik/website-client) Single page web application with React and Redux.
 
 
 
