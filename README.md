@@ -48,8 +48,8 @@ This project is hosted in two separate repositories:
 
 Your feedback is always appreciated and welcomed. If you find a bug in the source code or a mistake in the documentation, you can help me by submitting an issue. Even better you can submit a Pull Request with a fix :)
 
-- [API issues page](https://github.com/omaralbeik/omaralbeik.com-api/issues)
-- [Client issues page](https://github.com/omaralbeik/omaralbeik.com-client/issues)
+- [API issues page](https://github.com/omaralbeik/website-api/issues)
+- [Client issues page](https://github.com/omaralbeik/website-client/issues)
 
 
 
