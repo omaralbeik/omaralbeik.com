@@ -1,7 +1,4 @@
-<p align="center">
-  <img src="https://cdn.rawgit.com/omaralbeik/omaralbeik.com/master/assets/banner.svg" title="Omar Albeik logo">
-</p>
-
+# omaralbeik.com
 
 
 ## Table of Contents
@@ -20,24 +17,21 @@
 - Modularized applications:
   - blog
   - projects
-  - learning
-  - sliders
-  - tags
+  - contents
 - PostgreSQL or SQLite3.
 - Results pagination.
 - Requests Throttling system.
 - CMS Admin dashboard.
 - Markdown support!
-- Shared tagging system.
 
 #### React Application
 - Single page web application using React.
 - Progressive web app (PWA).
 - Fully Written in ES6.
 - Client-side routing using React router.
-- State management using Redux.
+- State management and local caching using Redux and Local Storage.
 - Google Analytics support.
-- Customizable design.
+- Light/Dark themes and CSS in JS using [styled-componenets](https://www.styled-components.com/)
 - Fully responsive design with the help of Bootstrap.
 
 
