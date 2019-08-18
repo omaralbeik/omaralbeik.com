@@ -7,7 +7,7 @@
 This project is hosted in two separate repositories:
 
 - [**website-api**](https://github.com/omaralbeik/website-api) REST API server built using Python3 and Django.
-- [**website-client**](https://github.com/omaralbeik/website-client) PWA web application with React and Redux.
+- [**website-client**](https://github.com/omaralbeik/website-client) PWA web application with NextJS and Redux.
 
 ## Contributing
 
