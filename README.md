@@ -1,3 +1,9 @@
+# Deprecation Notice
+
+This repo is depreacted, refer to v3.0 [here](https://github.com/albeiks/omaralbeik.com)
+
+---
+
 # omaralbeik.com
 
 > Source code for [my website](https://omaralbeik.com).
